@@ -8,6 +8,7 @@ import PrimaryText from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
+import { devices } from '../styles/theme';
 
 export const query = graphql`
   query($pageName: String = "open-a-store") {
@@ -111,7 +112,7 @@ const Container = styled.main`
   //display: flex;
   //flex-direction: column;
   padding: 0 200px;
-  @media (max-width: 1024px) {
+  @media (${devices.s}) {
     padding: 0 80px;
   }
 `;

@@ -6,8 +6,8 @@ import GatsbyImage from 'gatsby-image';
 const HorizontalCard = ({ data: { heading, paragraph }, image, reverse }) => {
   return (
     <Container reverse={reverse}>
-      <SecondaryText heading={heading} paragraph={paragraph} width="33%" />
-      <Image fluid={image.fluid} />
+      <SecondaryText heading={heading} paragraph={paragraph} width="33%" minWidth="280px" />
+      <Image fluid={image.fluid}/>
     </Container>
   );
 };

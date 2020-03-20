@@ -125,7 +125,7 @@ export const fontPresets = {
   sidebarTitle: getFontPreset('medium', 14),
   sidebarSubtitle: getFontPreset('regular', 14),
   footer: getFontPreset('medium', 12, 'gray'),
-  newsletter:getFontPreset('medium',16,'white')
+  newsletter: getFontPreset('medium', 16, 'white'),
 };
 
 export const colors = {
@@ -136,5 +136,13 @@ export const colors = {
   linkStandby: '#FFF',
   linkHover: '#DDD',
   footerText: '#616161',
-  hr:'#D8D8D8'
+  hr: '#D8D8D8',
+};
+
+export const devices = {
+  xs: 'max-width: 599px',
+  s: 'max-width: 1023px',
+  m: 'max-width: 1439px',
+  l: 'max-width: 1919px',
+  xl: 'min-width: 1920px',
 };
