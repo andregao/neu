@@ -28,7 +28,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   ::selection {
-    background-color: ${colors.highlight};
+    color: ${colors.highlightColor};
+    background-color: ${colors.highlightBackgroundColor};
   }
   h1,
   h2,
@@ -41,6 +42,7 @@ export const GlobalStyles = createGlobalStyle`
   p {
     margin: 0;
     padding: 0;
+    white-space: pre-wrap;
   }
   
   a {
@@ -70,5 +72,11 @@ export const GlobalStyles = createGlobalStyle`
       outline-color: ${colors.bodyText};
     }
   }
-  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  hr {
+    margin:0;
+  }
 `;

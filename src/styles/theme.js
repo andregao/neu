@@ -1,15 +1,15 @@
-import AzoSansRegular from '@fonts/AzoSansRegular.woff';
-import AzoSansRegularItalic from '@fonts/AzoSansItalic.woff';
-import AzoSansBlack from '@fonts/AzoSansBlack.woff';
-import AzoSansBlackItalic from '@fonts/AzoSansBlackItalic.woff';
-import AzoSansBold from '@fonts/AzoSansBold.woff';
-import AzoSansBoldItalic from '@fonts/AzoSansBoldItalic.woff';
-import AzoSansLight from '@fonts/AzoSansLight.woff';
-import AzoSansLightItalic from '@fonts/AzoSansLightItalic.woff';
-import AzoSansMedium from '@fonts/AzoSansMedium.woff';
-import AzoSansMediumItalic from '@fonts/AzoSansMediumItalic.woff';
-import AzoSansThin from '@fonts/AzoSansThin.woff';
-import AzoSansThinItalic from '@fonts/AzoSansThinItalic.woff';
+import AzoSansRegular from '../fonts/AzoSansRegular.woff';
+import AzoSansRegularItalic from '../fonts/AzoSansItalic.woff';
+import AzoSansBlack from '../fonts/AzoSansBlack.woff';
+import AzoSansBlackItalic from '../fonts/AzoSansBlackItalic.woff';
+import AzoSansBold from '../fonts/AzoSansBold.woff';
+import AzoSansBoldItalic from '../fonts/AzoSansBoldItalic.woff';
+import AzoSansLight from '../fonts/AzoSansLight.woff';
+import AzoSansLightItalic from '../fonts/AzoSansLightItalic.woff';
+import AzoSansMedium from '../fonts/AzoSansMedium.woff';
+import AzoSansMediumItalic from '../fonts/AzoSansMediumItalic.woff';
+import AzoSansThin from '../fonts/AzoSansThin.woff';
+import AzoSansThinItalic from '../fonts/AzoSansThinItalic.woff';
 
 import { css } from 'styled-components';
 
@@ -122,7 +122,6 @@ export const fontPresets = {
   primaryParagraph: getFontPreset('light', 20),
   secondaryHeading: getFontPreset('bold', 16),
   secondaryParagraph: getFontPreset('light', 16),
-  sidebarHeading: getFontPreset('bold', 16),
   sidebarTitle: getFontPreset('medium', 14),
   sidebarSubtitle: getFontPreset('regular', 14),
   footer: getFontPreset('medium', 12, 'gray'),
@@ -132,8 +131,10 @@ export const fontPresets = {
 export const colors = {
   bodyBackground: '#F1F1F1',
   bodyText: '#212121',
-  highlight: 'rgba(33,33,33, 0.4)',
+  highlightBackgroundColor: '#768E66',
+  highlightColor: '#DDD',
   linkStandby: '#FFF',
   linkHover: '#DDD',
-  footerText: '#616161'
+  footerText: '#616161',
+  hr:'#D8D8D8'
 };

@@ -18,9 +18,9 @@ const Footer = () => {
 };
 
 const Container = styled.footer`
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  //position: absolute;
+  //left: 0;
+  //bottom: 0;
   height: 250px;
   width: 100%;
   ${fontPresets.footer};
