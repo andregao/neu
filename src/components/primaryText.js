@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
 
-const PrimaryText = ({ heading, paragraph, width }) => {
+const PrimaryText = ({ heading, paragraph, width, className }) => {
   return (
-    <Container width={width}>
+    <Container width={width} className={className}>
       <Heading>{heading}</Heading>
       {paragraph && <Paragraph>{paragraph}</Paragraph>}
     </Container>
@@ -14,7 +14,7 @@ const PrimaryText = ({ heading, paragraph, width }) => {
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  width: ${({ width }) => (width ? width : '100%')};
+  width: ${({ width }) => (width || '100%')};
 `;
 const Heading = styled.h2`
   ${fontPresets.primaryHeading};

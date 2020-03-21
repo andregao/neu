@@ -10,7 +10,6 @@ import AzoSansMedium from '../fonts/AzoSansMedium.woff';
 import AzoSansMediumItalic from '../fonts/AzoSansMediumItalic.woff';
 import AzoSansThin from '../fonts/AzoSansThin.woff';
 import AzoSansThinItalic from '../fonts/AzoSansThinItalic.woff';
-
 import { css } from 'styled-components';
 
 export const fontFamily = 'Azo Sans, sans-serif';

@@ -3,22 +3,25 @@ import HorizontalCard from './horizontalCard';
 import VerticalCard from './verticalCard';
 import styled from 'styled-components';
 
-const Cards = ({ data: { data, images }, variant }) => {
-  console.log(data);
+const Cards = ({ data: { data, images }, variant, className }) => {
   return (
-    <Container variant={variant}>
+    <Container variant={variant} className={className}>
       {data.map((card, index) =>
         variant === 'horizontal' ? (
           <HorizontalCard
             data={card}
-            image={images.find(image => image.title === card.imageTitle)}
+            image={
+              images && images.find(image => image.title === card.imageTitle)
+            }
             reverse={index % 2 !== 0}
             key={card.heading}
           />
         ) : (
           <VerticalCard
             data={card}
-            image={images.find(image => image.title === card.imageTitle)}
+            image={
+              images && images.find(image => image.title === card.imageTitle)
+            }
             key={card.heading}
           />
         )

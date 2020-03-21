@@ -17,7 +17,7 @@ const Container = styled.article`
   flex: 1;
   margin: 25px 0;
   &:not(:last-child) {
-    margin-right: 30px;
+    margin-right: 100px;
   }
   display: flex;
   flex-direction: column;

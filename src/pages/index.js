@@ -8,7 +8,9 @@ import PrimaryText from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { devices } from '../styles/theme';
+import { colors, devices } from '../styles/theme';
+import Background from '../components/background';
+import LogoGroup from '../components/logoGroup';
 
 export const query = graphql`
   query($pageName: String = "open-a-store") {
@@ -33,6 +35,11 @@ export const query = graphql`
         paragraph {
           paragraph
         }
+        images {
+          fluid(maxWidth: 1440, quality: 75) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
       }
     }
     sidebar: contentfulSidebar(page: { eq: $pageName }) {
@@ -45,7 +52,7 @@ export const query = graphql`
       images {
         title
         fluid(maxWidth: 200, quality: 75) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
@@ -63,8 +70,8 @@ export const query = graphql`
         }
         images {
           title
-          fluid(maxWidth: 660, quality: 75) {
-            ...GatsbyContentfulFluid_tracedSVG
+          fluid(maxWidth: 2048, quality: 75) {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
@@ -110,22 +117,90 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           />
           <Cards data={cards[1]} />
         </Section>
+        <FullWidthSection>
+          <ForthSectionBackground fluid={cards[2].images[0].fluid} />
+          <ForthSectionCards data={cards[2]} />
+        </FullWidthSection>
+        <FifthSection>
+          <PrimaryText
+            heading={primaryText[3].heading}
+            paragraph={primaryText[3].paragraph.paragraph}
+          />
+          <LogoGroup images={primaryText[3].images} />
+        </FifthSection>
+        <FullWidthSection>
+          <SixthSectionBackground
+            fluid={[
+              'linear-gradient(90deg, rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.2))',
+              primaryText[4].images[0].fluid,
+            ]}
+          >
+            <SixthSectionPrimaryText
+              heading={primaryText[4].heading}
+              paragraph={primaryText[4].paragraph.paragraph}
+              width="20%"
+            />
+          </SixthSectionBackground>
+        </FullWidthSection>
+        <FullWidthSection>
+          <SeventhSectionBackground fluid={primaryText[5].images[0].fluid}>
+            <SeventhSectionPrimaryText
+              heading={primaryText[5].heading}
+              paragraph={primaryText[5].paragraph.paragraph}
+              width="20%"
+            />
+          </SeventhSectionBackground>
+        </FullWidthSection>
       </Container>
     </Layout>
   );
 };
 const Container = styled.main`
-  padding: 0 200px;
-  @media (${devices.s}) {
-    padding: 0 80px;
-  }
+  padding: 0 var(--body-side-paddings);
 `;
-const Section = styled.section`
+const Section = styled.article`
   padding: 75px 0 0;
 `;
 const FirstSection = styled.section`
   display: flex;
   justify-content: space-between;
+`;
+const FullWidthSection = styled(Section)`
+  margin: 0 calc(-1 * var(--body-side-paddings));
+`;
+const ForthSectionBackground = styled(Background)`
+  background-position: 50% 33%;
+  height: 80vh;
+  max-height: 640px;
+`;
+const ForthSectionCards = styled(Cards)`
+  padding: 55px var(--body-side-paddings);
+  background-color: ${colors.white};
+`;
+const FifthSection = styled(Section)`
+  & > :first-child {
+    margin-bottom: 55px;
+  }
+`;
+const SixthSectionBackground = styled(Background)`
+  height: 85vh;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+`;
+const SixthSectionPrimaryText = styled(PrimaryText)`
+  color: ${colors.white};
+  margin-left: var(--body-side-paddings);
+  & > :first-child {
+    margin-bottom: 10px;
+  }
+`;
+const SeventhSectionBackground = styled(SixthSectionBackground)`
+  justify-content: flex-end;
+`;
+const SeventhSectionPrimaryText = styled(SixthSectionPrimaryText)`
+  color: ${colors.dark};
+  margin-right: var(--body-side-paddings);
 `;
 
 export default IndexPage;

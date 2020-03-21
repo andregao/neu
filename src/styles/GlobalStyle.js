@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { FontFaces, fontFamily, colors, fontPresets } from './theme';
+import { FontFaces, fontFamily, colors, fontPresets, devices } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
   ${FontFaces}
@@ -74,5 +74,16 @@ export const GlobalStyles = createGlobalStyle`
   }
   hr {
     margin:0;
+  }
+  
+  // variables
+  :root {
+    --body-side-paddings: 200px;
+    @media (${devices.m}) {
+      --body-side-paddings: 140px;
+    }
+    @media (${devices.s}) {
+      --body-side-paddings: 80px;
+    }
   }
 `;

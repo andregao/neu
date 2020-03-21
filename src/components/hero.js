@@ -1,7 +1,7 @@
 import React from 'react';
-import BackgroundImage from 'gatsby-background-image';
 import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
+import Background from './background';
 
 const Hero = ({ heading, paragraph, buttonText, background }) => {
   const backgroundStack = [
@@ -9,24 +9,23 @@ const Hero = ({ heading, paragraph, buttonText, background }) => {
     background.fluid,
   ];
   return (
-    <Background fluid={backgroundStack}>
+    <BackgroundImage fluid={backgroundStack}>
       <Heading>{heading}</Heading>
-    </Background>
+    </BackgroundImage>
   );
 };
 
-const Background = styled(BackgroundImage)`
-  background-position: center;
-  background-size: cover;
+const BackgroundImage = styled(Background)`
   max-height: 900px;
   height: 85vh;
   display: flex;
-  padding: 10% 15%;
+  justify-content: stretch;
   align-items: center;
 `;
 
 const Heading = styled.h1`
   ${fontPresets.heroHeading};
+  margin: 0 var(--body-side-paddings);
 `;
 
 export default Hero;

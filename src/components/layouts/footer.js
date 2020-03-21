@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <Container>
       <Links>
-        <SocialLinks />
+        {/*<SocialLinks />*/}
         <FooterLinks />
       </Links>
       <Newsletter/>
@@ -18,9 +18,6 @@ const Footer = () => {
 };
 
 const Container = styled.footer`
-  //position: absolute;
-  //left: 0;
-  //bottom: 0;
   height: 250px;
   width: 100%;
   ${fontPresets.footer};
@@ -36,7 +33,7 @@ const Links = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 60px;
 `;
 
