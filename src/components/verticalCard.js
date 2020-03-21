@@ -14,7 +14,6 @@ const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
   );
 };
 const Container = styled.article`
-  //height: auto;
   flex: 1;
   margin: 25px 0;
   &:not(:last-child) {

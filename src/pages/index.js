@@ -86,50 +86,46 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
       <SEO title="open a store" />
       <Hero heading={heading} background={background} />
       <Container>
-        <FirstSection>
-          <PrimaryText
-            heading={primaryText[0].heading}
-            paragraph={primaryText[0].paragraph.paragraph}
-            width="60%"
-          />
-          <SideBar data={sidebar} width="30%" />
-        </FirstSection>
-        <SecondSection>
+        <Section>
+          <FirstSection>
+            <PrimaryText
+              heading={primaryText[0].heading}
+              paragraph={primaryText[0].paragraph.paragraph}
+              width="60%"
+            />
+            <SideBar data={sidebar} width="30%" />
+          </FirstSection>
+        </Section>
+        <Section>
           <PrimaryText
             heading={primaryText[1].heading}
             paragraph={primaryText[1].paragraph.paragraph}
           />
           <Cards data={cards[0]} variant="horizontal" />
-        </SecondSection>
-        <ThirdSection>
+        </Section>
+        <Section>
           <PrimaryText
             heading={primaryText[2].heading}
             paragraph={primaryText[2].paragraph.paragraph}
           />
           <Cards data={cards[1]} />
-        </ThirdSection>
+        </Section>
       </Container>
     </Layout>
   );
 };
 const Container = styled.main`
-  //display: flex;
-  //flex-direction: column;
   padding: 0 200px;
   @media (${devices.s}) {
     padding: 0 80px;
   }
 `;
+const Section = styled.section`
+  padding: 75px 0 0;
+`;
 const FirstSection = styled.section`
   display: flex;
   justify-content: space-between;
-  padding: 75px 0 0;
-`;
-const SecondSection = styled.section`
-  padding: 75px 0 0;
-`;
-const ThirdSection = styled.section`
-  padding: 75px 0 0;
 `;
 
 export default IndexPage;
