@@ -107,10 +107,20 @@ export const FontFaces = css`
   }
 `;
 
+export const colors = {
+  warmGreen: '#c2cba5',
+  gray: '#616161',
+  white: '#FFF',
+  offWhite: '#F1F1F1',
+  light: '#DDD',
+  hr: '#D8D8D8',
+  dark: '#212121',
+};
+
 const getFontPreset = (weight, size, color = 'black') => `
   font-weight: ${fontWeights[weight]};
   font-size: ${size}px;
-  color: ${color === 'white' ? '#FFF' : 'gray' ? '#616161' : '#212121'}
+  color: ${color ? colors[color] : colors.dark}
 `;
 
 export const fontPresets = {
@@ -126,17 +136,6 @@ export const fontPresets = {
   sidebarSubtitle: getFontPreset('regular', 14),
   footer: getFontPreset('medium', 12, 'gray'),
   newsletter: getFontPreset('medium', 16, 'white'),
-};
-
-export const colors = {
-  bodyBackground: '#F1F1F1',
-  bodyText: '#212121',
-  highlightBackgroundColor: '#768E66',
-  highlightColor: '#DDD',
-  linkStandby: '#FFF',
-  linkHover: '#DDD',
-  footerText: '#616161',
-  hr: '#D8D8D8',
 };
 
 export const devices = {

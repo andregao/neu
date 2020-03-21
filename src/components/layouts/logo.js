@@ -14,9 +14,9 @@ const Logo = () => (
 const SiteLogo = styled.svg`
   height: 40px;
   width: 40px;
-  fill: ${colors.linkStandby};
+  fill: ${colors.white};
   &:hover {
-    fill: ${colors.linkHover};
+    fill: ${colors.light};
   }
 `;
 

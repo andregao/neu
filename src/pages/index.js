@@ -56,6 +56,10 @@ export const query = graphql`
           heading
           paragraph
           imageTitle
+          button {
+            text
+            url
+          }
         }
         images {
           title
@@ -95,14 +99,14 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
             heading={primaryText[1].heading}
             paragraph={primaryText[1].paragraph.paragraph}
           />
-          <Cards data={cards[0]} variant="horizontal"/>
+          <Cards data={cards[0]} variant="horizontal" />
         </SecondSection>
         <ThirdSection>
           <PrimaryText
             heading={primaryText[2].heading}
             paragraph={primaryText[2].paragraph.paragraph}
           />
-          <Cards data={cards[1]}/>
+          <Cards data={cards[1]} />
         </ThirdSection>
       </Container>
     </Layout>

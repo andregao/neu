@@ -25,7 +25,7 @@ const Container = styled.footer`
   width: 100%;
   ${fontPresets.footer};
   text-transform: uppercase;
-  background-color: ${colors.bodyText};
+  background-color: ${colors.dark};
   display: flex;
   align-items: center;
   justify-content: space-between;

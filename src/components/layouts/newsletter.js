@@ -28,11 +28,11 @@ display: flex;
 justify-content: space-between;
 `
 const EmailInput = styled.input`
-  border: solid ${colors.footerText} 1px;
-  background-color: ${colors.bodyText};
+  border: solid ${colors.gray} 1px;
+  background-color: inherit;
   padding: 10px 10px 7px;
   font-size: 12px;
-  color: ${colors.linkStandby};
+  color: ${colors.white};
   width: 70%;
   margin-right: 14px;
 `;
@@ -40,7 +40,7 @@ const SubmitInput = styled.input`
   background-color: black;
   ${fontPresets.footer};
   color: white;
-  border: solid ${colors.footerText} 1px;
+  border: solid ${colors.gray} 1px;
   padding: 10px 10px 7px;
   width: 25%;
   text-align: center;

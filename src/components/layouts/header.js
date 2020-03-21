@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import React from 'react';
 import Logo from './logo';
 import Nav from './nav';
-import Contact from './contact';
+import Button from './button';
+import { colors } from '../../styles/theme';
 
 const Header = () => (
   <Container>
@@ -11,7 +11,7 @@ const Header = () => (
       <Logo />
       <Nav />
     </Main>
-    <Contact />
+    <Button text="contact" variant="light" margin="0 0 0 40px" />
   </Container>
 );
 
@@ -22,6 +22,7 @@ const Container = styled.header`
   left: 0;
   width: 100%;
   padding: 60px 80px;
+  color: ${colors.white};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,11 +31,11 @@ const Container = styled.header`
 `;
 
 const Main = styled.div`
-display: flex;
-flex-wrap: nowrap;
-justify-content: flex-start;
-align-items: center;
-width: 400px;
-`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+`;
 
 export default Header;

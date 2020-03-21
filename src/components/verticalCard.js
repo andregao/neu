@@ -2,20 +2,20 @@ import React from 'react';
 import SecondaryText from './secondaryText';
 import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
+import Button from './layouts/button';
 
-const VerticalCard = ({ data: { heading, paragraph }, image }) => {
+const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
   return (
     <Container>
-      <Image fluid={image.fluid} />
-      <SecondaryText heading={heading} paragraph={paragraph} padding="0"/>
+      {image && <Image fluid={image.fluid} />}
+      <SecondaryText heading={heading} paragraph={paragraph} padding="0" />
+      {button && <Button variant="dark" text={button.text} margin="20px 0 0" />}
     </Container>
   );
 };
 const Container = styled.article`
-  //height: 550px;
-  height: auto;
-  flex-basis: 33%;
-  //width: 281px;
+  //height: auto;
+  flex: 1;
   margin: 25px 0;
   &:not(:last-child) {
     margin-right: 30px;
@@ -23,7 +23,7 @@ const Container = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: flex-start;
 `;
 const Image = styled(GatsbyImage)`
   width: 100%;

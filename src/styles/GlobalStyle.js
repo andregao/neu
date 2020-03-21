@@ -23,13 +23,13 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: ${colors.bodyBackground};
-    color: ${colors.bodyText};
+    background-color: ${colors.offWhite};
+    color: ${colors.dark};
   }
   
   ::selection {
-    color: ${colors.highlightColor};
-    background-color: ${colors.highlightBackgroundColor};
+    color: ${colors.dark};
+    background-color: ${colors.warmGreen};
   }
   h1,
   h2,
@@ -53,7 +53,7 @@ export const GlobalStyles = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: ${colors.linkHover};
+      outline-color: ${colors.warmGreen};
     }
   }
   
@@ -62,14 +62,10 @@ export const GlobalStyles = createGlobalStyle`
     ${fontPresets.button};
     border-radius: 0;
     background-color: transparent;
-    color: ${colors.linkStandby};
     text-transform: uppercase;
-    &:hover{
-      color: ${colors.linkHover};
-    }
     &:focus,
     &:active {
-      outline-color: ${colors.bodyText};
+      outline-color: ${colors.warmGreen};
     }
   }
   ul {
