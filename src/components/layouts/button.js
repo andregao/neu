@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors, fontPresets } from '../../styles/theme';
+import { Link } from 'gatsby';
 
-const Button = ({ text, variant, margin, onClick }) => {
+const Button = ({ text, variant, margin, path, onClick }) => {
+  !path && (path = '#');
   return (
     <Container onClick={onClick} variant={variant} margin={margin}>
-      {text}
+      <Link to={path}>{text}</Link>
     </Container>
   );
 };

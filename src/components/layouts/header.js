@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from './logo';
 import Nav from './nav';
 import Button from './button';
-import { colors } from '../../styles/theme';
+import { colors, devices } from '../../styles/theme';
 
 const Header = () => (
   <Container>
@@ -11,7 +11,12 @@ const Header = () => (
       <Logo />
       <Nav />
     </Main>
-    <Button text="contact" variant="light" margin="0 0 0 40px" />
+    <Button
+      text="contact"
+      variant="light"
+      margin="0 0 0 40px"
+      path="/contact/"
+    />
   </Container>
 );
 
@@ -22,6 +27,9 @@ const Container = styled.header`
   left: 0;
   width: 100%;
   padding: 60px 80px;
+  @media (${devices.s}) {
+    padding: calc(var(--body-side-paddings) / 2);
+  }
   color: ${colors.white};
   display: flex;
   justify-content: space-between;
@@ -35,7 +43,7 @@ const Main = styled.div`
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-  width: 400px;
+  //width: 400px;
 `;
 
 export default Header;

@@ -16,6 +16,10 @@ const Container = styled.nav`
   color: ${colors.white};
   & > * {
     margin-left: 40px;
+    &:hover {
+      color: ${colors.light};
+    }
   }
+  display: flex;
 `;
 export default Nav;

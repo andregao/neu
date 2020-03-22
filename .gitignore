@@ -69,7 +69,7 @@ yarn-error.log
 .yarn-integrity
 
 # Resources
-assets/
+/assets/
 
 # Firebase
 .firebase/

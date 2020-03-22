@@ -51,7 +51,6 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     cursor: pointer;
 
-    &:hover,
     &:focus {
       outline-color: ${colors.warmGreen};
     }

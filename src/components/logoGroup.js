@@ -5,8 +5,8 @@ import GatsbyImage from 'gatsby-image';
 const LogoGroup = ({ images }) => {
   return (
     <Container>
-      {images.map(image => (
-        <Image fluid={image.fluid} />
+      {images.map((image, index) => (
+        <Image fluid={image.fluid} key={index}/>
       ))}
     </Container>
   );
