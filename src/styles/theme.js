@@ -151,9 +151,6 @@ export const devices = {
 const getFontPreset = (weight, size, color = 'black') => css`
   font-weight: ${fontWeights[weight]};
   font-size: ${size}px;
-  @media (${devices.s}) {
-    font-size: ${size / 9}vw;
-  }
   color: ${color ? colors[color] : colors.dark};
 `;
 

@@ -13,7 +13,7 @@ const Header = () => (
     </Main>
     <Button
       text="contact"
-      variant="light"
+      variant="white"
       margin="0 0 0 40px"
       path="/contact/"
     />

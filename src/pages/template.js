@@ -115,11 +115,32 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
             heading={primaryText[2].heading}
             paragraph={primaryText[2].paragraph.paragraph}
           />
-          <Cards data={cards[1]} variant="vertical"/>
+          <Cards data={cards[1]} />
         </Section>
         <FullWidthSection>
           <ForthSectionBackground fluid={cards[2].images[0].fluid} />
           <ForthSectionCards data={cards[2]} />
+        </FullWidthSection>
+        <FifthSection>
+          <PrimaryText
+            heading={primaryText[3].heading}
+            paragraph={primaryText[3].paragraph.paragraph}
+          />
+          <LogoGroup images={primaryText[3].images} />
+        </FifthSection>
+        <FullWidthSection>
+          <SixthSectionBackground
+            fluid={[
+              'linear-gradient(90deg, rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.2))',
+              primaryText[4].images[0].fluid,
+            ]}
+          >
+            <SixthSectionPrimaryText
+              heading={primaryText[4].heading}
+              paragraph={primaryText[4].paragraph.paragraph}
+              width="20%"
+            />
+          </SixthSectionBackground>
         </FullWidthSection>
         <FullWidthSection>
           <SeventhSectionBackground fluid={primaryText[5].images[0].fluid}>
@@ -156,11 +177,11 @@ const ForthSectionCards = styled(Cards)`
   padding: 55px var(--body-side-paddings);
   background-color: ${colors.white};
 `;
-// const FifthSection = styled(Section)`
-//   & > :first-child {
-//     margin-bottom: 55px;
-//   }
-// `;
+const FifthSection = styled(Section)`
+  & > :first-child {
+    margin-bottom: 55px;
+  }
+`;
 const SixthSectionBackground = styled(Background)`
   height: 85vh;
   max-height: 800px;

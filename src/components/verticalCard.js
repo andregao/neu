@@ -9,7 +9,7 @@ const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
     <Container>
       {image && <Image fluid={image.fluid} />}
       <SecondaryText heading={heading} paragraph={paragraph} padding="0" />
-      {button && <Button variant="dark" text={button.text} margin="20px 0 0" />}
+      {button && <Button variant="dark" path={button.path} text={button.text} margin="20px 0 0" />}
     </Container>
   );
 };

@@ -7,22 +7,32 @@ const Button = ({ text, variant, margin, path, onClick }) => {
   !path && (path = '#');
   return (
     <Container onClick={onClick} variant={variant} margin={margin}>
-      <Link to={path}>{text}</Link>
+      <Link to={path}>{text.toUpperCase()}</Link>
     </Container>
   );
 };
 const Container = styled.button`
   ${fontPresets.nav};
+  --standby-color:${({ variant }) =>
+    variant === 'white'
+      ? colors.white
+      : variant === 'dark'
+      ? colors.dark
+      : colors.gray};
+  --hover-color:${({ variant }) =>
+    variant === 'white'
+      ? colors.light
+      : variant === 'dark'
+      ? colors.gray
+      : colors.light};
   text-align: center;
   padding: 12px 14px;
-  color: inherit;
+  color: var(--standby-color);
   border: solid
-    ${({ variant }) => (variant === 'light' ? colors.white : colors.dark)} 2px;
+    var(--standby-color) 2px;
   &:hover {
-    border-color: ${({ variant }) =>
-      variant === 'light' ? colors.light : colors.gray};
-    color: ${({ variant }) =>
-      variant === 'light' ? colors.light : colors.gray};
+    border-color: var(--hover-color);
+    color: var(--hover-color);
   }
   margin: ${margin => (margin ? margin : 0)};
   height: 40px;

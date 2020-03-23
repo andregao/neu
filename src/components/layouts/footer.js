@@ -4,6 +4,7 @@ import { colors, fontPresets } from '../../styles/theme';
 import SocialLinks from './socialLinks';
 import FooterLinks from './footerLinks';
 import Newsletter from './newsletter';
+import Button from './button';
 
 const Footer = () => {
   return (
@@ -12,7 +13,13 @@ const Footer = () => {
         {/*<SocialLinks />*/}
         <FooterLinks />
       </Links>
-      <Newsletter/>
+      {/*<Newsletter/>*/}
+      <Button
+        text="contact"
+        variant="gray"
+        margin="0 0 0 40px"
+        path="/contact/"
+      />
     </Container>
   );
 };

@@ -11,7 +11,7 @@ const Logo = () => (
 );
 
 const SiteLogo = styled.img`
-  height: 40px;
+  height: 20px;
   &:hover {
     filter: brightness(0.7);
   }

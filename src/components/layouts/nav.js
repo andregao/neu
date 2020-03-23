@@ -6,8 +6,9 @@ import { Link } from 'gatsby';
 const Nav = () => {
   return (
     <Container>
-      <Link to="/page-2/">locations</Link>
-      <Link to="/page-2/">open a store</Link>
+      <Link to="/page-2/">living</Link>
+      <Link to="/page-2/">health care</Link>
+      <Link to="/page-2/">mixed-use</Link>
     </Container>
   );
 };
