@@ -8,9 +8,10 @@ import PrimaryText from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { colors, devices } from '../styles/theme';
+import { colors, devices, fontPresets } from '../styles/theme';
 import Background from '../components/background';
 import LogoGroup from '../components/logoGroup';
+import YoutubeVideo from '../components/youtubeVideo';
 
 export const query = graphql`
   query($pageName: String = "open-a-store") {
@@ -80,7 +81,7 @@ export const query = graphql`
 `;
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
-  const { heading, background } = hero;
+  const { heading: heroHeading, background: heroBackground } = hero;
   const primaryText = [...allPrimaryText.nodes].sort(
     ({ section: sectionA }, { section: sectionB }) => sectionA - sectionB
   );
@@ -91,8 +92,17 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   return (
     <Layout>
       <SEO title="open a store" />
-      <Hero heading={heading} background={background} />
       <Container>
+        <HeroSection>
+          <HeroBackground
+            fluid={[
+              'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5))',
+              heroBackground.fluid,
+            ]}
+          >
+            <HeroHeading>{heroHeading}</HeroHeading>
+          </HeroBackground>
+        </HeroSection>
         <Section>
           <FirstSection>
             <PrimaryText
@@ -115,10 +125,10 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
             heading={primaryText[2].heading}
             paragraph={primaryText[2].paragraph.paragraph}
           />
-          <Cards data={cards[1]} variant="vertical"/>
+          <Cards data={cards[1]} variant="vertical" />
         </Section>
         <FullWidthSection>
-          <ForthSectionBackground fluid={cards[2].images[0].fluid} />
+          <YoutubeVideo id="Ax_YH4ASu_I" />
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
@@ -140,46 +150,41 @@ const Container = styled.main`
 const Section = styled.article`
   padding: 75px 0 0;
 `;
+const FullWidthSection = styled(Section)`
+  margin: 0 calc(-1 * var(--body-side-paddings));
+`;
+const HeroSection = styled(FullWidthSection)`
+  padding: 0;
+`;
+const HeroBackground = styled(Background)`
+  max-height: 900px;
+  justify-content: stretch;
+  align-items: center;
+`;
+const HeroHeading = styled.h1`
+  ${fontPresets.heroHeading};
+  margin: 0 var(--body-side-paddings);
+`;
 const FirstSection = styled.section`
   display: flex;
   justify-content: space-between;
 `;
-const FullWidthSection = styled(Section)`
-  margin: 0 calc(-1 * var(--body-side-paddings));
-`;
-const ForthSectionBackground = styled(Background)`
-  background-position: 50% 33%;
-  height: 80vh;
-  max-height: 640px;
-`;
 const ForthSectionCards = styled(Cards)`
-  padding: 55px var(--body-side-paddings);
+  padding: 55px var(--body-side-paddings); // set padding again because full width background color
   background-color: ${colors.white};
 `;
-// const FifthSection = styled(Section)`
-//   & > :first-child {
-//     margin-bottom: 55px;
-//   }
-// `;
-const SixthSectionBackground = styled(Background)`
-  height: 85vh;
+
+const SeventhSectionBackground = styled(Background)`
   max-height: 800px;
-  display: flex;
   align-items: center;
-`;
-const SixthSectionPrimaryText = styled(PrimaryText)`
-  color: ${colors.white};
-  margin-left: var(--body-side-paddings);
-  & > :first-child {
-    margin-bottom: 10px;
-  }
-`;
-const SeventhSectionBackground = styled(SixthSectionBackground)`
   justify-content: flex-end;
 `;
-const SeventhSectionPrimaryText = styled(SixthSectionPrimaryText)`
+const SeventhSectionPrimaryText = styled(PrimaryText)`
   color: ${colors.dark};
   margin-right: var(--body-side-paddings);
+  & > :first-child {
+    margin-bottom: 10px; // set new primary heading margin
+  }
 `;
 
 export default IndexPage;
