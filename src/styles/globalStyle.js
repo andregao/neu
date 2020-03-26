@@ -27,10 +27,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${colors.dark};
   }
   
-  ::selection {
-    color: ${colors.dark};
-    background-color: ${colors.warmGreen};
-  }
   h1,
   h2,
   h3,
@@ -44,7 +40,6 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     white-space: pre-wrap;
   }
-  
   a {
     text-decoration: none;
     text-decoration-skip-ink: auto;
@@ -55,7 +50,6 @@ export const GlobalStyles = createGlobalStyle`
       outline-color: ${colors.warmGreen};
     }
   }
-  
   button {
     cursor: pointer;
     ${fontPresets.button};
@@ -77,6 +71,15 @@ export const GlobalStyles = createGlobalStyle`
   pre{
     padding: 0;
     margin: 0;
+  }
+  ::selection {
+    color: ${colors.dark};
+    background-color: ${colors.warmGreen};
+  }
+  input:focus, textarea:focus{
+    outline: none;
+    border: 1px solid ${colors.warmGreen};
+    box-shadow: 0 0 5px ${colors.warmGreen};
   }
   
   // variables
