@@ -25,7 +25,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="open a store" />
+      <SEO title="health care" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
@@ -112,68 +112,68 @@ const SeventhSectionPrimaryText = styled(PrimaryText)`
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query($pageName: String = "open-a-store") {
-    hero: contentfulHero(page: { eq: $pageName }) {
-      page
-      heading
-      paragraph {
-        paragraph
-      }
-      background {
-        fluid(maxWidth: 2880, quality: 75) {
-          ...GatsbyContentfulFluid_tracedSVG
+    query($pageName: String = "health") {
+        hero: contentfulHero(page: { eq: $pageName }) {
+            page
+            heading
+            paragraph {
+                paragraph
+            }
+            background {
+                fluid(maxWidth: 2880, quality: 75) {
+                    ...GatsbyContentfulFluid_tracedSVG
+                }
+            }
         }
-      }
+        allPrimaryText: allContentfulPrimaryText(
+            filter: { page: { eq: $pageName } }
+        ) {
+            nodes {
+                section
+                heading
+                paragraph {
+                    paragraph
+                }
+                images {
+                    fluid(maxWidth: 1440, quality: 75) {
+                        ...GatsbyContentfulFluid_withWebp
+                    }
+                }
+            }
+        }
+        sidebar: contentfulSidebar(page: { eq: $pageName }) {
+            heading
+            data {
+                title
+                subtitle
+                imageTitle
+            }
+            images {
+                title
+                fluid(maxWidth: 200, quality: 75) {
+                    ...GatsbyContentfulFluid_withWebp
+                }
+            }
+        }
+        allCards: allContentfulCards(filter: { page: { eq: $pageName } }) {
+            nodes {
+                section
+                data {
+                    heading
+                    paragraph
+                    imageTitle
+                    button {
+                        text
+                        path
+                    }
+                }
+                images {
+                    title
+                    fluid(maxWidth: 2048, quality: 75) {
+                        ...GatsbyContentfulFluid_withWebp
+                    }
+                }
+            }
+        }
     }
-    allPrimaryText: allContentfulPrimaryText(
-      filter: { page: { eq: $pageName } }
-    ) {
-      nodes {
-        section
-        heading
-        paragraph {
-          paragraph
-        }
-        images {
-          fluid(maxWidth: 1440, quality: 75) {
-            ...GatsbyContentfulFluid_withWebp
-          }
-        }
-      }
-    }
-    sidebar: contentfulSidebar(page: { eq: $pageName }) {
-      heading
-      data {
-        title
-        subtitle
-        imageTitle
-      }
-      images {
-        title
-        fluid(maxWidth: 200, quality: 75) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
-    }
-    allCards: allContentfulCards(filter: { page: { eq: $pageName } }) {
-      nodes {
-        section
-        data {
-          heading
-          paragraph
-          imageTitle
-          button {
-            text
-            path
-          }
-        }
-        images {
-          title
-          fluid(maxWidth: 2048, quality: 75) {
-            ...GatsbyContentfulFluid_withWebp
-          }
-        }
-      }
-    }
-  }
 `;

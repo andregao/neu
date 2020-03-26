@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
-import Hr from './Hr';
+import { Hr } from '../styles/common';
 import GatsbyImage from 'gatsby-image';
 
 const SidebarList = ({ list, images }) => {
@@ -10,9 +10,11 @@ const SidebarList = ({ list, images }) => {
       {list.map(({ title, subtitle, imageTitle }) => (
         <React.Fragment key={title}>
           <Item>
-            <Image
-              fluid={images.find(image => image.title === imageTitle).fluid}
-            />
+            {images && (
+              <Image
+                fluid={images.find(image => image.title === imageTitle).fluid}
+              />
+            )}
             <Titles>
               <Title>{title}</Title>
               <Subtitle>{subtitle}</Subtitle>
@@ -35,7 +37,7 @@ const Item = styled.li`
   justify-content: flex-start;
   align-items: center;
   & :first-child {
-    margin: 40px 0 15px;
+    margin: 30px 0 20px;
   }
   & :not(:first-child) {
     margin: 20px 0;

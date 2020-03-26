@@ -72,7 +72,11 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   hr {
-    margin:0;
+    margin: 0;
+  }
+  pre{
+    padding: 0;
+    margin: 0;
   }
   
   // variables

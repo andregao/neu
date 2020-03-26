@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
-import Hr from './Hr';
+import { Hr } from '../styles/common';
 import SidebarList from './sidebarList';
 
-const SideBar = ({ data, width }) => {
-  const { heading, data:list, images } = data;
+const SideBar = ({ data, width, children, className }) => {
+  const { heading, data: list, images } = data;
   return (
-    <Container width={width}>
+    <Container width={width} className={className}>
       <Heading>{heading}</Heading>
       <Hr />
-      <SidebarList list={list} images={images}/>
+      {list && <SidebarList list={list} images={images} />}
+      {children}
     </Container>
   );
 };
@@ -23,5 +24,6 @@ const Heading = styled.h3`
   ${fontPresets.secondaryHeading};
   margin-bottom: 20px;
 `;
+
 
 export default SideBar;

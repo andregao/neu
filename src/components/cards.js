@@ -30,6 +30,7 @@ const Cards = ({ data: { data, images }, variant, className }) => {
   );
 };
 const Container = styled.section`
+  padding-top: 20px;
   width: 100%;
   display: flex;
   flex-direction: ${({ variant }) =>

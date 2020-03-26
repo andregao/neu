@@ -17,7 +17,7 @@ const Container = styled.div`
   align-items: flex-start;
   & > * {
     margin-right: 15px;
-    &:hover {
+    &:not(:first-child):hover {
       color: ${colors.light};
     }
   }

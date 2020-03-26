@@ -139,6 +139,7 @@ export const colors = {
   light: '#DDD',
   hr: '#D8D8D8',
   dark: '#212121',
+  error: 'orangered',
 };
 export const devices = {
   xs: 'max-width: 599px',
@@ -167,4 +168,10 @@ export const fontPresets = {
   sidebarSubtitle: getFontPreset('regular', 14),
   footer: getFontPreset('medium', 12, 'gray'),
   newsletter: getFontPreset('medium', 16, 'white'),
+  form: getFontPreset('regular', 12, 'gray'),
+  formError: css`
+    color: ${colors.error};
+    font-size: 14px;
+    font-weight: 500
+  `,
 };

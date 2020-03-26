@@ -25,7 +25,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="open a store" />
+      <SEO title="living" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground

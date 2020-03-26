@@ -6,9 +6,8 @@ import { Link } from 'gatsby';
 const Nav = () => {
   return (
     <Container>
-      <Link to="/page-2/">living</Link>
-      <Link to="/page-2/">health care</Link>
-      <Link to="/page-2/">mixed-use</Link>
+      <Link to="/living/" activeStyle={activeStyle}>living</Link>
+      <Link to="/health/" activeStyle={activeStyle}>health care</Link>
     </Container>
   );
 };
@@ -23,4 +22,9 @@ const Container = styled.nav`
   }
   display: flex;
 `;
+
+const activeStyle = {
+  borderBottom:'solid 1px'
+}
+
 export default Nav;
