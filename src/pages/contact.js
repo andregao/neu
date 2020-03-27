@@ -47,6 +47,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
       .then(response => response.text())
       .then(text => setIp(text));
   }, []);
+  console.log('user ip', ip);
   return (
     <Layout>
       <SEO title="Contact Us" />
@@ -113,12 +114,10 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
                 <option value="hint" disabled hidden>
                   company type
                 </option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
-                <option value="parrot">Parrot</option>
-                <option value="spider">Spider</option>
-                <option value="goldfish">Goldfish</option>
+                <option value="hospital">Hospital</option>
+                <option value="real-estate">Real-estate</option>
+                <option value="retailer">Retailer</option>
+                <option value="other">Other</option>
               </Select>
               <Textarea
                 name="message"
@@ -145,12 +144,6 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
           </LeftSide>
           <RightSide>
             <SideBar data={sidebars[0]} />
-            <SecondSidebar data={sidebars[1]}>
-              <SecondaryText
-                padding="0"
-                paragraph={sidebars[1].paragraph.paragraph}
-              />
-            </SecondSidebar>
           </RightSide>
         </SecondSection>
       </BodyContainer>
