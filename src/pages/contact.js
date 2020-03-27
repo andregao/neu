@@ -24,6 +24,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
   const [formData, setFormData] = useState({ companyType: 'hint' });
   const [errors, setErrors] = useState({ email: '', company: '' });
   const [formIsValid, setFormIsValid] = useState(false);
+  const [ip, setIp] = useState('0.0.0.0');
   const handleChange = ({ target: { name, value } }) => {
     setFormData({ ...formData, [name]: value });
   };
@@ -34,12 +35,18 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
     console.log('submitting form');
     e.preventDefault();
   };
+  // update errors state
   useEffect(() => {
     Object.keys(errors).length === 0
       ? setFormIsValid(true)
       : setFormIsValid(false);
   }, [errors]);
-
+  // get user IP address
+  useEffect(() => {
+    fetch('https://api.ipify.org')
+      .then(response => response.text())
+      .then(text => setIp(text));
+  }, []);
   return (
     <Layout>
       <SEO title="Contact Us" />

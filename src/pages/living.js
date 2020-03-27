@@ -112,7 +112,7 @@ const SeventhSectionPrimaryText = styled(PrimaryText)`
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query($pageName: String = "open-a-store") {
+  query($pageName: String = "living") {
     hero: contentfulHero(page: { eq: $pageName }) {
       page
       heading

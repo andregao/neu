@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
 import YoutubeVideo from '../components/youtubeVideo';
+import HealthVideo from '../assets/health.mp4';
 import {
   BodyContainer,
   FullWidthSection,
@@ -54,15 +55,10 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           />
           <Cards data={cards[0]} variant="horizontal" />
         </Section>
-        <Section>
-          <PrimaryText
-            heading={primaryText[2].heading}
-            paragraph={primaryText[2].paragraph.paragraph}
-          />
-          <Cards data={cards[1]} variant="vertical" />
-        </Section>
         <FullWidthSection>
-          <YoutubeVideo id="Ax_YH4ASu_I" />
+          <Video controls>
+            <source src={HealthVideo} type="video/mp4" />
+          </Video>
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
@@ -109,71 +105,75 @@ const SeventhSectionPrimaryText = styled(PrimaryText)`
   }
 `;
 
+const Video = styled.video`
+width: 100%;
+`
+
 export default IndexPage;
 
 export const pageQuery = graphql`
-    query($pageName: String = "health") {
-        hero: contentfulHero(page: { eq: $pageName }) {
-            page
-            heading
-            paragraph {
-                paragraph
-            }
-            background {
-                fluid(maxWidth: 2880, quality: 75) {
-                    ...GatsbyContentfulFluid_tracedSVG
-                }
-            }
+  query($pageName: String = "health") {
+    hero: contentfulHero(page: { eq: $pageName }) {
+      page
+      heading
+      paragraph {
+        paragraph
+      }
+      background {
+        fluid(maxWidth: 2880, quality: 75) {
+          ...GatsbyContentfulFluid_tracedSVG
         }
-        allPrimaryText: allContentfulPrimaryText(
-            filter: { page: { eq: $pageName } }
-        ) {
-            nodes {
-                section
-                heading
-                paragraph {
-                    paragraph
-                }
-                images {
-                    fluid(maxWidth: 1440, quality: 75) {
-                        ...GatsbyContentfulFluid_withWebp
-                    }
-                }
-            }
-        }
-        sidebar: contentfulSidebar(page: { eq: $pageName }) {
-            heading
-            data {
-                title
-                subtitle
-                imageTitle
-            }
-            images {
-                title
-                fluid(maxWidth: 200, quality: 75) {
-                    ...GatsbyContentfulFluid_withWebp
-                }
-            }
-        }
-        allCards: allContentfulCards(filter: { page: { eq: $pageName } }) {
-            nodes {
-                section
-                data {
-                    heading
-                    paragraph
-                    imageTitle
-                    button {
-                        text
-                        path
-                    }
-                }
-                images {
-                    title
-                    fluid(maxWidth: 2048, quality: 75) {
-                        ...GatsbyContentfulFluid_withWebp
-                    }
-                }
-            }
-        }
+      }
     }
+    allPrimaryText: allContentfulPrimaryText(
+      filter: { page: { eq: $pageName } }
+    ) {
+      nodes {
+        section
+        heading
+        paragraph {
+          paragraph
+        }
+        images {
+          fluid(maxWidth: 1440, quality: 75) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+      }
+    }
+    sidebar: contentfulSidebar(page: { eq: $pageName }) {
+      heading
+      data {
+        title
+        subtitle
+        imageTitle
+      }
+      images {
+        title
+        fluid(maxWidth: 200, quality: 75) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+      }
+    }
+    allCards: allContentfulCards(filter: { page: { eq: $pageName } }) {
+      nodes {
+        section
+        data {
+          heading
+          paragraph
+          imageTitle
+          button {
+            text
+            path
+          }
+        }
+        images {
+          title
+          fluid(maxWidth: 2048, quality: 75) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+        }
+      }
+    }
+  }
 `;
