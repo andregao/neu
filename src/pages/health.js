@@ -8,7 +8,6 @@ import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
-import YoutubeVideo from '../components/youtubeVideo';
 import HealthVideo from '../assets/health.mp4';
 import {
   BodyContainer,
@@ -18,6 +17,7 @@ import {
   HeroSection,
 } from '../styles/common';
 import { compareSections } from '../components/utils';
+import Video from '../components/Video';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
@@ -56,9 +56,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <Cards data={cards[0]} variant="horizontal" />
         </Section>
         <FullWidthSection>
-          <Video controls>
-            <source src={HealthVideo} type="video/mp4" />
-          </Video>
+          <Video src={HealthVideo} />
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
@@ -104,10 +102,6 @@ const SeventhSectionPrimaryText = styled(PrimaryText)`
     margin-bottom: 10px; // set new primary heading margin
   }
 `;
-
-const Video = styled.video`
-width: 100%;
-`
 
 export default IndexPage;
 

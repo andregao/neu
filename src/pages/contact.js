@@ -47,7 +47,6 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
       .then(response => response.text())
       .then(text => setIp(text));
   }, []);
-  console.log('user ip', ip);
   return (
     <Layout>
       <SEO title="Contact Us" />
@@ -152,7 +151,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
 };
 
 const HeroBackground = styled(Background)`
-  background-position: 49% 18%; // model's face position
+  //background-position: 49% 18%; // model's face position
 `;
 const FirstSection = styled(FullWidthSection)`
   margin-top: 0; // remove margin to fill background color
