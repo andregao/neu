@@ -52,7 +52,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
       <SEO title="Contact Us" />
       <BodyContainer>
         <HeroSection>
-          <HeroBackground fluid={hero.background.fluid} />
+          <HeroBackground fluid={['linear-gradient(rgba(0, 0, 0, 0.5) 0%, transparent 30%)',hero.background.fluid]} />
         </HeroSection>
         <FirstSection>
           <FirstSectionPrimaryText
