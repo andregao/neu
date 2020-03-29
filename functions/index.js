@@ -27,7 +27,6 @@ exports.sendEmail = functions.firestore
       phone,
       message,
       email,
-      profile
     } = snap.data();
     const mailOptions = {
       from: `NeuCommunities Website <soiamarobot@gmail.com>`,
@@ -41,7 +40,6 @@ exports.sendEmail = functions.firestore
           <br>
           <h2>Email: </h2>
           ${email}
-          <br>
           <h2>Phone Number: </h2>
           ${phone}
           <br>
@@ -51,12 +49,10 @@ exports.sendEmail = functions.firestore
           ${companyType}
           <br>
           <h2>Message: </h2>
-          <br>
           <p>${message}</p>
           <br>
-          <h2>Reference No: </h2> 
-          ${context.params.timestamp}
-`,
+          <h3>Reference No: </h3> 
+          ${context.params.timestamp}`,
     };
     return transporter.sendMail(mailOptions);
   });
