@@ -28,3 +28,30 @@ function validateRequired(name, value, prevErrors) {
     return errors;
   }
 }
+
+export const postToFirestore = async (formData, profile) => {
+  profile.localTime = new Date().toTimeString();
+  const docId = Date.now().toString();
+  const headers = new Headers({ 'Content-Type': 'application/json' });
+  const data = { fields: { profile: { mapValue: { fields: {} } } } };
+  Object.keys(formData).forEach(key => {
+    data.fields[key] = { stringValue: formData[key] };
+  });
+  Object.keys(profile).forEach(key => {
+    data.fields.profile.mapValue.fields[key] = { stringValue: profile[key] };
+  });
+  console.log('to send to firestore', data);
+  const body = JSON.stringify(data);
+
+  const requestOptions = {
+    method: 'POST',
+    headers,
+    body,
+  };
+
+  const response = await fetch(
+    `https://firestore.googleapis.com/v1/projects/made4jonathan/databases/(default)/documents/contactForm?documentId=${docId}`,
+    requestOptions
+  );
+  return response.status;
+};

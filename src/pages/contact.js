@@ -13,7 +13,11 @@ import {
 import styled, { css } from 'styled-components';
 import PrimaryText from '../components/primaryText';
 import { colors, fontPresets } from '../styles/theme';
-import { compareSections, validateForm } from '../components/utils';
+import {
+  compareSections,
+  postToFirestore,
+  validateForm,
+} from '../components/utils';
 import SideBar from '../components/sidebar';
 import SecondaryText from '../components/secondaryText';
 import Button from '../components/layouts/button';
@@ -21,10 +25,11 @@ import Button from '../components/layouts/button';
 const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
   const primaryText = [...allPrimaryText.nodes].sort(compareSections);
   const sidebars = [...allSidebars.nodes].sort(compareSections);
-  const [formData, setFormData] = useState({ companyType: 'hint' });
+  const [formData, setFormData] = useState({ companyType: 'none-selected' });
   const [errors, setErrors] = useState({ email: '', company: '' });
   const [formIsValid, setFormIsValid] = useState(false);
-  const [ip, setIp] = useState('0.0.0.0');
+  const [submitStatus, setSubmitStatus] = useState('standby');
+  const [profile, setProfile] = useState({});
   const handleChange = ({ target: { name, value } }) => {
     setFormData({ ...formData, [name]: value });
   };
@@ -32,7 +37,21 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
     setErrors(validateForm(name, value, errors));
   };
   const handleSubmit = e => {
-    console.log('submitting form');
+    setSubmitStatus('pending');
+    postToFirestore(formData, profile)
+      .then(status => {
+        console.log('200?', status);
+        if (status === 200) {
+          setSubmitStatus('success');
+        } else {
+          setSubmitStatus('fail');
+        }
+      })
+      .catch(e => {
+        setSubmitStatus('fail');
+        console.error('form submit network failure:', e);
+      });
+
     e.preventDefault();
   };
   // update errors state
@@ -41,18 +60,25 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
       ? setFormIsValid(true)
       : setFormIsValid(false);
   }, [errors]);
-  // get user IP address
+  // get user profile
   useEffect(() => {
     fetch('https://api.ipify.org')
       .then(response => response.text())
-      .then(text => setIp(text));
+      .then(ip =>
+        setProfile({ ip, lang: navigator.language, agent: navigator.userAgent })
+      );
   }, []);
   return (
     <Layout>
       <SEO title="Contact Us" />
       <BodyContainer>
         <HeroSection>
-          <HeroBackground fluid={['linear-gradient(rgba(0, 0, 0, 0.5) 0%, transparent 30%)',hero.background.fluid]} />
+          <HeroBackground
+            fluid={[
+              'linear-gradient(rgba(0, 0, 0, 0.7) 0%, transparent 30%)',
+              hero.background.fluid,
+            ]}
+          />
         </HeroSection>
         <FirstSection>
           <FirstSectionPrimaryText
@@ -110,7 +136,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
                 value={formData.companyType}
                 onChange={handleChange}
               >
-                <option value="hint" disabled hidden>
+                <option value="none-selected" disabled hidden>
                   company type
                 </option>
                 <option value="hospital">Hospital</option>
@@ -137,8 +163,24 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
                 text="submit"
                 variant="dark"
                 type="submit"
-                disabled={!formIsValid}
+                disabled={!formIsValid || submitStatus !== 'standby'}
               />
+              {submitStatus === 'success' && (
+                <SubmitResult>
+                  <PrimaryText
+                    heading="Thank you"
+                    paragraph="We have received your message and will get back to you soon"
+                  />
+                </SubmitResult>
+              )}
+              {submitStatus === 'fail' && (
+                <SubmitResult>
+                  <PrimaryText
+                    heading="uh-oh"
+                    paragraph="Something went wrong. Please try again later or email us directly"
+                  />
+                </SubmitResult>
+              )}
             </Form>
           </LeftSide>
           <RightSide>
@@ -195,8 +237,8 @@ const Form = styled.form`
   max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  //grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   grid-gap: 20px 40px;
+  position: relative;
 `;
 
 const inputStyles = css`
@@ -234,6 +276,16 @@ const Errors = styled.div`
 
 const SecondSidebar = styled(SideBar)`
   margin-top: 45px;
+`;
+
+const SubmitResult = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: ${colors.offWhite};
 `;
 
 export default SecondPage;
