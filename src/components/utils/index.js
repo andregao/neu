@@ -40,7 +40,6 @@ export const postToFirestore = async (formData, profile) => {
   Object.keys(profile).forEach(key => {
     data.fields.profile.mapValue.fields[key] = { stringValue: profile[key] };
   });
-  console.log('to send to firestore', data);
   const body = JSON.stringify(data);
 
   const requestOptions = {
