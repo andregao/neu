@@ -153,6 +153,19 @@ const getFontPreset = (weight, size, color = 'black') => css`
   font-weight: ${fontWeights[weight]};
   font-size: ${size}px;
   color: ${color ? colors[color] : colors.dark};
+  @media (${devices.s}) {
+    font-size: ${size >= 30 ? size / 1.2 : size}px;
+  }
+  @media (${devices.xs}) {
+    font-size: ${(size >= 20 ? size / 1.6 : size) >= 14
+      ? size >= 20
+        ? size / 1.6
+        : size
+      : 14}px;
+    font-weight: ${size / 1.6 < 20 && (weight === 'light' || weight === 'thin')
+      ? fontWeights.regular
+      : fontWeights[weight]};
+  }
 `;
 
 export const fontPresets = {
@@ -172,6 +185,6 @@ export const fontPresets = {
   formError: css`
     color: ${colors.error};
     font-size: 14px;
-    font-weight: 500
+    font-weight: 500;
   `,
 };

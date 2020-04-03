@@ -4,6 +4,7 @@ import { colors } from './theme';
 
 export const BodyContainer = styled.main`
   padding: 0 var(--body-side-paddings);
+  width: 100%;
 `;
 export const Section = styled.article`
   margin-top: 75px;
@@ -27,6 +28,10 @@ export const Background = styled(BackgroundImage)`
 export const Hr = styled.hr`
   border-top: ${({ variant }) => (variant === 'thin' ? '1px' : '2px')} solid
     ${colors.hr};
-  //margin-bottom: 40px;
   width: 100%;
+`;
+export const SectionWithSidebar = styled.section`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;

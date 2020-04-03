@@ -91,5 +91,30 @@ export const GlobalStyles = createGlobalStyle`
     @media (${devices.s}) {
       --body-side-paddings: 80px;
     }
+    @media (${devices.xs}) {
+      --body-side-paddings: 40px;
+    }
+    
+    --content-margin: 160px;
+    @media (${devices.m}) {
+      --content-margin: 120px;
+    }
+    @media (${devices.s}) {
+      --content-margin: 60px;
+    }
+    @media (${devices.xs}) {
+      --content-margin: 30px;
+    }
+    
+    --cards-margin: 100px;
+      @media (${devices.m}) {
+      --cards-margin: 80px;
+    }
+    @media (${devices.s}) {
+      --cards-margin: 60px;
+    }
+    @media (${devices.xs}) {
+      --cards-margin: 40px;
+    }
   }
 `;

@@ -4,10 +4,10 @@ import { fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
 import SidebarList from './sidebarList';
 
-const SideBar = ({ data, width, children, className }) => {
+const SideBar = ({ data, width: flex, children, className }) => {
   const { heading, data: list, images } = data;
   return (
-    <Container width={width} className={className}>
+    <Container flex={flex} className={className}>
       <Heading>{heading}</Heading>
       <Hr />
       {list && <SidebarList list={list} images={images} />}
@@ -17,7 +17,8 @@ const SideBar = ({ data, width, children, className }) => {
 };
 
 const Container = styled.aside`
-  width: ${({ width }) => width};
+  flex: ${({ flex }) => flex};
+  margin-right: ;
   min-width: 250px;
 `;
 const Heading = styled.h3`

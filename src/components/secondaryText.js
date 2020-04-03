@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
 
-const SecondaryText = ({ heading, paragraph, width, minWidth, padding }) => {
+const SecondaryText = ({ heading, paragraph, className }) => {
   return (
-    <Container width={width} minWidth={minWidth} padding={padding}>
+    <Container className={className}>
       {heading && (
         <>
           <Heading>{heading}</Heading>
@@ -17,13 +17,10 @@ const SecondaryText = ({ heading, paragraph, width, minWidth, padding }) => {
   );
 };
 const Container = styled.section`
-  padding: 0 ${({ padding }) => (padding ? padding : '60px')};
+  padding: 0 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex-basis: ${({ width }) => (width ? width : 'auto')};
-  //min-width: 280px;
-  min-width: ${({ minWidth }) => (minWidth ? minWidth : 'auto')};
+  justify-content: flex-start;
 `;
 const Heading = styled.h2`
   ${fontPresets.secondaryHeading};

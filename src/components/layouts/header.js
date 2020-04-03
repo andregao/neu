@@ -26,10 +26,10 @@ const Container = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  padding: 60px 80px;
-  @media (${devices.s}) {
-    padding: calc(var(--body-side-paddings) / 2);
-  }
+  padding: calc(var(--body-side-paddings) / 3.3) calc(var(--body-side-paddings) / 2.5);
+  // @media (${devices.s}) {
+  //   padding: calc(var(--body-side-paddings) / 2);
+  // }
   color: ${colors.white};
   display: flex;
   justify-content: space-between;

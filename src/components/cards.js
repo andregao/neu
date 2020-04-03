@@ -32,10 +32,13 @@ const Cards = ({ data: { data, images }, variant, className }) => {
 const Container = styled.section`
   padding-top: 20px;
   width: 100%;
-  display: flex;
-  flex-direction: ${({ variant }) =>
-    variant === 'horizontal' ? 'column' : 'row'};
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: ${({ variant }) => variant === 'horizontal' ? 'column' : 'row'};
+  // flex-wrap: ${({ variant }) => variant === 'horizontal' ? 'no-wrap' : 'wrap'};
+  // justify-content: space-between;
+  display: grid;
+  grid-gap: var(--cards-margin);
+  grid-template-columns: ${({ variant }) => variant === 'horizontal' ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))'};;
 `;
 
 export default Cards;
