@@ -19,6 +19,8 @@ import {
 } from '../styles/common';
 import { compareSections } from '../components/utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
+import ItalyVideo from '../assets/italy.mp4';
+import Video from '../components/video';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
@@ -64,7 +66,8 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <Cards data={cards[1]} variant="vertical" />
         </Section>
         <FullWidthSection>
-          <YoutubeVideo id="Ax_YH4ASu_I" />
+          {/*<YoutubeVideo id="Ax_YH4ASu_I" />*/}
+          <Video src={ItalyVideo} poster="https://i3.ytimg.com/vi/Ax_YH4ASu_I/maxresdefault.jpg"/>
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>

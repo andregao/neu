@@ -58,7 +58,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <Cards data={cards[0]} variant="horizontal" />
         </Section>
         <FullWidthSection>
-          <Video src={HealthVideo} />
+          <Video src={HealthVideo} autoplay={true} />
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
@@ -86,20 +86,6 @@ const HeroHeading = styled.h1`
 const ForthSectionCards = styled(Cards)`
   padding: 55px var(--body-side-paddings); // set padding again because full width background color
   background-color: ${colors.white};
-`;
-
-const SeventhSectionBackground = styled(Background)`
-  max-height: 800px;
-  align-items: center;
-  justify-content: flex-end;
-`;
-const SeventhSectionPrimaryText = styled(PrimaryText)`
-  color: ${colors.dark};
-  margin-right: var(--body-side-paddings);
-  width: 20%;
-  & > :first-child {
-    margin-bottom: 10px; // set new primary heading margin
-  }
 `;
 
 export default IndexPage;
