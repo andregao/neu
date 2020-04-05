@@ -64,6 +64,7 @@ export const GlobalStyles = createGlobalStyle`
   ul {
     margin: 0;
     padding: 0;
+    list-style: none;
   }
   hr {
     margin: 0;
@@ -94,6 +95,12 @@ export const GlobalStyles = createGlobalStyle`
     @media (${devices.xs}) {
       --body-side-paddings: 40px;
     }
+    
+    --header-desktop-padding-y: calc(var(--body-side-paddings) / 3.3);
+    --header-desktop-padding-x: calc(var(--body-side-paddings) / 2.5);
+    
+    --header-mobile-padding-y: calc(var(--body-side-paddings) / 2);
+    --header-mobile-padding-x: calc(var(--body-side-paddings) / 1.5);
     
     --content-margin: 160px;
     @media (${devices.m}) {

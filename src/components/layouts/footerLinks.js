@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { colors } from '../../styles/theme';
+import { colors, devices } from '../../styles/theme';
 
 const FooterLinks = () => {
   return (
@@ -13,10 +13,17 @@ const FooterLinks = () => {
   );
 };
 const Container = styled.div`
+  width: 220px;
+  @media (${devices.xs}) {
+    margin-bottom: 20px;
+  }
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   & > * {
-    margin-right: 15px;
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
     &:not(:first-child):hover {
       color: ${colors.light};
     }

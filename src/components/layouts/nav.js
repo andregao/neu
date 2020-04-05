@@ -6,12 +6,16 @@ import { Link } from 'gatsby';
 const Nav = () => {
   return (
     <Container>
-      <Link to="/living/" activeStyle={activeStyle}>living</Link>
-      <Link to="/health/" activeStyle={activeStyle}>health care</Link>
+      <Link to="/living/" activeStyle={activeStyle}>
+        living
+      </Link>
+      <Link to="/health/" activeStyle={activeStyle}>
+        health care
+      </Link>
     </Container>
   );
 };
-const Container = styled.nav`
+const Container = styled.div`
   ${fontPresets.nav};
   color: ${colors.white};
   & > * {
@@ -23,8 +27,8 @@ const Container = styled.nav`
   display: flex;
 `;
 
-const activeStyle = {
-  borderBottom:'solid 1px'
-}
+export const activeStyle = {
+  borderBottom: 'solid 1px',
+};
 
 export default Nav;

@@ -18,7 +18,7 @@ import {
   SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../components/utils';
-import Video from '../components/Video';
+import Video from '../components/video';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {

@@ -16,7 +16,6 @@ const Container = styled.article`
   flex-direction: column;
   ${({ flex }) => 'flex: ' + flex || ''};
   margin-bottom: 30px;
-
 `;
 const Heading = styled.h2`
   ${fontPresets.primaryHeading};
@@ -28,7 +27,7 @@ const Paragraph = styled.p`
 `;
 
 export const PrimaryTextRightMargin = styled(PrimaryText)`
-    margin-right: var(--content-margin);
-`
+  margin-right: var(--content-margin);
+`;
 
 export default PrimaryText;

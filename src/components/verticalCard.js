@@ -9,7 +9,9 @@ const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
     <Container>
       {image && <Image fluid={image.fluid} />}
       <StyledSecondaryText heading={heading} paragraph={paragraph} />
-      {button && <Button variant="dark" path={button.path} text={button.text} margin="20px 0 0" />}
+      {button && (
+        <StyledButton variant="dark" path={button.path} text={button.text} />
+      )}
     </Container>
   );
 };
@@ -23,8 +25,11 @@ const Container = styled.article`
   align-items: flex-start;
 `;
 const StyledSecondaryText = styled(SecondaryText)`
-padding: 0;
-`
+  padding: 0;
+`;
+const StyledButton = styled(Button)`
+  margin: 20px 0 0;
+`;
 const Image = styled(GatsbyImage)`
   width: 100%;
   height: auto;

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layouts/layout';
 import SEO from '../components/seo';
-import PrimaryText from '../components/primaryText';
+import PrimaryText, { PrimaryTextRightMargin } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
@@ -14,9 +14,10 @@ import {
   FullWidthSection,
   Section,
   Background,
-  HeroSection,
+  HeroSection, SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../components/utils';
+import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
@@ -38,14 +39,14 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           </HeroBackground>
         </HeroSection>
         <Section>
-          <FirstSection>
-            <PrimaryText
+          <SectionWithSidebar>
+            <PrimaryTextRightMargin
               heading={primaryText[0].heading}
               paragraph={primaryText[0].paragraph.paragraph}
-              width="60%"
+              flex="2 1 400px"
             />
-            <SideBar data={sidebar} width="30%" />
-          </FirstSection>
+            <SideBar data={sidebar} flex="1 1 266px" />
+          </SectionWithSidebar>
         </Section>
         <Section>
           <PrimaryText
@@ -66,12 +67,12 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
-          <SeventhSectionBackground fluid={primaryText[5].images[0].fluid}>
-            <SeventhSectionPrimaryText
-              heading={primaryText[5].heading}
-              paragraph={primaryText[5].paragraph.paragraph}
-            />
-          </SeventhSectionBackground>
+          <BackgroundWithPrimaryText
+            fluid={primaryText[5].images[0].fluid}
+            heading={primaryText[5].heading}
+            paragraph={primaryText[5].paragraph.paragraph}
+            variant="right"
+          />
         </FullWidthSection>
       </BodyContainer>
     </Layout>

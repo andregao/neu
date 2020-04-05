@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { colors, fontPresets } from '../../styles/theme';
 import { Link, navigate } from 'gatsby';
 
-const Button = ({ text, variant, margin, path, disabled }) => {
+const Button = ({ text, variant, path, disabled,className }) => {
   let handleClick;
   path && (handleClick = () => navigate(path));
   return (
     <Container
       variant={variant}
-      margin={margin}
       onClick={handleClick}
       disabled={disabled}
+      className={className}
     >
       {text.toUpperCase()}
     </Container>
@@ -47,7 +47,6 @@ const Container = styled.button`
     border-color: var(--hover-color);
     color: var(--hover-color);
   }
-  margin: ${margin => (margin ? margin : 0)};
   height: 40px;
 `;
 
