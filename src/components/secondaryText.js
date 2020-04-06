@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { fontPresets } from '../styles/theme';
+import { devices, fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
 
 const SecondaryText = ({ heading, paragraph, className }) => {

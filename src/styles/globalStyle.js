@@ -85,22 +85,22 @@ export const GlobalStyles = createGlobalStyle`
   
   // variables
   :root {
-    --body-side-paddings: 200px;
+    --body-side-padding: 200px;
     @media (${devices.m}) {
-      --body-side-paddings: 140px;
+      --body-side-padding: 140px;
     }
     @media (${devices.s}) {
-      --body-side-paddings: 80px;
+      --body-side-padding: 80px;
     }
     @media (${devices.xs}) {
-      --body-side-paddings: 40px;
+      --body-side-padding: 40px;
     }
     
-    --header-desktop-padding-y: calc(var(--body-side-paddings) / 3.3);
-    --header-desktop-padding-x: calc(var(--body-side-paddings) / 2.5);
+    --header-desktop-padding-y: calc(var(--body-side-padding) / 3.3);
+    --header-desktop-padding-x: calc(var(--body-side-padding) / 2.5);
     
-    --header-mobile-padding-y: calc(var(--body-side-paddings) / 2);
-    --header-mobile-padding-x: calc(var(--body-side-paddings) / 1.5);
+    --header-mobile-padding-y: calc(var(--body-side-padding) / 2);
+    --header-mobile-padding-x: calc(var(--body-side-padding) / 1.5);
     
     --content-margin: 160px;
     @media (${devices.m}) {
@@ -114,7 +114,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     --cards-margin: 100px;
-      @media (${devices.m}) {
+    @media (${devices.m}) {
       --cards-margin: 80px;
     }
     @media (${devices.s}) {
@@ -122,6 +122,17 @@ export const GlobalStyles = createGlobalStyle`
     }
     @media (${devices.xs}) {
       --cards-margin: 40px;
+    }
+    
+    --content-padding-y: 30px;
+    --content-padding-x: 60px;
+    @media (${devices.s}) {
+      --content-padding-y: 20px;
+      --content-padding-x: 40px;
+    }
+    @media (${devices.xs}) {
+      --content-padding-y: 20px;
+      --content-padding-x: 20px;
     }
   }
 `;

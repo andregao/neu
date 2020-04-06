@@ -23,7 +23,7 @@ const SectionBackground = styled(Background)`
 `;
 const SectionPrimaryText = styled(PrimaryText)`
   color: ${colors.dark};
-  margin: 0 var(--body-side-paddings);
+  margin: 0 var(--body-side-padding);
   width: 20%;
   & > :first-child {
     margin-bottom: 10px; // set new primary heading margin

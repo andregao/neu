@@ -20,7 +20,7 @@ const Footer = () => {
 };
 
 const Container = styled.footer`
-  min-height: 150px;
+  min-height: 100px;
   width: 100%;
   ${fontPresets.footer};
   text-transform: uppercase;
@@ -33,7 +33,8 @@ const Container = styled.footer`
     flex-direction: column;
     align-items: center;
   }
-  padding: 60px 80px;
+  padding: calc(var(--content-padding-y) * 1.5)
+    calc(var(--content-padding-x) * 1.5);
 `;
 
 // const Links = styled.div`

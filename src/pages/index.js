@@ -91,11 +91,11 @@ const HeroBackground = styled(Background)`
 `;
 const HeroHeading = styled.h1`
   ${fontPresets.heroHeading};
-  margin: 0 var(--body-side-paddings);
+  margin: 0 var(--body-side-padding);
 `;
 
 const ForthSectionCards = styled(Cards)`
-  padding: 55px var(--body-side-paddings); // set padding again because full width background color
+  padding: 55px var(--body-side-padding); // set padding again because full width background color
   background-color: ${colors.white};
 `;
 

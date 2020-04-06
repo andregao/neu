@@ -196,7 +196,7 @@ const FirstSection = styled(FullWidthSection)`
 `;
 
 const FirstSectionPrimaryText = styled(PrimaryText)`
-  padding: 75px var(--body-side-paddings);
+  padding: 75px var(--body-side-padding);
   background-color: ${colors.white};
 `;
 

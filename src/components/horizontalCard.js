@@ -2,14 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import SecondaryText from './secondaryText';
 import GatsbyImage from 'gatsby-image';
+import { devices } from '../styles/theme';
 
 const HorizontalCard = ({ data: { heading, paragraph }, image, reverse }) => {
   return (
     <Container reverse={reverse}>
-      <StyledSecondaryText
-        heading={heading}
-        paragraph={paragraph}
-      />
+      <StyledSecondaryText heading={heading} paragraph={paragraph} />
       <Image fluid={image.fluid} />
     </Container>
   );
@@ -26,12 +24,12 @@ const Container = styled.article`
 `;
 
 const StyledSecondaryText = styled(SecondaryText)`
-  flex: 1 0 280px;
-  padding: 30px 60px;
+  flex: 1 0 200px;
+  padding: var(--content-padding-y) var(--content-padding-x);
   justify-content: center;
 `;
 const Image = styled(GatsbyImage)`
-  flex: 2 1 460px;
+  flex: 2 1 400px;
 `;
 
 export default HorizontalCard;

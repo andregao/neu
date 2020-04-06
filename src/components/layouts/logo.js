@@ -6,7 +6,7 @@ import NewLogo from '../../assets/logo.svg';
 
 const Logo = () => (
   <Link to={'/'}>
-    <SiteLogo src={NewLogo}/>
+    <SiteLogo src={NewLogo} />
   </Link>
 );
 

@@ -154,7 +154,7 @@ const getFontPreset = (weight, size, color = 'black') => css`
   font-size: ${size}px;
   color: ${color ? colors[color] : colors.dark};
   @media (${devices.s}) {
-    font-size: ${size >= 30 ? size / 1.2 : size}px;
+    font-size: ${size >= 30 ? size / 1.3 : size}px;
   }
   @media (${devices.xs}) {
     font-weight: ${size / 1.6 < 20 && (weight === 'light' || weight === 'thin')

@@ -24,9 +24,9 @@ const Container = styled.article`
   justify-content: space-between;
 `;
 const Form = styled.form`
-display: flex;
-justify-content: space-between;
-`
+  display: flex;
+  justify-content: space-between;
+`;
 const EmailInput = styled.input`
   border: solid ${colors.gray} 1px;
   background-color: inherit;

@@ -3,14 +3,14 @@ import BackgroundImage from 'gatsby-background-image';
 import { colors } from './theme';
 
 export const BodyContainer = styled.main`
-  padding: 0 var(--body-side-paddings);
+  padding: 0 var(--body-side-padding);
   width: 100%;
 `;
 export const Section = styled.article`
   margin-top: 75px;
 `;
 export const FullWidthSection = styled(Section)`
-  --side-margin: calc(-1 * var(--body-side-paddings));
+  --side-margin: calc(-1 * var(--body-side-padding));
   margin-left: var(--side-margin);
   margin-right: var(--side-margin);
 `;

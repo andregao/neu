@@ -86,14 +86,14 @@ const HeroBackground = styled(Background)`
 `;
 const HeroHeading = styled.h1`
   ${fontPresets.heroHeading};
-  margin: 0 var(--body-side-paddings);
+  margin: 0 var(--body-side-padding);
 `;
 const FirstSection = styled.section`
   display: flex;
   justify-content: space-between;
 `;
 const ForthSectionCards = styled(Cards)`
-  padding: 55px var(--body-side-paddings); // set padding again because full width background color
+  padding: 55px var(--body-side-padding); // set padding again because full width background color
   background-color: ${colors.white};
 `;
 
@@ -104,7 +104,7 @@ const SeventhSectionBackground = styled(Background)`
 `;
 const SeventhSectionPrimaryText = styled(PrimaryText)`
   color: ${colors.dark};
-  margin-right: var(--body-side-paddings);
+  margin-right: var(--body-side-padding);
   width: 20%;
   & > :first-child {
     margin-bottom: 10px; // set new primary heading margin

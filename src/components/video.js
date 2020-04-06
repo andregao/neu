@@ -20,8 +20,8 @@ const Video = ({ src, autoplay, poster }) => {
     <Container>
       <video
         width="100%"
-        autoPlay={autoplay||false}
-        poster={poster||''}
+        autoPlay={autoplay || false}
+        poster={poster || ''}
         loop
         muted
         ref={videoEl}
@@ -64,7 +64,7 @@ const PlayIcon = () => (
   >
     <defs>
       <filter id="shadow">
-        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray"/>
+        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray" />
       </filter>
     </defs>
     <title>play icon</title>
@@ -88,7 +88,7 @@ const PauseIcon = ({ className }) => (
   >
     <defs>
       <filter id="shadow">
-        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray"/>
+        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray" />
       </filter>
     </defs>
     <title>pause icon</title>
