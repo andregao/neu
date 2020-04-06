@@ -14,7 +14,8 @@ import {
   FullWidthSection,
   Section,
   Background,
-  HeroSection, SectionWithSidebar,
+  HeroSection,
+  SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';

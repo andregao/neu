@@ -19,32 +19,29 @@ const Header = () => (
     <MobileContainer>
       <Logo />
       <NavGroup>
-        <a href="#">
+        <a href="#" tabIndex="0">
           <HamburgerIcon />
         </a>
         <Dropdown>
           <li>
-            <Link to="/" activeStyle={activeStyle}>
+            <Link to="/" tabIndex="0" activeStyle={activeStyle}>
               home
             </Link>
           </li>
           <li>
-            <Link to="/living/" activeStyle={activeStyle}>
+            <Link to="/living/" tabIndex="0" activeStyle={activeStyle}>
               living
             </Link>
           </li>
           <li>
-            <Link to="/health/" activeStyle={activeStyle}>
+            <Link to="/health/" tabIndex="0" activeStyle={activeStyle}>
               health care
             </Link>
           </li>
           <li>
-            <Button
-              text="contact"
-              variant="white"
-              margin="0"
-              path="/contact/"
-            />
+            <Link to="/contact/" tabIndex="0">
+              <Button text="contact" variant="white" margin="0" />
+            </Link>
           </li>
         </Dropdown>
       </NavGroup>
@@ -93,7 +90,7 @@ const Main = styled.nav`
 `;
 
 const NavGroup = styled.div`
-  &:focus-within * {
+  &:focus-within ul {
     opacity: 1;
     transform: none;
   }
