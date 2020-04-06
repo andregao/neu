@@ -14,7 +14,7 @@ const PrimaryText = ({ heading, paragraph, flex, className }) => {
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  ${({ flex }) => 'flex: ' + flex || ''};
+  ${({ flex }) => 'flex: ' + flex || undefined};
   margin-bottom: 30px;
 `;
 const Heading = styled.h2`

@@ -29,7 +29,7 @@ function validateRequired(name, value, prevErrors) {
   }
 }
 
-export const postToFirestore = async (formData, profile) => {
+export const sendToDatabase = async (formData, profile) => {
   profile.localTime = new Date().toTimeString();
   const docId = Date.now().toString();
   const headers = new Headers({ 'Content-Type': 'application/json' });

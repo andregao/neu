@@ -15,9 +15,9 @@ import PrimaryText from '../components/primaryText';
 import { colors, fontPresets } from '../styles/theme';
 import {
   compareSections,
-  postToFirestore,
+  sendToDatabase,
   validateForm,
-} from '../components/utils';
+} from '../utils';
 import SideBar from '../components/sidebar';
 import SecondaryText from '../components/secondaryText';
 import Button from '../components/layouts/button';
@@ -38,7 +38,7 @@ const SecondPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
   };
   const handleSubmit = e => {
     setSubmitStatus('pending');
-    postToFirestore(formData, profile)
+    sendToDatabase(formData, profile)
       .then(status => {
         console.log('200?', status);
         if (status === 200) {

@@ -17,7 +17,7 @@ import {
   HeroSection,
   SectionWithSidebar,
 } from '../styles/common';
-import { compareSections } from '../components/utils';
+import { compareSections } from '../utils';
 import Video from '../components/video';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 

@@ -7,7 +7,7 @@ import PrimaryText, { PrimaryTextRightMargin } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { colors, devices as devcies, fontPresets } from '../styles/theme';
+import { colors, fontPresets } from '../styles/theme';
 import YoutubeVideo from '../components/youtubeVideo';
 import {
   BodyContainer,
@@ -17,7 +17,7 @@ import {
   HeroSection,
   SectionWithSidebar,
 } from '../styles/common';
-import { compareSections } from '../components/utils';
+import { compareSections } from '../utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 import ItalyVideo from '../assets/italy.mp4';
 import Video from '../components/video';

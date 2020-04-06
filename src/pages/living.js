@@ -16,7 +16,7 @@ import {
   Background,
   HeroSection, SectionWithSidebar,
 } from '../styles/common';
-import { compareSections } from '../components/utils';
+import { compareSections } from '../utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {

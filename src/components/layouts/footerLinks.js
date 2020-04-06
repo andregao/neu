@@ -7,8 +7,8 @@ const FooterLinks = () => {
   return (
     <Container>
       <p>NEU2020</p>
-      <Link to="/page-2/">privacy</Link>
-      <Link to="/page-2/">terms</Link>
+      <Link to="/">privacy</Link>
+      <Link to="/">terms</Link>
     </Container>
   );
 };
