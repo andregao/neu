@@ -22,6 +22,7 @@ export const Background = styled(BackgroundImage)`
   background-size: cover;
   height: 85vh;
   max-height: 900px;
+  min-height: 620px;
   width: 100vw;
   display: flex;
 `;
@@ -31,7 +32,7 @@ export const Hr = styled.hr`
   width: 100%;
 `;
 export const SectionWithSidebar = styled.section`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-column-gap: var(--content-margin);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 `;

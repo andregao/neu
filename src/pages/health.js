@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layouts/layout';
 import SEO from '../components/seo';
-import PrimaryText, { PrimaryTextRightMargin } from '../components/primaryText';
+import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
@@ -42,12 +42,12 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
         </HeroSection>
         <Section>
           <SectionWithSidebar>
-            <PrimaryTextRightMargin
+            <PrimaryTextTwoColumns
               heading={primaryText[0].heading}
               paragraph={primaryText[0].paragraph.paragraph}
               flex="2 1 400px"
             />
-            <SideBar data={sidebar} flex="1 1 266px" />
+            <SideBar data={sidebar} />
           </SectionWithSidebar>
         </Section>
         <Section>

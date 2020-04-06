@@ -1,14 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-
 import Layout from '../components/layouts/layout';
 import SEO from '../components/seo';
-import PrimaryText, { PrimaryTextRightMargin } from '../components/primaryText';
+import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
-import YoutubeVideo from '../components/youtubeVideo';
+// import YoutubeVideo from '../components/youtubeVideo';
 import {
   BodyContainer,
   FullWidthSection,
@@ -43,12 +42,12 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
         </HeroSection>
         <Section>
           <SectionWithSidebar>
-            <PrimaryTextRightMargin
+            <PrimaryTextTwoColumns
               heading={primaryText[0].heading}
               paragraph={primaryText[0].paragraph.paragraph}
               flex="2 1 400px"
             />
-            <SideBar data={sidebar} flex="1 1 266px" />
+            <SideBar data={sidebar} />
           </SectionWithSidebar>
         </Section>
         <Section>
@@ -67,7 +66,10 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
         </Section>
         <FullWidthSection>
           {/*<YoutubeVideo id="Ax_YH4ASu_I" />*/}
-          <Video src={ItalyVideo} poster="https://i3.ytimg.com/vi/Ax_YH4ASu_I/maxresdefault.jpg"/>
+          <Video
+            src={ItalyVideo}
+            poster="https://i3.ytimg.com/vi/Ax_YH4ASu_I/maxresdefault.jpg"
+          />
           <ForthSectionCards data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
@@ -96,7 +98,6 @@ const ForthSectionCards = styled(Cards)`
   padding: 55px var(--body-side-paddings); // set padding again because full width background color
   background-color: ${colors.white};
 `;
-
 
 export default IndexPage;
 

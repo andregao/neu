@@ -26,8 +26,8 @@ const Paragraph = styled.p`
   line-height: 32px;
 `;
 
-export const PrimaryTextRightMargin = styled(PrimaryText)`
-  margin-right: var(--content-margin);
+export const PrimaryTextTwoColumns = styled(PrimaryText)`
+  grid-column: span 2;
 `;
 
 export default PrimaryText;

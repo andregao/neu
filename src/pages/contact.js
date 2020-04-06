@@ -13,11 +13,7 @@ import {
 import styled, { css } from 'styled-components';
 import PrimaryText from '../components/primaryText';
 import { colors, fontPresets } from '../styles/theme';
-import {
-  compareSections,
-  sendToDatabase,
-  validateForm,
-} from '../utils';
+import { compareSections, sendToDatabase, validateForm } from '../utils';
 import SideBar from '../components/sidebar';
 import SecondaryText from '../components/secondaryText';
 import Button from '../components/layouts/button';
@@ -272,10 +268,6 @@ const Select = styled.select`
 const Errors = styled.div`
   grid-column: 1 / span 2;
   ${fontPresets.formError};
-`;
-
-const SecondSidebar = styled(SideBar)`
-  margin-top: 45px;
 `;
 
 const SubmitResult = styled.div`

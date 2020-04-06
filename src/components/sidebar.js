@@ -4,10 +4,10 @@ import { fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
 import SidebarList from './sidebarList';
 
-const SideBar = ({ data, width: flex, children, className }) => {
+const SideBar = ({ data, children }) => {
   const { heading, data: list, images } = data;
   return (
-    <Container flex={flex} className={className}>
+    <Container>
       <Heading>{heading}</Heading>
       <Hr />
       {list && <SidebarList list={list} images={images} />}
@@ -17,14 +17,11 @@ const SideBar = ({ data, width: flex, children, className }) => {
 };
 
 const Container = styled.aside`
-  flex: ${({ flex }) => flex};
-  margin-right: ;
-  min-width: 250px;
+  grid-column: span 1;
 `;
 const Heading = styled.h3`
   ${fontPresets.secondaryHeading};
   margin-bottom: 20px;
 `;
-
 
 export default SideBar;
