@@ -100,6 +100,9 @@ const NavGroup = styled.div`
 `;
 
 const Dropdown = styled.ul`
+  background-color: rgba(33, 33, 33, 0.85);
+  box-shadow: 0 -15px 15px 34px rgba(33, 33, 33, 0.85);
+  border: none;
   position: absolute;
   right: 0;
   width: 100%;

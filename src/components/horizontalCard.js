@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import SecondaryText from './secondaryText';
 import GatsbyImage from 'gatsby-image';
-import { devices } from '../styles/theme';
 
 const HorizontalCard = ({ data: { heading, paragraph }, image, reverse }) => {
   return (
@@ -14,7 +13,6 @@ const HorizontalCard = ({ data: { heading, paragraph }, image, reverse }) => {
 };
 const Container = styled.article`
   width: 100%;
-  //height: 400px;
   border: 16px solid white;
   margin: 25px 0;
   display: flex;
