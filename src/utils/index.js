@@ -3,11 +3,10 @@ const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@
 export const compareSections = ({ section: sectionA }, { section: sectionB }) =>
   sectionA - sectionB;
 
-export const validateForm = (name, value, prevErrors) => {
-  let errors = { ...prevErrors };
-  name === 'email' && (errors = validateEmail(value, errors));
-  (name === 'company' || name === 'message') &&
-    (errors = validateRequired(name, value, errors));
+export const validateForm = (name, value, type, prevErrors) => {
+  let errors = prevErrors;
+  type === 'email' && (errors = validateEmail(value, errors));
+  type === 'required' && (errors = validateRequired(name, value, errors));
   return errors;
 };
 
@@ -15,8 +14,12 @@ function validateEmail(email, prevErrors) {
   if (!emailRegex.test(email)) {
     return { ...prevErrors, email: 'email address not valid' };
   } else {
-    const { email: noop, ...errors } = prevErrors;
-    return errors;
+    if (prevErrors.email) {
+      const { email: noop, ...errors } = prevErrors;
+      return errors;
+    } else {
+      return prevErrors;
+    }
   }
 }
 
@@ -24,8 +27,12 @@ function validateRequired(name, value, prevErrors) {
   if (value.trim() === '') {
     return { ...prevErrors, [name]: `Please fill in ${name}` };
   } else {
-    const { [name]: noop, ...errors } = prevErrors;
-    return errors;
+    if (prevErrors[name]) {
+      const { [name]: noop, ...errors } = prevErrors;
+      return errors;
+    } else {
+      return prevErrors;
+    }
   }
 }
 
