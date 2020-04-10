@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { colors } from '../../styles/theme';
 import NewLogo from '../../assets/logo.svg';
 
 const Logo = () => (

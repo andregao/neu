@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/theme';
+
 const StyledSvgIcon = styled.svg`
   cursor: pointer;
   height: 21px;

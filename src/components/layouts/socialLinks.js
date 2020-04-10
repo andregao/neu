@@ -1,6 +1,5 @@
 import React from 'react';
 import TwitterIcon from '../icons/twitter';
-import StyledSvgIcon from '../icons/styledSvgIcon';
 import FacebookIcon from '../icons/facebook';
 import styled from 'styled-components';
 import InstagramIcon from '../icons/instagram';

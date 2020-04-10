@@ -6,7 +6,7 @@ const LogoGroup = ({ images }) => {
   return (
     <Container>
       {images.map((image, index) => (
-        <Image fluid={image.fluid} key={index}/>
+        <Image fluid={image.fluid} key={index} />
       ))}
     </Container>
   );

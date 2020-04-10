@@ -19,7 +19,7 @@ const Header = () => (
     <MobileContainer>
       <Logo />
       <NavGroup>
-        <a href="#" tabIndex="0">
+        <a tabIndex="0">
           <HamburgerIcon />
         </a>
         <Dropdown>

@@ -10,11 +10,11 @@ import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
 import HealthVideo from '../assets/health.mp4';
 import {
+  Background,
   BodyContainer,
   FullWidthSection,
-  Section,
-  Background,
   HeroSection,
+  Section,
   SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../utils';

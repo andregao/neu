@@ -9,11 +9,11 @@ import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
 // import YoutubeVideo from '../components/youtubeVideo';
 import {
+  Background,
   BodyContainer,
   FullWidthSection,
-  Section,
-  Background,
   HeroSection,
+  Section,
   SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../utils';

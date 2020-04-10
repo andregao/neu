@@ -10,11 +10,11 @@ import Cards from '../components/cards';
 import { colors, fontPresets } from '../styles/theme';
 import YoutubeVideo from '../components/youtubeVideo';
 import {
+  Background,
   BodyContainer,
   FullWidthSection,
-  Section,
-  Background,
   HeroSection,
+  Section,
   SectionWithSidebar,
 } from '../styles/common';
 import { compareSections } from '../utils';
@@ -88,27 +88,10 @@ const HeroHeading = styled.h1`
   ${fontPresets.heroHeading};
   margin: 0 var(--body-side-padding);
 `;
-const FirstSection = styled.section`
-  display: flex;
-  justify-content: space-between;
-`;
+
 const ForthSectionCards = styled(Cards)`
   padding: 55px var(--body-side-padding); // set padding again because full width background color
   background-color: ${colors.white};
-`;
-
-const SeventhSectionBackground = styled(Background)`
-  max-height: 800px;
-  align-items: center;
-  justify-content: flex-end;
-`;
-const SeventhSectionPrimaryText = styled(PrimaryText)`
-  color: ${colors.dark};
-  margin-right: var(--body-side-padding);
-  width: 20%;
-  & > :first-child {
-    margin-bottom: 10px; // set new primary heading margin
-  }
 `;
 
 export default IndexPage;

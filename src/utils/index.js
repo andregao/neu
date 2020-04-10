@@ -14,6 +14,7 @@ function validateEmail(email, prevErrors) {
   if (!emailRegex.test(email)) {
     return { ...prevErrors, email: 'email address not valid' };
   } else {
+    // clear error state if present, else return unmodified errors object
     if (prevErrors.email) {
       const { email: noop, ...errors } = prevErrors;
       return errors;
@@ -27,6 +28,7 @@ function validateRequired(name, value, prevErrors) {
   if (value.trim() === '') {
     return { ...prevErrors, [name]: `Please fill in ${name}` };
   } else {
+    // clear error state if present, else return unmodified errors object
     if (prevErrors[name]) {
       const { [name]: noop, ...errors } = prevErrors;
       return errors;
