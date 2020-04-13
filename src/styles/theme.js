@@ -177,9 +177,21 @@ export const fontPresets = {
   footer: getFontPreset('medium', 12, 'gray'),
   newsletter: getFontPreset('medium', 16, 'white'),
   form: getFontPreset('regular', 12, 'gray'),
-  formError: css`
+  formError: `
     color: ${colors.error};
     font-size: 14px;
     font-weight: 500;
   `,
+};
+
+export const transitions = {
+  long: 'transition: all 0.8s',
+};
+
+// console debug use
+export const logStyles = {
+  red: 'background-color: red; color: white; padding:4px;',
+  green: 'background-color: green; color: white; padding:4px;',
+  blue: 'background-color: blue; color: white; padding:4px;',
+  black: 'background-color: black; color: white; padding:4px;',
 };

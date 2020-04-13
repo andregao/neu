@@ -23,13 +23,13 @@ const Header = () => (
           <HamburgerIcon />
         </a>
         <Dropdown>
+          {/*<li>*/}
+          {/*  <Link to="/" tabIndex="0" activeStyle={activeStyle}>*/}
+          {/*    home*/}
+          {/*  </Link>*/}
+          {/*</li>*/}
           <li>
             <Link to="/" tabIndex="0" activeStyle={activeStyle}>
-              home
-            </Link>
-          </li>
-          <li>
-            <Link to="/living/" tabIndex="0" activeStyle={activeStyle}>
               living
             </Link>
           </li>

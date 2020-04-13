@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { colors } from '../styles/theme';
+import { colors, transitions } from '../styles/theme';
+import { getStyle, useObserver } from '../utils';
 
 const Video = ({ src, autoplay, poster }) => {
   const videoEl = useRef(null);
@@ -16,8 +17,15 @@ const Video = ({ src, autoplay, poster }) => {
     }
   };
 
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver(0.15);
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
+
   return (
-    <Container>
+    <Container ref={ref} style={getStyle(entry)}>
       <video
         width="100%"
         autoPlay={autoplay || false}
@@ -38,6 +46,7 @@ const Video = ({ src, autoplay, poster }) => {
 const Container = styled.article`
   width: 100%;
   position: relative;
+  ${transitions.long};
 `;
 const Control = styled.button`
   border: none;
@@ -64,7 +73,12 @@ const PlayIcon = () => (
   >
     <defs>
       <filter id="shadow">
-        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray" />
+        <feDropShadow
+          dx="0"
+          dy="0"
+          stdDeviation="20"
+          floodColor={colors.warmGreen}
+        />
       </filter>
     </defs>
     <title>play icon</title>
@@ -88,7 +102,12 @@ const PauseIcon = ({ className }) => (
   >
     <defs>
       <filter id="shadow">
-        <feDropShadow dx="0" dy="0" stdDeviation="20" flood-color="gray" />
+        <feDropShadow
+          dx="0"
+          dy="0"
+          stdDeviation="20"
+          floodColor={colors.warmGreen}
+        />
       </filter>
     </defs>
     <title>pause icon</title>

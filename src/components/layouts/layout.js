@@ -12,16 +12,6 @@ import { GlobalStyles } from '../../styles/globalStyle';
 import Footer from './footer';
 
 const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `);
-
   return (
     <>
       <GlobalStyles />

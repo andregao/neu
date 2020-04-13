@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import SecondaryText from './secondaryText';
 import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
 import Button from './layouts/button';
+import { getStyle, useObserver } from '../utils';
+import { transitions } from '../styles/theme';
 
 const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver(0.1);
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
   return (
-    <Container>
+    <Container ref={ref} style={getStyle(entry)}>
       {image && <Image fluid={image.fluid} />}
       <StyledSecondaryText heading={heading} paragraph={paragraph} />
       {button && (
@@ -16,13 +24,11 @@ const VerticalCard = ({ data: { heading, paragraph, button }, image }) => {
   );
 };
 const Container = styled.article`
-  //&:not(:last-child) {
-  //  margin-right: 100px;
-  //}
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  ${transitions.long};
 `;
 const StyledSecondaryText = styled(SecondaryText)`
   padding: 0;

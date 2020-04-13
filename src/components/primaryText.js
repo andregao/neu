@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { fontPresets } from '../styles/theme';
+import { fontPresets, transitions } from '../styles/theme';
+import { getStyle, useObserver } from '../utils';
 
-const PrimaryText = ({ heading, paragraph, flex, className }) => {
+const PrimaryText = ({ heading, paragraph, className }) => {
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver();
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
+
   return (
-    <Container flex={flex} className={className}>
+    <Container className={className} ref={ref} style={getStyle(entry)}>
       <Heading>{heading}</Heading>
       {paragraph && <Paragraph>{paragraph}</Paragraph>}
     </Container>
@@ -14,8 +22,8 @@ const PrimaryText = ({ heading, paragraph, flex, className }) => {
 const Container = styled.article`
   display: flex;
   flex-direction: column;
-  ${({ flex }) => 'flex: ' + flex || undefined};
   margin-bottom: 30px;
+  ${transitions.long};
 `;
 const Heading = styled.h2`
   ${fontPresets.primaryHeading};

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const compareSections = ({ section: sectionA }, { section: sectionB }) =>
@@ -63,3 +65,33 @@ export const sendToDatabase = async (formData, profile) => {
   );
   return response.status;
 };
+
+export const useObserver = (threshold = 0.05) => {
+  const [entry, setEntry] = useState(null);
+  const [target, setTarget] = useState(null);
+  const handleIntersect = ([e]) => e.isIntersecting && setEntry(e);
+  // "useRef" to keep mutable observer reference between renders
+  const observer = useRef(
+    new IntersectionObserver(handleIntersect, { threshold })
+  );
+  // subscribes when target element is set
+  useEffect(() => {
+    target instanceof Element && observer.current.observe(target);
+    return () => {
+      // unsubscribes when component is unmounted
+      target instanceof Element && observer.current.disconnect();
+    };
+  }, [target]);
+  // unsubscribes after intersection event
+  useEffect(() => {
+    entry && observer.current.disconnect();
+  }, [entry]);
+
+  return [entry, setTarget];
+};
+
+// scroll reveal styles
+export const getStyle = entry =>
+  entry && entry.isIntersecting
+    ? { transform: 'none', opacity: 1 }
+    : { transform: 'translateY(120px)', opacity: 0 };

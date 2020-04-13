@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layouts/layout';
 import SEO from '../components/seo';
@@ -6,17 +6,18 @@ import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { colors, fontPresets } from '../styles/theme';
+import { colors, fontPresets, transitions } from '../styles/theme';
 // import YoutubeVideo from '../components/youtubeVideo';
 import {
   Background,
   BodyContainer,
+  CardsWhiteBackground,
   FullWidthSection,
   HeroSection,
   Section,
   SectionWithSidebar,
 } from '../styles/common';
-import { compareSections } from '../utils';
+import { compareSections, getStyle, useObserver } from '../utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 import ItalyVideo from '../assets/italy.mp4';
 import Video from '../components/video';
@@ -25,6 +26,13 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
   const primaryText = [...allPrimaryText.nodes].sort(compareSections);
   const cards = [...allCards.nodes].sort(compareSections);
+
+  // scroll reveal
+  const heroTextRef = useRef(null);
+  const [heroTextEntry, heroTextSetTarget] = useObserver();
+  useEffect(() => {
+    heroTextSetTarget(heroTextRef.current);
+  }, []);
 
   return (
     <Layout>
@@ -37,7 +45,9 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
               heroBackground.fluid,
             ]}
           >
-            <HeroHeading>{heroHeading}</HeroHeading>
+            <HeroHeading ref={heroTextRef} style={getStyle(heroTextEntry)}>
+              {heroHeading}
+            </HeroHeading>
           </HeroBackground>
         </HeroSection>
         <Section>
@@ -45,7 +55,6 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
             <PrimaryTextTwoColumns
               heading={primaryText[0].heading}
               paragraph={primaryText[0].paragraph.paragraph}
-              flex="2 1 400px"
             />
             <SideBar data={sidebar} />
           </SectionWithSidebar>
@@ -70,7 +79,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
             src={ItalyVideo}
             poster="https://i3.ytimg.com/vi/Ax_YH4ASu_I/maxresdefault.jpg"
           />
-          <ForthSectionCards data={cards[2]} />
+          <CardsWhiteBackground data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
           <BackgroundWithPrimaryText
@@ -91,12 +100,8 @@ const HeroBackground = styled(Background)`
 `;
 const HeroHeading = styled.h1`
   ${fontPresets.heroHeading};
+  ${transitions.long};
   margin: 0 var(--body-side-padding);
-`;
-
-const ForthSectionCards = styled(Cards)`
-  padding: 55px var(--body-side-padding); // set padding again because full width background color
-  background-color: ${colors.white};
 `;
 
 export default IndexPage;

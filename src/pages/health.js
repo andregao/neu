@@ -12,6 +12,7 @@ import HealthVideo from '../assets/health.mp4';
 import {
   Background,
   BodyContainer,
+  CardsWhiteBackground,
   FullWidthSection,
   HeroSection,
   Section,
@@ -59,7 +60,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
         </Section>
         <FullWidthSection>
           <Video src={HealthVideo} autoplay={true} />
-          <ForthSectionCards data={cards[2]} />
+          <CardsWhiteBackground data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
           <BackgroundWithPrimaryText
@@ -81,11 +82,6 @@ const HeroBackground = styled(Background)`
 const HeroHeading = styled.h1`
   ${fontPresets.heroHeading};
   margin: 0 var(--body-side-padding);
-`;
-
-const ForthSectionCards = styled(Cards)`
-  padding: 55px var(--body-side-padding); // set padding again because full width background color
-  background-color: ${colors.white};
 `;
 
 export default IndexPage;

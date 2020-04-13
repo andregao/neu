@@ -86,11 +86,14 @@ export const GlobalStyles = createGlobalStyle`
   // variables
   :root {
     --body-side-padding: 200px;
-    @media (${devices.m}) {
+    @media (${devices.l}) {
       --body-side-padding: 140px;
     }
+    @media (${devices.m}) {
+      --body-side-padding: 100px;
+    }
     @media (${devices.s}) {
-      --body-side-padding: 80px;
+      --body-side-padding: 60px;
     }
     @media (${devices.xs}) {
       --body-side-padding: 40px;
@@ -104,13 +107,13 @@ export const GlobalStyles = createGlobalStyle`
     
     --content-margin: 160px;
     @media (${devices.m}) {
-      --content-margin: 120px;
+      --content-margin: 100px;
     }
     @media (${devices.s}) {
-      --content-margin: 60px;
+      --content-margin: 50px;
     }
     @media (${devices.xs}) {
-      --content-margin: 30px;
+      --content-margin: 20px;
     }
     
     --cards-margin: 100px;

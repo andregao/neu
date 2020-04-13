@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
-import { colors } from './theme';
+import { colors, transitions } from './theme';
+import Cards from '../components/cards';
 
 export const BodyContainer = styled.main`
   padding: 0 var(--body-side-padding);
@@ -8,6 +9,7 @@ export const BodyContainer = styled.main`
 `;
 export const Section = styled.article`
   margin-top: 75px;
+  ${transitions.long};
 `;
 export const FullWidthSection = styled(Section)`
   --side-margin: calc(-1 * var(--body-side-padding));
@@ -35,4 +37,9 @@ export const SectionWithSidebar = styled.section`
   display: grid;
   grid-column-gap: var(--content-margin);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+`;
+export const CardsWhiteBackground = styled(Cards)`
+  padding: 55px var(--body-side-padding); // set padding because full width background color
+  background-color: ${colors.white};
+  margin-bottom: -75px; // offset common section margin top
 `;
