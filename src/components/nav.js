@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fontPresets } from '../../styles/theme';
+import { colors, fontPresets } from '../styles/theme';
 import { Link } from 'gatsby';
 
 const Nav = () => {

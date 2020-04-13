@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import NewLogo from '../../assets/logo.svg';
+import NewLogo from '../assets/logo.svg';
 
 const Logo = () => (
   <Link to={'/'}>

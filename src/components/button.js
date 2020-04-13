@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fontPresets } from '../../styles/theme';
+import { colors, fontPresets } from '../styles/theme';
 import { navigate } from 'gatsby';
 
 const Button = ({ text, variant, path, disabled, className }) => {

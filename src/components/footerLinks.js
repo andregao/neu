@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { colors, devices } from '../../styles/theme';
+import { colors, devices } from '../styles/theme';
 
 const FooterLinks = () => {
   return (

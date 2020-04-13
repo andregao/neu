@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layouts/layout';
+import Layout from '../components/layout';
 import SEO from '../components/seo';
 import {
   Background,
@@ -66,32 +66,11 @@ const FirstSectionPrimaryText = styled(PrimaryText)`
   background-color: ${colors.white};
 `;
 
-const SecondSection = styled(Section)`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-`;
-
 const LeftSide = styled.section`
-  //padding: 0 100px 50px 0;
-  //flex: 1 0 450px;
-  //max-width: 700px;
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: flex-start;
-  //align-items: stretch;
   grid-column: span 2;
   margin-bottom: 30px;
 `;
 const RightSide = styled.section`
-  //flex: 0 0 280px;
-  //margin-bottom: 50px;
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: flex-start;
-  //align-items: flex-start;
   grid-column: span 1;
 `;
 

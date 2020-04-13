@@ -4,8 +4,8 @@ import { Link } from 'gatsby';
 import Logo from './logo';
 import Nav, { activeStyle } from './nav';
 import Button from './button';
-import { colors, devices, fontPresets } from '../../styles/theme';
-import HamburgerIcon from '../icons/hamburger';
+import { colors, devices, fontPresets } from '../styles/theme';
+import HamburgerIcon from './icons/hamburger';
 
 const Header = () => (
   <>

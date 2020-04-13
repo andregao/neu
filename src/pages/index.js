@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layouts/layout';
+import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';

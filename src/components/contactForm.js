@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getStyle, sendToDatabase, useObserver, validateForm } from '../utils';
-import Button from './layouts/button';
+import Button from './button';
 import PrimaryText from './primaryText';
 
 import styled, { css } from 'styled-components';

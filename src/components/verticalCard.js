@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import SecondaryText from './secondaryText';
 import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
-import Button from './layouts/button';
+import Button from './button';
 import { getStyle, useObserver } from '../utils';
 import { transitions } from '../styles/theme';
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import TwitterIcon from '../icons/twitter';
-import FacebookIcon from '../icons/facebook';
+import TwitterIcon from './icons/twitter';
+import FacebookIcon from './icons/facebook';
 import styled from 'styled-components';
-import InstagramIcon from '../icons/instagram';
-import LinkedinIcon from '../icons/linkedin';
+import InstagramIcon from './icons/instagram';
+import LinkedinIcon from './icons/linkedin';
 
 const SocialLinks = () => {
   return (

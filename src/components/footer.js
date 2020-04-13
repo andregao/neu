@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, devices, fontPresets } from '../../styles/theme';
+import { colors, devices, fontPresets } from '../styles/theme';
 import FooterLinks from './footerLinks';
 import Button from './button';
 
