@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { sendToDatabase, validateForm } from '../utils';
+import React, { useEffect, useRef, useState } from 'react';
+import { getStyle, sendToDatabase, useObserver, validateForm } from '../utils';
 import Button from './layouts/button';
 import PrimaryText from './primaryText';
 
 import styled, { css } from 'styled-components';
-import { colors, fontPresets } from '../styles/theme';
+import { colors, devices, fontPresets, transitions } from '../styles/theme';
 import ContactFormErrors from './contactFormErrors';
 
 const ContactForm = () => {
@@ -51,8 +51,15 @@ const ContactForm = () => {
         setProfile({ ip, lang: navigator.language, agent: navigator.userAgent })
       );
   }, []);
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver(0.15);
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} ref={ref} style={getStyle(entry)}>
       <Input
         type="text"
         name="firstName"
@@ -147,10 +154,15 @@ const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px 40px;
+  @media (${devices.xs}) {
+    grid-gap: 10px 10px;
+  }
   position: relative;
+  ${transitions.long};
 `;
 
 const inputStyles = css`
+  padding: 0 14px;
   background: none;
   border: 1px solid ${({ error }) => (error ? colors.error : colors.hr)};
   &::placeholder {
@@ -160,22 +172,21 @@ const inputStyles = css`
 `;
 
 const Input = styled.input`
-  height: 48px;
-  padding: 0 14px;
   ${inputStyles};
+  height: 48px;
 `;
 
 const Textarea = styled.textarea`
+  ${inputStyles};
   grid-column: 1 / span 2;
   padding: 25px 14px;
   height: 120px;
   resize: none;
-  ${inputStyles};
 `;
 
 const Select = styled.select`
-  text-transform: uppercase;
   ${inputStyles};
+  text-transform: uppercase;
 `;
 
 const SubmitResult = styled.div`

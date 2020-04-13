@@ -9,6 +9,7 @@ import {
   FullWidthSection,
   HeroSection,
   Section,
+  SectionWithSidebar,
 } from '../styles/common';
 import styled from 'styled-components';
 import PrimaryText from '../components/primaryText';
@@ -39,7 +40,7 @@ const ContactPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
             paragraph={primaryText[0].paragraph.paragraph}
           />
         </FirstSection>
-        <SecondSection>
+        <SectionWithSidebar>
           <LeftSide>
             <SideBar data={{ heading: 'GET IN TOUCH' }} />
             <ContactForm />
@@ -47,7 +48,7 @@ const ContactPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
           <RightSide>
             <SideBar data={sidebars[0]} />
           </RightSide>
-        </SecondSection>
+        </SectionWithSidebar>
       </BodyContainer>
     </Layout>
   );
@@ -74,23 +75,24 @@ const SecondSection = styled(Section)`
 `;
 
 const LeftSide = styled.section`
-  //width: 55%;
-  padding: 0 100px 50px 0;
-  flex: 1 0 450px;
-  //min-width: 350px;
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  //padding: 0 100px 50px 0;
+  //flex: 1 0 450px;
+  //max-width: 700px;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: flex-start;
+  //align-items: stretch;
+  grid-column: span 2;
+  margin-bottom: 30px;
 `;
 const RightSide = styled.section`
-  flex: 0 0 280px;
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  //flex: 0 0 280px;
+  //margin-bottom: 50px;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: flex-start;
+  //align-items: flex-start;
+  grid-column: span 1;
 `;
 
 export default ContactPage;
