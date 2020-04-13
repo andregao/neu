@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import HorizontalCard from './horizontalCard';
 import VerticalCard from './verticalCard';
 import styled from 'styled-components';
-import { getStyle, useObserver } from '../utils';
 
 const Cards = ({ data: { data, images }, variant, className }) => {
   return (

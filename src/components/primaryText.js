@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { fontPresets, transitions } from '../styles/theme';
 import { getStyle, useObserver } from '../utils';

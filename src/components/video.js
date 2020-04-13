@@ -53,7 +53,7 @@ const Control = styled.button`
   outline: none;
   position: absolute;
   width: 50%;
-  height: 50%;
+  height: 70%;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);

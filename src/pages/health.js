@@ -7,7 +7,7 @@ import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { colors, fontPresets } from '../styles/theme';
+import { fontPresets } from '../styles/theme';
 import HealthVideo from '../assets/health.mp4';
 import {
   Background,

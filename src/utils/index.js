@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { logStyles } from '../styles/theme';
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -71,9 +72,11 @@ export const useObserver = (threshold = 0.05) => {
   const [target, setTarget] = useState(null);
   const handleIntersect = ([e]) => e.isIntersecting && setEntry(e);
   // "useRef" to keep mutable observer reference between renders
-  const observer = useRef(
-    new IntersectionObserver(handleIntersect, { threshold })
-  );
+  const observer = useRef(null);
+  // initialize observer in client browser instead of in "useRef" - SSR Node environment
+  useEffect(() => {
+    observer.current = new IntersectionObserver(handleIntersect, { threshold });
+  }, []);
   // subscribes when target element is set
   useEffect(() => {
     target instanceof Element && observer.current.observe(target);

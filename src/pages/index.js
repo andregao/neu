@@ -6,7 +6,7 @@ import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
 import styled from 'styled-components';
 import Cards from '../components/cards';
-import { colors, fontPresets, transitions } from '../styles/theme';
+import { fontPresets, transitions } from '../styles/theme';
 // import YoutubeVideo from '../components/youtubeVideo';
 import {
   Background,
