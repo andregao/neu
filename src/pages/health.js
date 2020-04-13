@@ -21,6 +21,7 @@ import {
 import { compareSections } from '../utils';
 import Video from '../components/video';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
+import poster from '../assets/health-poster.jpg';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
@@ -59,7 +60,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <Cards data={cards[0]} variant="horizontal" />
         </Section>
         <FullWidthSection>
-          <Video src={HealthVideo} autoplay={true} />
+          <Video src={HealthVideo} autoplay poster={poster} />
           <CardsWhiteBackground data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
