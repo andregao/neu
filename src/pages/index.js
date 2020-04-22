@@ -4,12 +4,9 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
-import styled from 'styled-components';
 import Cards from '../components/cards';
-import { fontPresets, transitions } from '../styles/theme';
 // import YoutubeVideo from '../components/youtubeVideo';
 import {
-  Background,
   BodyContainer,
   CardsWhiteBackground,
   FullWidthSection,
@@ -21,7 +18,6 @@ import {
 } from '../styles/common';
 import { compareSections, getStyle, useObserver } from '../utils';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
-import ItalyVideo from '../assets/italy.mp4';
 import Video from '../components/video';
 
 const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
@@ -78,7 +74,7 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
         <FullWidthSection>
           {/*<YoutubeVideo id="Ax_YH4ASu_I" />*/}
           <Video
-            src={ItalyVideo}
+            src="https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/italy.mp4?alt=media&token=0872257d-cb56-422d-a918-ed343ade43c2"
             poster="https://i3.ytimg.com/vi/Ax_YH4ASu_I/maxresdefault.jpg"
           />
           <CardsWhiteBackground data={cards[2]} />

@@ -8,7 +8,6 @@ import {
   BodyContainer,
   FullWidthSection,
   HeroSection,
-  Section,
   SectionWithSidebar,
 } from '../styles/common';
 import styled from 'styled-components';

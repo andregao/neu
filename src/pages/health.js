@@ -5,12 +5,8 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
 import SideBar from '../components/sidebar';
-import styled from 'styled-components';
 import Cards from '../components/cards';
-import { fontPresets } from '../styles/theme';
-import HealthVideo from '../assets/health.mp4';
 import {
-  Background,
   BodyContainer,
   CardsWhiteBackground,
   FullWidthSection,
@@ -71,7 +67,11 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
           <Cards data={cards[0]} variant="horizontal" />
         </Section>
         <FullWidthSection>
-          <Video src={HealthVideo} autoplay poster={poster} />
+          <Video
+            src="https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/health.mp4?alt=media&token=fa609f18-88ad-4071-9412-f575b49a61ba"
+            autoplay
+            poster={poster}
+          />
           <CardsWhiteBackground data={cards[2]} />
         </FullWidthSection>
         <FullWidthSection>
