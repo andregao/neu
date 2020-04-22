@@ -13,6 +13,8 @@ import {
   BodyContainer,
   CardsWhiteBackground,
   FullWidthSection,
+  HeroBackground,
+  HeroHeading,
   HeroSection,
   Section,
   SectionWithSidebar,
@@ -93,16 +95,6 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
     </Layout>
   );
 };
-
-const HeroBackground = styled(Background)`
-  justify-content: stretch;
-  align-items: center;
-`;
-const HeroHeading = styled.h1`
-  ${fontPresets.heroHeading};
-  ${transitions.long};
-  margin: 0 var(--body-side-padding);
-`;
 
 export default IndexPage;
 

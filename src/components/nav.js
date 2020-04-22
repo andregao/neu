@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 const Nav = () => {
   return (
     <Container>
-      <Link to="/" activeStyle={activeStyle}>
+      <Link to="/living/" activeStyle={activeStyle}>
         living
       </Link>
       <Link to="/health/" activeStyle={activeStyle}>

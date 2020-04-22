@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -14,11 +14,13 @@ import {
   BodyContainer,
   CardsWhiteBackground,
   FullWidthSection,
+  HeroBackground,
+  HeroHeading,
   HeroSection,
   Section,
   SectionWithSidebar,
 } from '../styles/common';
-import { compareSections } from '../utils';
+import { compareSections, getStyle, useObserver } from '../utils';
 import Video from '../components/video';
 import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
 import poster from '../assets/health-poster.jpg';
@@ -27,6 +29,13 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
   const { heading: heroHeading, background: heroBackground } = hero;
   const primaryText = [...allPrimaryText.nodes].sort(compareSections);
   const cards = [...allCards.nodes].sort(compareSections);
+
+  // scroll reveal
+  const heroTextRef = useRef(null);
+  const [heroTextEntry, heroTextSetTarget] = useObserver();
+  useEffect(() => {
+    heroTextSetTarget(heroTextRef.current);
+  }, []);
 
   return (
     <Layout>
@@ -39,7 +48,9 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
               heroBackground.fluid,
             ]}
           >
-            <HeroHeading>{heroHeading}</HeroHeading>
+            <HeroHeading ref={heroTextRef} style={getStyle(heroTextEntry)}>
+              {heroHeading}
+            </HeroHeading>
           </HeroBackground>
         </HeroSection>
         <Section>
@@ -75,15 +86,6 @@ const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
     </Layout>
   );
 };
-
-const HeroBackground = styled(Background)`
-  justify-content: stretch;
-  align-items: center;
-`;
-const HeroHeading = styled.h1`
-  ${fontPresets.heroHeading};
-  margin: 0 var(--body-side-padding);
-`;
 
 export default IndexPage;
 

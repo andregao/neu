@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
-import { colors, transitions } from './theme';
+import { colors, fontPresets, transitions } from './theme';
 import Cards from '../components/cards';
 
 export const BodyContainer = styled.main`
@@ -42,4 +42,14 @@ export const CardsWhiteBackground = styled(Cards)`
   padding: 55px var(--body-side-padding); // set padding because full width background color
   background-color: ${colors.white};
   margin-bottom: -75px; // offset common section margin top
+`;
+
+export const HeroBackground = styled(Background)`
+  justify-content: stretch;
+  align-items: center;
+`;
+export const HeroHeading = styled.h1`
+  ${fontPresets.heroHeading};
+  ${transitions.long};
+  margin: 0 var(--body-side-padding);
 `;
