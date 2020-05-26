@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
 import { createPortal } from 'react-dom';
 import CloseIcon from './icons/close';
 
 const Modal = ({ isOpen, onClose, children }) => {
+  const portalRoot =
+    typeof document !== `undefined` ? document.getElementById('portal') : null;
+  const el =
+    typeof document !== `undefined` ? document.createElement('div') : null;
+  useEffect(() => {
+    portalRoot.appendChild(el);
+  }, []);
   const content = isOpen && (
     <Overlay>
       <Container>
@@ -15,7 +22,7 @@ const Modal = ({ isOpen, onClose, children }) => {
       </Container>
     </Overlay>
   );
-  return createPortal(content, document.body);
+  return el ? createPortal(content, portalRoot) : null;
 };
 
 const Overlay = styled.div`

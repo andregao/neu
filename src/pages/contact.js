@@ -104,13 +104,13 @@ export const pageQuery = graphql`
       nodes {
         section
         heading
-        paragraph {
-          paragraph
-        }
+        #        paragraph {
+        #          paragraph
+        #        }
         data {
           title
           subtitle
-          imageTitle
+          #          imageTitle
         }
       }
     }

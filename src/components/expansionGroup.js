@@ -13,7 +13,7 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
   const { floorPlan } = activeItem;
   const [isDetailsOpen, setDetailsOpen] = useState(false);
 
-  console.log('active', activeItem);
+  // console.log('active', activeItem);
   return (
     <Container>
       {!noTabCards && (
