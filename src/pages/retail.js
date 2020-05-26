@@ -18,7 +18,7 @@ import ExpansionGroup from '../components/expansionGroup';
 import InfoSquare from '../components/infoSquare';
 import NavBox from '../components/navBox';
 
-const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
+const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
   const { background: heroBackground } = hero;
   const primaryText = [...allPrimaryText.nodes].sort(compareSections);
   const cards = [...allCards.nodes].sort(compareSections);
@@ -36,8 +36,15 @@ const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
           />
         </HeroSection>
         <Section>
-          <PrimaryText heading={primaryText[0].heading} />
-          <ExpansionGroup data={cards[0].data} images={cards[0].images} />
+          <PrimaryText
+            heading={primaryText[0].heading}
+            paragraph={primaryText[0].paragraph.paragraph}
+          />
+          <ExpansionGroup
+            data={cards[0].data}
+            images={cards[0].images}
+            noTabCards
+          />
         </Section>
         <SectionTwoOneSplit>
           <PrimaryTextTwoThirds
@@ -51,8 +58,8 @@ const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
         </FullWidthSection>
         <Section>
           <NavBox
-            left={{ path: '/health/', text: 'Health Care' }}
-            right={{ path: '/retail/', text: 'Retail' }}
+            left={{ path: '/living/', text: 'Living' }}
+            right={{ path: '/health/', text: 'Health Care' }}
             mid={{ path: '/environments/', text: 'NEU Environments' }}
           />
         </Section>
@@ -93,10 +100,10 @@ const CaseStudyBackground = styled(BackgroundImage)`
   max-height: 90vmin;
 `;
 
-export default LivingPage;
+export default RetailPage;
 
 export const pageQuery = graphql`
-  query($pageName: String = "living-v2") {
+  query($pageName: String = "retail-v2") {
     hero: contentfulHero(page: { eq: $pageName }) {
       background {
         fluid(maxWidth: 2880, quality: 75) {

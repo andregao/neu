@@ -10,10 +10,16 @@ const PrimaryText = ({ heading, paragraph, className }) => {
   useEffect(() => {
     setTarget(ref.current);
   }, []);
-
   return (
     <Container className={className} ref={ref} style={getStyle(entry)}>
-      <Heading>{heading}</Heading>
+      <Heading>
+        {heading.split('\\n').map((segment, index) => (
+          <span key={index}>
+            {segment}
+            <br />
+          </span>
+        ))}
+      </Heading>
       {paragraph && <Paragraph>{paragraph}</Paragraph>}
     </Container>
   );

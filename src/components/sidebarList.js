@@ -12,11 +12,11 @@ const SidebarList = ({ list, images }) => {
           <Item>
             {images && (
               <Image
-                fluid={images.find(image => image.title === imageTitle).fluid}
+                fluid={images.find((image) => image.title === imageTitle).fluid}
               />
             )}
             <Titles>
-              <Title>{title}</Title>
+              <Title>{title.toUpperCase()}</Title>
               <Subtitle>{subtitle}</Subtitle>
             </Titles>
           </Item>

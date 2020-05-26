@@ -7,7 +7,7 @@ const ContactFormErrors = ({ errors }) => {
     <Container>
       <pre>
         {Object.keys(errors)
-          .map(name => errors[name])
+          .map((name) => errors[name])
           .join('\n')
           .toLowerCase()}
       </pre>

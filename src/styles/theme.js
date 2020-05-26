@@ -133,12 +133,15 @@ export const FontFaces = css`
 
 export const colors = {
   warmGreen: '#c2cba5',
+  teal: '#50E3C2',
   gray: '#616161',
   white: '#FFF',
   offWhite: '#F1F1F1',
   light: '#DDD',
   hr: '#D8D8D8',
   dark: '#212121',
+  arrow: '#010101',
+  info: '#757575',
   error: 'orangered',
 };
 export const devices = {
@@ -172,6 +175,12 @@ export const fontPresets = {
   primaryParagraph: getFontPreset('light', 20),
   secondaryHeading: getFontPreset('bold', 16),
   secondaryParagraph: getFontPreset('light', 16),
+  secondaryHeadingWhite: getFontPreset('bold', 16),
+  secondaryParagraphWhite: getFontPreset('light', 16),
+  infoSquareSubtitle: getFontPreset('regular', 16),
+  infoSquareTitle: getFontPreset('bold', 24),
+  infoSquareInfo: getFontPreset('medium', 16),
+  infoSquareNote: getFontPreset('medium', 14),
   sidebarTitle: getFontPreset('medium', 14),
   sidebarSubtitle: getFontPreset('regular', 14),
   footer: getFontPreset('medium', 12, 'gray'),

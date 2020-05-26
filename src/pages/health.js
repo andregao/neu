@@ -1,102 +1,103 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import PrimaryText, { PrimaryTextTwoColumns } from '../components/primaryText';
-import SideBar from '../components/sidebar';
-import Cards from '../components/cards';
+import PrimaryText from '../components/primaryText';
+import styled from 'styled-components';
 import {
+  Background,
   BodyContainer,
-  CardsWhiteBackground,
   FullWidthSection,
-  HeroBackground,
-  HeroHeading,
   HeroSection,
   Section,
-  SectionWithSidebar,
 } from '../styles/common';
-import { compareSections, getStyle, useObserver } from '../utils';
-import Video from '../components/video';
-import BackgroundWithPrimaryText from '../components/backgroundWithPrimaryText';
-import poster from '../assets/health-poster.jpg';
+import { compareSections } from '../utils';
+import BackgroundImage from 'gatsby-background-image';
+import ExpansionGroup from '../components/expansionGroup';
+import InfoSquare from '../components/infoSquare';
+import NavBox from '../components/navBox';
 
-const IndexPage = ({ data: { hero, allPrimaryText, sidebar, allCards } }) => {
-  const { heading: heroHeading, background: heroBackground } = hero;
+const HealthPage = ({ data: { hero, allPrimaryText, allCards } }) => {
+  const { background: heroBackground } = hero;
   const primaryText = [...allPrimaryText.nodes].sort(compareSections);
   const cards = [...allCards.nodes].sort(compareSections);
 
-  // scroll reveal
-  const heroTextRef = useRef(null);
-  const [heroTextEntry, heroTextSetTarget] = useObserver();
-  useEffect(() => {
-    heroTextSetTarget(heroTextRef.current);
-  }, []);
-
   return (
     <Layout>
-      <SEO title="health care" />
+      <SEO title="living" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
             fluid={[
-              'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5))',
+              'linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0,0,0,0.5) 14%,transparent 30%)',
               heroBackground.fluid,
             ]}
-          >
-            <HeroHeading ref={heroTextRef} style={getStyle(heroTextEntry)}>
-              {heroHeading}
-            </HeroHeading>
-          </HeroBackground>
+          />
         </HeroSection>
         <Section>
-          <SectionWithSidebar>
-            <PrimaryTextTwoColumns
-              heading={primaryText[0].heading}
-              paragraph={primaryText[0].paragraph.paragraph}
-              flex="2 1 400px"
-            />
-            <SideBar data={sidebar} />
-          </SectionWithSidebar>
+          <PrimaryText heading={primaryText[0].heading} />
+          <ExpansionGroup data={cards[0].data} images={cards[0].images} />
         </Section>
-        <Section>
-          <PrimaryText
+        <SectionTwoOneSplit>
+          <PrimaryTextTwoThirds
             heading={primaryText[1].heading}
             paragraph={primaryText[1].paragraph.paragraph}
           />
-          <Cards data={cards[0]} variant="horizontal" />
+          <StyledInfoSquare data={primaryText[1].sidebar} />
+        </SectionTwoOneSplit>
+        <FullWidthSection>
+          <CaseStudyBackground fluid={primaryText[1].images[0].fluid} />
+        </FullWidthSection>
+        <Section>
+          <NavBox
+            left={{ path: '/retail/', text: 'Retail' }}
+            right={{ path: '/living/', text: 'Living' }}
+            mid={{ path: '/environments/', text: 'NEU Environments' }}
+          />
         </Section>
-        <FullWidthSection>
-          <Video
-            src="https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/health.mp4?alt=media&token=fa609f18-88ad-4071-9412-f575b49a61ba"
-            autoplay
-            poster={poster}
-          />
-          <CardsWhiteBackground data={cards[2]} />
-        </FullWidthSection>
-        <FullWidthSection>
-          <BackgroundWithPrimaryText
-            fluid={primaryText[5].images[0].fluid}
-            heading={primaryText[5].heading}
-            paragraph={primaryText[5].paragraph.paragraph}
-            variant="right"
-          />
-        </FullWidthSection>
       </BodyContainer>
     </Layout>
   );
 };
 
-export default IndexPage;
+const HeroBackground = styled(Background)`
+  justify-content: stretch;
+  align-items: center;
+  // reset common Background styles
+  min-height: 400px;
+  max-height: 400px;
+`;
+
+const SectionTwoOneSplit = styled(Section)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 75px;
+`;
+
+const PrimaryTextTwoThirds = styled(PrimaryText)`
+  flex: 2 0 240px;
+  margin-right: var(--cards-margin);
+`;
+
+const StyledInfoSquare = styled(InfoSquare)`
+  flex: 1 0 240px;
+  max-width: 400px;
+`;
+
+const CaseStudyBackground = styled(BackgroundImage)`
+  width: 100vw;
+  height: 640px;
+  max-height: 90vmin;
+`;
+
+export default HealthPage;
 
 export const pageQuery = graphql`
-  query($pageName: String = "health") {
+  query($pageName: String = "health-v2") {
     hero: contentfulHero(page: { eq: $pageName }) {
-      page
-      heading
-      paragraph {
-        paragraph
-      }
       background {
         fluid(maxWidth: 2880, quality: 75) {
           ...GatsbyContentfulFluid_tracedSVG
@@ -117,19 +118,11 @@ export const pageQuery = graphql`
             ...GatsbyContentfulFluid_withWebp
           }
         }
-      }
-    }
-    sidebar: contentfulSidebar(page: { eq: $pageName }) {
-      heading
-      data {
-        title
-        subtitle
-        imageTitle
-      }
-      images {
-        title
-        fluid(maxWidth: 200, quality: 75) {
-          ...GatsbyContentfulFluid_withWebp
+        sidebar {
+          title
+          subtitle
+          info
+          note
         }
       }
     }
@@ -139,10 +132,18 @@ export const pageQuery = graphql`
         data {
           heading
           paragraph
-          imageTitle
-          button {
-            text
-            path
+          image
+          cards {
+            heading
+            paragraph
+          }
+          floorPlan {
+            city
+            state
+            property
+            mapImage
+            detailImage
+            downloadUrl
           }
         }
         images {
@@ -155,3 +156,194 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+const dummyData = [
+  {
+    heading: 'HOTEL',
+    paragraph:
+      'We’re always launching something new. Check back soon to see which great brands used this space.',
+    image: 'chicago-birds-eye',
+    cards: [
+      {
+        heading: 'FEATURE ONE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE TWO',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE THREE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FOUR',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FIVE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE SIX',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+    ],
+    floorPlan: {
+      city: 'Santa Monica',
+      state: 'California',
+      property: 'Santa Monica Place',
+      mapImage: 'smp-map',
+      detailImage: 'smp-detail',
+      downloadUrl:
+        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
+    },
+  },
+  {
+    heading: 'APARTMENT',
+    paragraph:
+      'We’re always launching something new. Check back soon to see which great brands used this space.',
+    image: 'chicago-birds-eye',
+    cards: [
+      {
+        heading: 'FEATURE ONE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE TWO',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE THREE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FOUR',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FIVE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE SIX',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+    ],
+    floorPlan: {
+      city: 'Santa Monica',
+      state: 'California',
+      property: 'Santa Monica Place',
+      mapImage: 'smp-map',
+      detailImage: 'smp-detail',
+      downloadUrl:
+        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
+    },
+  },
+  {
+    heading: 'SINGLE FAMILY',
+    paragraph:
+      'We’re always launching something new. Check back soon to see which great brands used this space.',
+    image: 'chicago-birds-eye',
+    cards: [
+      {
+        heading: 'FEATURE ONE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE TWO',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE THREE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FOUR',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FIVE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE SIX',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+    ],
+    floorPlan: {
+      city: 'Santa Monica',
+      state: 'California',
+      property: 'Santa Monica Place',
+      mapImage: 'smp-map',
+      detailImage: 'smp-detail',
+      downloadUrl:
+        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
+    },
+  },
+  {
+    heading: 'SINGLE FAMILY 2',
+    paragraph:
+      'We’re always launching something new. Check back soon to see which great brands used this space.',
+    image: 'chicago-birds-eye',
+    cards: [
+      {
+        heading: 'FEATURE ONE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE TWO',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE THREE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FOUR',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE FIVE',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+      {
+        heading: 'FEATURE SIX',
+        paragraph:
+          'We’re always launching something new. Check back soon to see which great brands used this space.',
+      },
+    ],
+    floorPlan: {
+      city: 'Santa Monica',
+      state: 'California',
+      property: 'Santa Monica Place',
+      mapImage: 'smp-map',
+      detailImage: 'smp-detail',
+      downloadUrl:
+        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
+    },
+  },
+];

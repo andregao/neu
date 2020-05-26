@@ -29,8 +29,9 @@ export const Background = styled(BackgroundImage)`
   display: flex;
 `;
 export const Hr = styled.hr`
-  border-top: ${({ variant }) => (variant === 'thin' ? '1px' : '2px')} solid
-    ${colors.hr};
+  height: 2px;
+  opacity: ${({ variant }) => (variant === 'thin' ? 0.6 : 1)};
+  background-color: ${colors.hr};
   width: 100%;
 `;
 export const SectionWithSidebar = styled.section`
@@ -48,8 +49,17 @@ export const HeroBackground = styled(Background)`
   justify-content: stretch;
   align-items: center;
 `;
-export const HeroHeading = styled.h1`
-  ${fontPresets.heroHeading};
+export const HeroContent = styled.section`
+  & > * {
+    margin-bottom: 20px;
+  }
+  h1 {
+    ${fontPresets.heroHeading};
+  }
+  p {
+    ${fontPresets.heroParagraph};
+  }
+
   ${transitions.long};
-  margin: 0 var(--body-side-padding);
+  margin: 40px var(--body-side-padding) 0;
 `;

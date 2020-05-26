@@ -13,7 +13,6 @@ export const GlobalStyles = createGlobalStyle`
   *:before,
   *:after {
     box-sizing: inherit;
-    font-family: ${fontFamily};
   }
 
   body {
@@ -23,6 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    font-family: ${fontFamily};
     background-color: ${colors.offWhite};
     color: ${colors.dark};
   }

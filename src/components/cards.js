@@ -11,7 +11,7 @@ const Cards = ({ data: { data, images }, variant, className }) => {
           <HorizontalCard
             data={card}
             image={
-              images && images.find(image => image.title === card.imageTitle)
+              images && images.find((image) => image.title === card.imageTitle)
             }
             reverse={index % 2 !== 0}
             key={card.heading}
@@ -20,7 +20,7 @@ const Cards = ({ data: { data, images }, variant, className }) => {
           <VerticalCard
             data={card}
             image={
-              images && images.find(image => image.title === card.imageTitle)
+              images && images.find((image) => image.title === card.imageTitle)
             }
             key={card.heading}
           />

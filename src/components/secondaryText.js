@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
 
-const SecondaryText = ({ heading, paragraph, className }) => {
+const SecondaryText = ({ heading, paragraph, className, theme, hrVariant }) => {
   return (
     <Container className={className}>
       {heading && (
         <>
-          <Heading>{heading}</Heading>
-          <Hr />
+          <Heading theme={theme}>{heading}</Heading>
+          <Hr variant={hrVariant} />
         </>
       )}
-      <Paragraph>{paragraph}</Paragraph>
+      <Paragraph theme={theme}>{paragraph}</Paragraph>
     </Container>
   );
 };
@@ -23,11 +23,17 @@ const Container = styled.section`
   justify-content: flex-start;
 `;
 const Heading = styled.h2`
-  ${fontPresets.secondaryHeading};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? fontPresets.secondaryHeadingWhite
+      : fontPresets.secondaryHeading};
   margin-bottom: 20px;
 `;
 const Paragraph = styled.p`
-  ${fontPresets.secondaryParagraph};
+  ${({ theme }) =>
+    theme === 'dark'
+      ? fontPresets.sesecondaryHeadingWhite
+      : fontPresets.secondaryParagraph};
   margin-top: 20px;
   line-height: 24px;
 `;

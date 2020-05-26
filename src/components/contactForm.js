@@ -17,12 +17,12 @@ const ContactForm = () => {
     setFormData({ ...formData, [name]: value });
   };
   const handleBlur = ({ target: { name, value } }, type) => {
-    setErrors(prevErrors => validateForm(name, value, type, prevErrors));
+    setErrors((prevErrors) => validateForm(name, value, type, prevErrors));
   };
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     setSubmitStatus('pending');
     sendToDatabase(formData, profile)
-      .then(status => {
+      .then((status) => {
         console.log('200?', status);
         if (status === 200) {
           setSubmitStatus('success');
@@ -30,7 +30,7 @@ const ContactForm = () => {
           setSubmitStatus('fail');
         }
       })
-      .catch(e => {
+      .catch((e) => {
         setSubmitStatus('fail');
         console.error('form submit network failure:', e);
       });
@@ -46,8 +46,8 @@ const ContactForm = () => {
   // get user profile
   useEffect(() => {
     fetch('https://api.ipify.org')
-      .then(response => response.text())
-      .then(ip =>
+      .then((response) => response.text())
+      .then((ip) =>
         setProfile({ ip, lang: navigator.language, agent: navigator.userAgent })
       );
   }, []);
@@ -80,7 +80,7 @@ const ContactForm = () => {
         required
         placeholder="Business Email*"
         onChange={handleChange}
-        onBlur={e => handleBlur(e, 'email')}
+        onBlur={(e) => handleBlur(e, 'email')}
         value={formData.email || ''}
         error={errors.email}
       />
@@ -97,7 +97,7 @@ const ContactForm = () => {
         required
         placeholder="Company Name*"
         onChange={handleChange}
-        onBlur={e => handleBlur(e, 'required')}
+        onBlur={(e) => handleBlur(e, 'required')}
         value={formData.company || ''}
         error={errors.company}
       />

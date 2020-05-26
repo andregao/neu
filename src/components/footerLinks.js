@@ -2,18 +2,24 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { colors, devices } from '../styles/theme';
+import { activeStyle } from './nav';
 
 const FooterLinks = () => {
   return (
     <Container>
-      <p>NEU2020</p>
-      <Link to="/">privacy</Link>
-      <Link to="/">terms</Link>
+      <Link to="/living/" activeStyle={activeStyle}>
+        living
+      </Link>
+      <Link to="/retail/" activeStyle={activeStyle}>
+        retail
+      </Link>
+      <Link to="/health/" activeStyle={activeStyle}>
+        health care
+      </Link>
     </Container>
   );
 };
 const Container = styled.div`
-  width: 220px;
   @media (${devices.xs}) {
     margin-bottom: 20px;
   }
@@ -24,7 +30,10 @@ const Container = styled.div`
     &:not(:last-child) {
       margin-right: 15px;
     }
-    &:not(:first-child):hover {
+    // &:not(:first-child):hover {
+    //   color: ${colors.light};
+    // }
+    &:hover {
       color: ${colors.light};
     }
   }

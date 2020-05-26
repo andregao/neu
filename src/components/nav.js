@@ -9,6 +9,9 @@ const Nav = () => {
       <Link to="/living/" activeStyle={activeStyle}>
         living
       </Link>
+      <Link to="/retail/" activeStyle={activeStyle}>
+        retail
+      </Link>
       <Link to="/health/" activeStyle={activeStyle}>
         health care
       </Link>
