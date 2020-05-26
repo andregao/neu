@@ -25,7 +25,7 @@ const HealthPage = ({ data: { hero, allPrimaryText, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="living" />
+      <SEO title="health care" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground

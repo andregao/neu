@@ -223,6 +223,7 @@ const DownloadLink = styled(Subtitle)`
 const ModalImage = styled(GatsbyImage)`
   height: 100%;
   width: 100%;
+  max-width: 1024px;
 `;
 
 export default ExpansionGroup;

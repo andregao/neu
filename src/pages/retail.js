@@ -25,7 +25,7 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="living" />
+      <SEO title="retail" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
