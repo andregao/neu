@@ -38,18 +38,18 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
         <Section>
           <PrimaryText
             heading={primaryText[0].heading}
-            paragraph={primaryText[0].paragraph.paragraph}
+            paragraph={primaryText[0].paragraph}
           />
           <ExpansionGroup
             data={cards[0].data}
             images={cards[0].images}
-            noTabCards
+            // noTabCards
           />
         </Section>
         <SectionTwoOneSplit>
           <PrimaryTextTwoThirds
             heading={primaryText[1].heading}
-            paragraph={primaryText[1].paragraph.paragraph}
+            paragraph={primaryText[1].paragraph}
           />
           <StyledInfoSquare data={primaryText[1].sidebar} />
         </SectionTwoOneSplit>

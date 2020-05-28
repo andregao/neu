@@ -36,7 +36,7 @@ const ContactPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
         <FirstSection>
           <FirstSectionPrimaryText
             heading={primaryText[0].heading}
-            paragraph={primaryText[0].paragraph.paragraph}
+            paragraph={primaryText[0].paragraph}
           />
         </FirstSection>
         <SectionWithSidebar>

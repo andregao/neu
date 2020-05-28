@@ -132,7 +132,10 @@ const ContactForm = () => {
         <SubmitResult>
           <PrimaryText
             heading="Thank you"
-            paragraph="We have received your message and will get back to you soon"
+            paragraph={{
+              paragraph:
+                'We have received your message and will get back to you soon',
+            }}
           />
         </SubmitResult>
       )}
@@ -140,7 +143,10 @@ const ContactForm = () => {
         <SubmitResult>
           <PrimaryText
             heading="uh-oh"
-            paragraph="Something went wrong. Please try again later or email us directly"
+            paragraph={{
+              paragraph:
+                'Something went wrong. Please try again later or email us directly',
+            }}
           />
         </SubmitResult>
       )}

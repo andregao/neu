@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { colors, fontPresets, transitions } from '../styles/theme';
 import SecondaryText from './secondaryText';
@@ -7,17 +7,25 @@ import GatsbyImage from 'gatsby-image';
 import Button from './button';
 import BackgroundImage from 'gatsby-background-image';
 import Modal from './modal';
+import { getStyle, useObserver } from '../utils';
 
 const ExpansionGroup = ({ data, images, noTabCards }) => {
   const [activeItem, setActiveItem] = useState(data[0]);
   const { floorPlan } = activeItem;
   const [isDetailsOpen, setDetailsOpen] = useState(false);
 
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver();
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
+
   // console.log('active', activeItem);
   return (
     <Container>
       {!noTabCards && (
-        <TabsContainer>
+        <TabsContainer ref={ref} style={getStyle(entry)}>
           {data.map((item) => (
             <TabCard
               key={item.heading}
@@ -112,7 +120,8 @@ const TabsContainer = styled.section`
   padding-top: 20px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  ${transitions.long};
 `;
 
 const TabCard = styled.article`
@@ -123,8 +132,14 @@ const TabCard = styled.article`
   :not(:last-child) {
     margin-right: var(--cards-margin);
   }
-  ${({ selected }) => selected && `border-bottom: solid 16px ${colors.dark}`};
-  cursor: pointer;
+  ${({ selected }) => selected && `border-bottom: solid 16px ${colors.dark};`};
+  :hover {
+    border-bottom: solid 16px ${colors.darkTransparent};
+    ${({ selected }) =>
+      selected && `border-bottom: solid 16px ${colors.dark};`};
+    ${({ selected }) => !selected && `cursor: pointer;`};
+  }
+  ${transitions.medium};
 `;
 
 const StyledSecondaryText = styled(SecondaryText)`

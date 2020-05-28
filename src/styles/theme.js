@@ -22,6 +22,8 @@ import AzoSansThin from '../assets/fonts/AzoSansThin.woff';
 import AzoSansThin2 from '../assets/fonts/AzoSansThin.woff2';
 import AzoSansThinItalic from '../assets/fonts/AzoSansThinItalic.woff';
 import AzoSansThinItalic2 from '../assets/fonts/AzoSansThinItalic.woff2';
+import DeadStock from '../assets/fonts/DeadStock.woff';
+import DeadStock2 from '../assets/fonts/DeadStock.woff2';
 
 import { css } from 'styled-components';
 
@@ -33,6 +35,7 @@ const fontWeights = {
   medium: 500,
   bold: 700,
   black: 900,
+  normal: 'normal',
 };
 export const FontFaces = css`
   @font-face {
@@ -129,6 +132,12 @@ export const FontFaces = css`
     src: url(${AzoSansBlackItalic2}) format('woff2'),
       url(${AzoSansBlackItalic}) format('woff');
   }
+  @font-face {
+    font-family: 'DeadStock';
+    font-style: normal;
+    font-weight: normal;
+    src: url(${DeadStock2}) format('woff2'), url(${DeadStock}) format('woff');
+  }
 `;
 
 export const colors = {
@@ -140,6 +149,7 @@ export const colors = {
   light: '#DDD',
   hr: '#D8D8D8',
   dark: '#212121',
+  darkTransparent: 'rgba(33,33,33,0.35)',
   arrow: '#010101',
   info: '#757575',
   error: 'orangered',
@@ -152,7 +162,8 @@ export const devices = {
   xl: 'min-width: 1920px',
 };
 
-const getFontPreset = (weight, size, color = 'black') => css`
+const getFontPreset = (weight, size, color = 'black', font = 'azoSans') => css`
+  ${font === 'deadStock' && 'font-family: "DeadStock"'};
   font-weight: ${fontWeights[weight]};
   font-size: ${size}px;
   color: ${color ? colors[color] : colors.dark};
@@ -173,10 +184,11 @@ export const fontPresets = {
   button: getFontPreset('medium', 14),
   primaryHeading: getFontPreset('bold', 45),
   primaryParagraph: getFontPreset('light', 20),
+  logoTypeHead: getFontPreset('light', 45),
+  logoTypeTail: getFontPreset('normal', 40, 'black', 'deadStock'),
   secondaryHeading: getFontPreset('bold', 16),
+  secondaryHeadingWhite: getFontPreset('bold', 16, 'white'),
   secondaryParagraph: getFontPreset('light', 16),
-  secondaryHeadingWhite: getFontPreset('bold', 16),
-  secondaryParagraphWhite: getFontPreset('light', 16),
   infoSquareSubtitle: getFontPreset('regular', 16),
   infoSquareTitle: getFontPreset('bold', 24),
   infoSquareInfo: getFontPreset('medium', 16),
@@ -194,6 +206,7 @@ export const fontPresets = {
 };
 
 export const transitions = {
+  medium: 'transition: all 0.3s',
   long: 'transition: all 0.8s',
 };
 

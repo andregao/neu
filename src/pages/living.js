@@ -42,7 +42,7 @@ const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
         <SectionTwoOneSplit>
           <PrimaryTextTwoThirds
             heading={primaryText[1].heading}
-            paragraph={primaryText[1].paragraph.paragraph}
+            paragraph={primaryText[1].paragraph}
           />
           <StyledInfoSquare data={primaryText[1].sidebar} />
         </SectionTwoOneSplit>
