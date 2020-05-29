@@ -25,7 +25,7 @@ const HealthPage = ({ data: { hero, allPrimaryText, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="health care" />
+      <SEO title="Healthcare" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
@@ -132,15 +132,15 @@ export const pageQuery = graphql`
         data {
           heading
           paragraph
-          image
+          imageTitles
           cards {
             heading
             paragraph
           }
           floorPlan {
-            city
-            state
-            property
+            size
+            type
+            installTime
             mapImage
             detailImage
             downloadUrl

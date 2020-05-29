@@ -28,6 +28,13 @@ export const Background = styled(BackgroundImage)`
   width: 100vw;
   display: flex;
 `;
+export const DarkBackground = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: ${colors.dark};
+  z-index: -1;
+`;
 export const Hr = styled.hr`
   height: 2px;
   opacity: ${({ variant }) => (variant === 'thin' ? 0.6 : 1)};

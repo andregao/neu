@@ -23,13 +23,13 @@ const Container = styled.button`
       ? colors.white
       : variant === 'dark'
       ? colors.dark
-      : colors.gray};
+      : colors.light};
   --hover-color: ${({ variant }) =>
     variant === 'white'
       ? colors.light
       : variant === 'dark'
       ? colors.gray
-      : colors.light};
+      : colors.white};
   text-align: center;
   padding: 10px 14px;
   color: var(--standby-color);

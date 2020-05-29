@@ -13,7 +13,7 @@ const Nav = () => {
         retail
       </Link>
       <Link to="/health/" activeStyle={activeStyle}>
-        health care
+        healthcare
       </Link>
     </Container>
   );

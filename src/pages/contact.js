@@ -6,6 +6,7 @@ import SEO from '../components/seo';
 import {
   Background,
   BodyContainer,
+  DarkBackground,
   FullWidthSection,
   HeroSection,
   SectionWithSidebar,
@@ -55,6 +56,8 @@ const ContactPage = ({ data: { hero, allPrimaryText, allSidebars } }) => {
 
 const HeroBackground = styled(Background)`
   //background-position: 49% 18%; // model's face position
+  min-height: 400px;
+  max-height: 400px;
 `;
 const FirstSection = styled(FullWidthSection)`
   margin-top: 0; // remove margin to fill background color

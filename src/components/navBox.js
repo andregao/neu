@@ -20,12 +20,12 @@ const NavBox = ({ mid, left, right }) => {
             <ArrowIcon variant="right" fill={colors.arrow} />
           </IconContainer>
         </Right>
-        <Mid to={mid.path}>
-          <NavText>{mid.text}</NavText>
-          <IconContainer>
-            <ArrowIcon variant="down" fill={colors.arrow} />
-          </IconContainer>
-        </Mid>
+        {/*<Mid to={mid.path}>*/}
+        {/*  <NavText>{mid.text}</NavText>*/}
+        {/*  <IconContainer>*/}
+        {/*    <ArrowIcon variant="down" fill={colors.arrow} />*/}
+        {/*  </IconContainer>*/}
+        {/*</Mid>*/}
       </List>
     </Container>
   );
@@ -40,15 +40,21 @@ const Container = styled.nav`
 const List = styled.div`
   display: grid;
   grid-gap: calc(var(--cards-margin) / 2);
-  grid-template: none/ repeat(3, 1fr);
-  grid-template-areas: 'left mid right';
+  //grid-template: none/ repeat(3, 1fr);
+  //grid-template-areas: 'left mid right';
+  grid-template: none / repeat(2, 1fr);
+  grid-template-areas: 'left right';
   justify-items: center;
   @media (${devices.xs}) {
-    grid-template: repeat(3, 1fr) / none;
+    //grid-template: repeat(3, 1fr) / none;
+    //grid-template-areas:
+    //  'right'
+    //  'left'
+    //  'mid';
+    grid-template: repeat(2, 1fr) / none;
     grid-template-areas:
       'right'
-      'left'
-      'mid';
+      'left';
   }
   ${fontPresets.infoSquareTitle};
   @media (${devices.s}) {
@@ -95,6 +101,7 @@ const Mid = styled(Link)`
 const IconContainer = styled.div`
   width: 1.5em;
   height: 1.5em;
+  padding-bottom: 3px;
 `;
 const NavText = styled.span`
   text-align: center;

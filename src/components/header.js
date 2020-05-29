@@ -40,7 +40,7 @@ const Header = () => (
           </li>
           <li>
             <Link to="/health/" tabIndex="0" activeStyle={activeStyle}>
-              health care
+              healthcare
             </Link>
           </li>
           <li>

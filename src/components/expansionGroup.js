@@ -8,6 +8,7 @@ import Button from './button';
 import BackgroundImage from 'gatsby-background-image';
 import Modal from './modal';
 import { getStyle, useObserver } from '../utils';
+import Carousel from './carousel';
 
 const ExpansionGroup = ({ data, images, noTabCards }) => {
   const [activeItem, setActiveItem] = useState(data[0]);
@@ -21,7 +22,6 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
     setTarget(ref.current);
   }, []);
 
-  // console.log('active', activeItem);
   return (
     <Container>
       {!noTabCards && (
@@ -42,11 +42,12 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
         </TabsContainer>
       )}
       <ExpansionContainer>
-        <ExpansionBackground
-          fluid={[
-            images.find((image) => image.title === activeItem.image).fluid,
-          ]}
-        />
+        {/*<ExpansionBackground*/}
+        {/*  fluid={[*/}
+        {/*    images.find((image) => image.title === activeItem.image).fluid,*/}
+        {/*  ]}*/}
+        {/*/>*/}
+        <Carousel imageTitles={activeItem.imageTitles} images={images} />
         <ExpansionCards>
           {activeItem.cards.map(({ heading, paragraph }) => (
             <ExpansionCard key={heading}>
@@ -70,31 +71,31 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
             <Hr />
             <InformationContainer>
               <Item>
-                <Title>CITY</Title>
-                <Subtitle>{floorPlan.city}</Subtitle>
+                <Title>SIZE</Title>
+                <Subtitle>{floorPlan.size}</Subtitle>
               </Item>
               <Hr variant="thin" />
               <Item>
-                <Title>STATE</Title>
-                <Subtitle>{floorPlan.state}</Subtitle>
+                <Title>TYPE</Title>
+                <Subtitle>{floorPlan.type}</Subtitle>
               </Item>
               <Hr variant="thin" />
               <Item>
-                <Title>PROPERTY</Title>
-                <Subtitle>{floorPlan.property}</Subtitle>
+                <Title>INSTALL TIME</Title>
+                <Subtitle>{floorPlan.installTime}</Subtitle>
               </Item>
               <Hr variant="thin" />
               <Actions>
                 <Button
-                  text="VIEW PROPERTY DETAILS"
+                  text="VIEW DETAILS"
                   variant="white"
                   handleClick={() => setDetailsOpen(true)}
                 />
-                <DownloadLink>
-                  <a href={floorPlan.downloadUrl} target="_blank" download>
-                    Download Property Map
-                  </a>
-                </DownloadLink>
+                {/*<DownloadLink>*/}
+                {/*  <a href={floorPlan.downloadUrl} target="_blank" download>*/}
+                {/*    Download Property Map*/}
+                {/*  </a>*/}
+                {/*</DownloadLink>*/}
               </Actions>
             </InformationContainer>
           </SideBar>
@@ -121,6 +122,7 @@ const TabsContainer = styled.section`
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  align-items: stretch;
   ${transitions.long};
 `;
 
@@ -132,11 +134,14 @@ const TabCard = styled.article`
   :not(:last-child) {
     margin-right: var(--cards-margin);
   }
-  ${({ selected }) => selected && `border-bottom: solid 16px ${colors.dark};`};
+  border-bottom: solid 16px transparent;
+  ${({ selected }) => selected && `border-bottom-color: ${colors.dark};`};
   :hover {
     border-bottom: solid 16px ${colors.darkTransparent};
     ${({ selected }) =>
-      selected && `border-bottom: solid 16px ${colors.dark};`};
+      selected
+        ? `border-bottom-color: ${colors.dark}`
+        : `border-bottom-color: ${colors.darkTransparent}`};
     ${({ selected }) => !selected && `cursor: pointer;`};
   }
   ${transitions.medium};

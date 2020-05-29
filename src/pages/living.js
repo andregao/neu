@@ -25,7 +25,7 @@ const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="living" />
+      <SEO title="Living" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
@@ -51,7 +51,7 @@ const LivingPage = ({ data: { hero, allPrimaryText, allCards } }) => {
         </FullWidthSection>
         <Section>
           <NavBox
-            left={{ path: '/health/', text: 'Health Care' }}
+            left={{ path: '/health/', text: 'Healthcare' }}
             right={{ path: '/retail/', text: 'Retail' }}
             mid={{ path: '/environments/', text: 'NEU Environments' }}
           />
@@ -132,15 +132,15 @@ export const pageQuery = graphql`
         data {
           heading
           paragraph
-          image
+          imageTitles
           cards {
             heading
             paragraph
           }
           floorPlan {
-            city
-            state
-            property
+            size
+            type
+            installTime
             mapImage
             detailImage
             downloadUrl

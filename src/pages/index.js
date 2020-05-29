@@ -1,15 +1,18 @@
 import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import {
   BodyContainer,
+  DarkBackground,
   HeroBackground,
   HeroContent,
   HeroSection,
 } from '../styles/common';
 import { getStyle, useObserver } from '../utils';
 import Button from '../components/button';
+import { colors, fontFamily, fontPresets } from '../styles/theme';
 
 const IndexPage = ({ data: { hero } }) => {
   const {
@@ -28,6 +31,7 @@ const IndexPage = ({ data: { hero } }) => {
 
   return (
     <Layout>
+      <DarkBackground />
       <SEO title="open a store" />
       <BodyContainer>
         <HeroSection>
@@ -38,8 +42,11 @@ const IndexPage = ({ data: { hero } }) => {
             ]}
           >
             <HeroContent ref={heroTextRef} style={getStyle(heroTextEntry)}>
-              <h1>{heroHeading}</h1>
-              <p>{heroParagraph.paragraph}</p>
+              <h1>
+                <LogoType>communities</LogoType>
+                {heroHeading}
+              </h1>
+              {/*<p>{heroParagraph.paragraph}</p>*/}
               <Button text={heroButtonText} variant="white" path="/living/" />
             </HeroContent>
           </HeroBackground>
@@ -49,6 +56,19 @@ const IndexPage = ({ data: { hero } }) => {
   );
 };
 
+const LogoType = styled.span`
+  ${fontPresets.logoTypeHeroTail};
+  :before {
+    ${fontPresets.logoTypeHeroHead};
+    font-family: ${fontFamily};
+    content: 'NEU';
+    margin-right: 4px;
+  }
+  :after {
+    content: ' ';
+  }
+`;
+
 export default IndexPage;
 
 export const pageQuery = graphql`
@@ -56,9 +76,9 @@ export const pageQuery = graphql`
     hero: contentfulHero(page: { eq: $pageName }) {
       page
       heading
-      paragraph {
-        paragraph
-      }
+      #      paragraph {
+      #        paragraph
+      #      }
       buttonText
       background {
         fluid(maxWidth: 2880, quality: 75) {

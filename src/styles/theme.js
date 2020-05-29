@@ -186,6 +186,8 @@ export const fontPresets = {
   primaryParagraph: getFontPreset('light', 20),
   logoTypeHead: getFontPreset('light', 45),
   logoTypeTail: getFontPreset('normal', 40, 'black', 'deadStock'),
+  logoTypeHeroHead: getFontPreset('light', 56),
+  logoTypeHeroTail: getFontPreset('normal', 50, 'white', 'deadStock'),
   secondaryHeading: getFontPreset('bold', 16),
   secondaryHeadingWhite: getFontPreset('bold', 16, 'white'),
   secondaryParagraph: getFontPreset('light', 16),
@@ -195,7 +197,7 @@ export const fontPresets = {
   infoSquareNote: getFontPreset('medium', 14),
   sidebarTitle: getFontPreset('medium', 14),
   sidebarSubtitle: getFontPreset('regular', 14),
-  footer: getFontPreset('medium', 12, 'gray'),
+  footer: getFontPreset('medium', 12, 'light'),
   newsletter: getFontPreset('medium', 16, 'white'),
   form: getFontPreset('regular', 12, 'gray'),
   formError: `

@@ -25,7 +25,7 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
 
   return (
     <Layout>
-      <SEO title="retail" />
+      <SEO title="Retail" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
@@ -59,7 +59,7 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
         <Section>
           <NavBox
             left={{ path: '/living/', text: 'Living' }}
-            right={{ path: '/health/', text: 'Health Care' }}
+            right={{ path: '/health/', text: 'Healthcare' }}
             mid={{ path: '/environments/', text: 'NEU Environments' }}
           />
         </Section>
@@ -139,15 +139,15 @@ export const pageQuery = graphql`
         data {
           heading
           paragraph
-          image
+          imageTitles
           cards {
             heading
             paragraph
           }
           floorPlan {
-            city
-            state
-            property
+            size
+            type
+            installTime
             mapImage
             detailImage
             downloadUrl
