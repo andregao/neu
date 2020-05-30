@@ -21,7 +21,7 @@ const Bar = styled.div`
   //width: 3vw;
   width: ${({ isCurrent }) => (isCurrent ? '8vw' : '3vw')};
   border-bottom: 10px solid
-    ${({ isCurrent }) => (isCurrent ? colors.dark : colors.darkTransparent)};
+    ${({ isCurrent }) => (isCurrent ? colors.offWhite : colors.darkTransparent)};
   margin: 0 1vw;
   ${transitions.long};
 `;

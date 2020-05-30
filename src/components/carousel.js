@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import ArrowIcon from './icons/arrow';
-import { colors, transitions } from '../styles/theme';
+import { colors, logStyles, transitions } from '../styles/theme';
 import Indicators from './indicators';
 
 const Carousel = ({ imageTitles, images }) => {
@@ -12,21 +12,41 @@ const Carousel = ({ imageTitles, images }) => {
   const currentImage = images.find(
     (image) => image.title === currentImageTitle
   );
-  const handleLeft = () =>
+
+  // controls
+  const goLeft = () =>
     setCurrentImagIndex((prev) => (prev === 0 ? imageCount - 1 : --prev));
-  const handleRight = () =>
+  const goRight = () =>
     setCurrentImagIndex((prev) => (prev === imageCount - 1 ? 0 : ++prev));
+  const [isAuto, setAuto] = useState(true);
+  const handleLeft = () => {
+    goLeft();
+    setAuto(false);
+  };
+  const handleRight = () => {
+    goRight();
+    setAuto(false);
+  };
+
+  // reset to display first image when tab changes
   useEffect(() => setCurrentImagIndex(0), [imageTitles]);
 
-  // fade out controls
+  // briefly shows the controls
   const [opacity, setOpacity] = useState(1);
   useEffect(() => {
-    const ref = setTimeout(() => setOpacity(0), 1500);
+    const ref = setTimeout(() => setOpacity(0), 2000);
     return () => {
       clearTimeout(ref);
       setOpacity(1);
     };
   }, [imageTitles]);
+
+  //auto go right
+  useEffect(() => {
+    let ref;
+    isAuto && (ref = setInterval(goRight, 7000));
+    return () => (isAuto ? clearInterval(ref) : setAuto(true));
+  }, [imageTitles, isAuto]);
 
   return (
     <Container>
@@ -59,6 +79,15 @@ const Container = styled.section`
 const Slide = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
+  animation: fadein 0.7s ease-out;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.99;
+    }
+  }
 `;
 const NavContainer = styled.div`
   width: 8%;
@@ -91,7 +120,7 @@ const ArrowIconWithShadow = styled(ArrowIcon)`
 `;
 const StyledIndicators = styled(Indicators)`
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
 `;

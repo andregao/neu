@@ -149,7 +149,7 @@ export const colors = {
   light: '#DDD',
   hr: '#D8D8D8',
   dark: '#212121',
-  darkTransparent: 'rgba(33,33,33,0.35)',
+  darkTransparent: 'rgba(33,33,33,0.4)',
   arrow: '#010101',
   info: '#757575',
   error: 'orangered',
