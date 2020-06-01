@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { logStyles } from '../styles/theme';
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -45,10 +46,10 @@ export const sendToDatabase = async (formData, profile) => {
   const docId = Date.now().toString();
   const headers = new Headers({ 'Content-Type': 'application/json' });
   const data = { fields: { profile: { mapValue: { fields: {} } } } };
-  Object.keys(formData).forEach(key => {
+  Object.keys(formData).forEach((key) => {
     data.fields[key] = { stringValue: formData[key] };
   });
-  Object.keys(profile).forEach(key => {
+  Object.keys(profile).forEach((key) => {
     data.fields.profile.mapValue.fields[key] = { stringValue: profile[key] };
   });
   const body = JSON.stringify(data);
@@ -93,7 +94,69 @@ export const useObserver = (threshold = 0.05) => {
 };
 
 // scroll reveal styles
-export const getStyle = entry =>
+export const getStyle = (entry) =>
   entry && entry.isIntersecting
     ? { transform: 'none', opacity: 1 }
     : { transform: 'translateY(120px)', opacity: 0 };
+
+// swipe gesture hook
+export const useHorizontalSwipe = ({ handleLeft, handleRight }) => {
+  // configure ignore swipe tolerant and animation delay
+  const tolerant = 60;
+  const transitionDelay = 300;
+
+  const [initialX, setInitialX] = useState(0);
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetUnit, setOffsetUnit] = useState('px');
+  const [duration, setDuration] = useState(0);
+
+  const reset = () => {
+    setInitialX(0);
+    setOffsetX(0);
+    setOffsetUnit('px');
+    setDuration(0);
+  };
+  const goLeft = () => {
+    handleLeft();
+    reset();
+  };
+  const goRight = () => {
+    handleRight();
+    reset();
+  };
+  const handleTouchStart = (e) => {
+    setInitialX(e.touches[0].pageX);
+  };
+  const handleTouchEnd = () => {
+    // lifted finger
+
+    if (offsetX > tolerant) {
+      setDuration(transitionDelay);
+      setOffsetUnit('%');
+      setOffsetX(100);
+      setTimeout(goLeft, transitionDelay);
+    } else if (offsetX < -tolerant) {
+      setDuration(transitionDelay);
+      setOffsetUnit('%');
+      setOffsetX(-100);
+      setTimeout(goRight, transitionDelay);
+    } else {
+      setOffsetX(0);
+    }
+  };
+  const handleTouchMove = (e) => {
+    setOffsetX(e.touches[0].pageX - initialX);
+  };
+  const style = {
+    transform: `translateX(${offsetX + offsetUnit})`,
+    transition: `transform ${duration}ms`,
+  };
+  return [
+    style,
+    {
+      onTouchStart: handleTouchStart,
+      onTouchEnd: handleTouchEnd,
+      onTouchMove: handleTouchMove,
+    },
+  ];
+};

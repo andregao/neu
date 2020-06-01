@@ -146,6 +146,7 @@ export const colors = {
   gray: '#616161',
   white: '#FFF',
   offWhite: '#F1F1F1',
+  offWhiteTransparent: 'rgba(241,241,241,0.5)',
   light: '#DDD',
   hr: '#D8D8D8',
   dark: '#212121',

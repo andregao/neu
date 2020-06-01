@@ -4,6 +4,7 @@ import BackgroundImage from 'gatsby-background-image';
 import ArrowIcon from './icons/arrow';
 import { colors, logStyles, transitions } from '../styles/theme';
 import Indicators from './indicators';
+import { useHorizontalSwipe } from '../utils';
 
 const Carousel = ({ imageTitles, images }) => {
   const [currentImageIndex, setCurrentImagIndex] = useState(0);
@@ -48,9 +49,15 @@ const Carousel = ({ imageTitles, images }) => {
     return () => (isAuto ? clearInterval(ref) : setAuto(true));
   }, [imageTitles, isAuto]);
 
+  // mobile swipe
+  const [style, touchHandlers] = useHorizontalSwipe({
+    handleLeft,
+    handleRight,
+  });
+
   return (
-    <Container>
-      <Slide fluid={currentImage.fluid} />
+    <Container {...touchHandlers}>
+      <Slide fluid={currentImage.fluid} style={style} />
       {imageCount > 1 && (
         <FadeInOnHover opacity={opacity}>
           <NavOverlay />
@@ -75,11 +82,12 @@ const Container = styled.section`
   height: 800px;
   max-height: 100vmin;
   position: relative;
+  overflow: hidden;
 `;
 const Slide = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
-  animation: fadein 0.7s ease-out;
+  animation: fadein 0.6s ease-out;
   @keyframes fadein {
     from {
       opacity: 0;

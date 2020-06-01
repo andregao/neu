@@ -18,10 +18,11 @@ const Container = styled.div`
 `;
 
 const Bar = styled.div`
-  //width: 3vw;
   width: ${({ isCurrent }) => (isCurrent ? '8vw' : '3vw')};
+  min-width: ${({ isCurrent }) => (isCurrent ? '50px' : '20px')};
   border-bottom: 10px solid
-    ${({ isCurrent }) => (isCurrent ? colors.offWhite : colors.darkTransparent)};
+    ${({ isCurrent }) =>
+      isCurrent ? colors.offWhite : colors.offWhiteTransparent};
   margin: 0 1vw;
   ${transitions.long};
 `;
