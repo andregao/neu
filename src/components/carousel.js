@@ -7,7 +7,7 @@ import Indicators from './indicators';
 import { useHorizontalSwipe } from '../utils';
 
 const Carousel = ({ imageTitles, images }) => {
-  const [currentImageIndex, setCurrentImagIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const imageCount = imageTitles.length;
   const currentImageTitle = imageTitles[currentImageIndex];
   const currentImage = images.find(
@@ -15,11 +15,15 @@ const Carousel = ({ imageTitles, images }) => {
   );
 
   // controls
+  const [isAuto, setAuto] = useState(imageCount > 1);
+  const goToIndex = (index) => {
+    setAuto(false);
+    setCurrentImageIndex(index);
+  };
   const goLeft = () =>
-    setCurrentImagIndex((prev) => (prev === 0 ? imageCount - 1 : --prev));
+    setCurrentImageIndex((prev) => (prev === 0 ? imageCount - 1 : --prev));
   const goRight = () =>
-    setCurrentImagIndex((prev) => (prev === imageCount - 1 ? 0 : ++prev));
-  const [isAuto, setAuto] = useState(true);
+    setCurrentImageIndex((prev) => (prev === imageCount - 1 ? 0 : ++prev));
   const handleLeft = () => {
     goLeft();
     setAuto(false);
@@ -30,7 +34,7 @@ const Carousel = ({ imageTitles, images }) => {
   };
 
   // reset to display first image when tab changes
-  useEffect(() => setCurrentImagIndex(0), [imageTitles]);
+  useEffect(() => setCurrentImageIndex(0), [imageTitles]);
 
   // briefly shows the controls
   const [opacity, setOpacity] = useState(1);
@@ -64,6 +68,7 @@ const Carousel = ({ imageTitles, images }) => {
           <StyledIndicators
             imageCount={imageCount}
             currentImageIndex={currentImageIndex}
+            goToIndex={goToIndex}
           />
           <NavContainer variant="left" onClick={handleLeft}>
             <ArrowIconWithShadow variant="left" fill={colors.offWhite} />
