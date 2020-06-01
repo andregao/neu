@@ -145,14 +145,15 @@ export const useHorizontalSwipe = ({ handleLeft, handleRight }) => {
     }
   };
   const handleTouchMove = (e) => {
-    setOffsetX(e.touches[0].pageX - initialX);
+    const pageX = e.touches[0].pageX;
+    requestAnimationFrame(() => setOffsetX(pageX - initialX));
   };
-  const style = {
+  const elementStyle = {
     transform: `translateX(${offsetX + offsetUnit})`,
     transition: `transform ${duration}ms`,
   };
   return [
-    style,
+    elementStyle,
     {
       onTouchStart: handleTouchStart,
       onTouchEnd: handleTouchEnd,

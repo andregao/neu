@@ -54,14 +54,14 @@ const Carousel = ({ imageTitles, images }) => {
   }, [imageTitles, isAuto]);
 
   // mobile swipe
-  const [style, touchHandlers] = useHorizontalSwipe({
+  const [elementStyle, touchHandlers] = useHorizontalSwipe({
     handleLeft,
     handleRight,
   });
 
   return (
     <Container {...touchHandlers}>
-      <Slide fluid={currentImage.fluid} style={style} />
+      <Slide fluid={currentImage.fluid} style={elementStyle} />
       {imageCount > 1 && (
         <FadeInOnHover opacity={opacity}>
           <NavOverlay />
