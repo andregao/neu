@@ -34,7 +34,7 @@ const Header = () => (
             </Link>
           </li>
           <li>
-            <Link to="/health/" tabIndex="0" activeStyle={activeStyle}>
+            <Link to="/retail/" tabIndex="0" activeStyle={activeStyle}>
               retail
             </Link>
           </li>

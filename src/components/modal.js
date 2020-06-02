@@ -4,7 +4,7 @@ import { colors } from '../styles/theme';
 import { createPortal } from 'react-dom';
 import CloseIcon from './icons/close';
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, handleClose, children }) => {
   const portalRoot =
     typeof document !== `undefined` ? document.getElementById('portal') : null;
   const el =
@@ -14,48 +14,42 @@ const Modal = ({ isOpen, onClose, children }) => {
   }, []);
   const content = isOpen && (
     <Overlay>
-      <Container>
-        <CloseIconContainer onClick={onClose}>
-          <CloseIcon fill={colors.white} />
-        </CloseIconContainer>
-        {children}
-      </Container>
+      <CloseIconContainer onClick={handleClose}>
+        <CloseIcon fill={colors.white} />
+      </CloseIconContainer>
+      {children}
     </Overlay>
   );
   return el ? createPortal(content, portalRoot) : null;
 };
 
-const Overlay = styled.div`
-  height: 100vh;
+const Overlay = styled.section`
   width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.65);
   position: fixed;
+  overflow: auto;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   z-index: 100;
 `;
-const Container = styled.div`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  z-index: 101;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 const CloseIconContainer = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 102;
   width: 48px;
   height: 48px;
   top: 6vmin;
   right: 6vmin;
   cursor: pointer;
-  opacity: 50%;
+  opacity: 85%;
   :hover {
     opacity: 100%;
   }
+  filter: drop-shadow(0 0 5px #000);
 `;
 export default Modal;

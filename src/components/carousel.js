@@ -92,13 +92,13 @@ const Container = styled.section`
 const Slide = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
-  animation: fadein 0.6s ease-out;
+  animation: fadein 0.4s ease-out;
   @keyframes fadein {
     from {
       opacity: 0;
     }
     to {
-      opacity: 0.99;
+      opacity: 1;
     }
   }
 `;

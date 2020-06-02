@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { colors, fontPresets, transitions } from '../styles/theme';
+import { colors, devices, fontPresets, transitions } from '../styles/theme';
 import SecondaryText from './secondaryText';
 import { Hr } from '../styles/common';
 import GatsbyImage from 'gatsby-image';
@@ -9,11 +9,14 @@ import BackgroundImage from 'gatsby-background-image';
 import Modal from './modal';
 import { getStyle, useObserver } from '../utils';
 import Carousel from './carousel';
+import Expansion from './expansion';
 
 const ExpansionGroup = ({ data, images, noTabCards }) => {
+  const cardsCount = data.length;
   const [activeItem, setActiveItem] = useState(data[0]);
-  const { floorPlan } = activeItem;
-  const [isDetailsOpen, setDetailsOpen] = useState(false);
+
+  // modal controls
+  const [isExpansionOpen, setExpansionOpen] = useState(false);
 
   // scroll reveal
   const ref = useRef(null);
@@ -23,107 +26,82 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
   }, []);
 
   return (
-    <Container>
-      {!noTabCards && (
-        <TabsContainer ref={ref} style={getStyle(entry)}>
-          {data.map((item) => (
-            <TabCard
-              key={item.heading}
-              selected={activeItem.heading === item.heading}
-              onClick={() => setActiveItem(item)}
-            >
-              <StyledSecondaryText
-                heading={item.heading}
-                paragraph={item.paragraph}
-                theme="light"
-              />
-            </TabCard>
-          ))}
-        </TabsContainer>
-      )}
-      <ExpansionContainer>
-        {/*<ExpansionBackground*/}
-        {/*  fluid={[*/}
-        {/*    images.find((image) => image.title === activeItem.image).fluid,*/}
-        {/*  ]}*/}
-        {/*/>*/}
-        <Carousel imageTitles={activeItem.imageTitles} images={images} />
-        <ExpansionCards>
-          {activeItem.cards.map(({ heading, paragraph }) => (
-            <ExpansionCard key={heading}>
-              <StyledSecondaryText
-                heading={heading}
-                paragraph={paragraph}
-                theme="dark"
-                hrVariant="thin"
-              />
-            </ExpansionCard>
-          ))}
-        </ExpansionCards>
-        <FloorPlanContainer>
-          <MapImage
-            fluid={
-              images.find((image) => image.title === floorPlan.mapImage).fluid
-            }
-          />
-          <SideBar>
-            <SideBarHeading>SAMPLE FLOOR PLANS</SideBarHeading>
-            <Hr />
-            <InformationContainer>
-              <Item>
-                <Title>SIZE</Title>
-                <Subtitle>{floorPlan.size}</Subtitle>
-              </Item>
-              <Hr variant="thin" />
-              <Item>
-                <Title>TYPE</Title>
-                <Subtitle>{floorPlan.type}</Subtitle>
-              </Item>
-              <Hr variant="thin" />
-              <Item>
-                <Title>INSTALL TIME</Title>
-                <Subtitle>{floorPlan.installTime}</Subtitle>
-              </Item>
-              <Hr variant="thin" />
-              <Actions>
-                <Button
-                  text="VIEW DETAILS"
-                  variant="white"
-                  handleClick={() => setDetailsOpen(true)}
+    <>
+      <DesktopContainer>
+        {!noTabCards && (
+          <TabsContainer
+            ref={ref}
+            style={getStyle(entry)}
+            cardsCount={cardsCount}
+          >
+            {data.map((item) => (
+              <TabCard
+                key={item.heading}
+                selected={activeItem.heading === item.heading}
+                onClick={() => setActiveItem(item)}
+              >
+                <StyledSecondaryText
+                  heading={item.heading}
+                  paragraph={item.paragraph}
+                  theme="light"
                 />
-                {/*<DownloadLink>*/}
-                {/*  <a href={floorPlan.downloadUrl} target="_blank" download>*/}
-                {/*    Download Property Map*/}
-                {/*  </a>*/}
-                {/*</DownloadLink>*/}
-              </Actions>
-            </InformationContainer>
-          </SideBar>
-        </FloorPlanContainer>
-      </ExpansionContainer>
-      <Modal isOpen={isDetailsOpen} onClose={() => setDetailsOpen(false)}>
-        <ModalImage
-          imgStyle={{ objectFit: 'contain' }}
-          fluid={
-            images.find((image) => image.title === floorPlan.detailImage).fluid
-          }
-        />
-      </Modal>
-    </Container>
+              </TabCard>
+            ))}
+          </TabsContainer>
+        )}
+        <Expansion activeItem={activeItem} images={images} />
+      </DesktopContainer>
+      <MobileContainer>
+        {!noTabCards && (
+          <TabsContainer cardsCount={cardsCount}>
+            {data.map((item) => (
+              <TabCard
+                key={item.heading}
+                selected={activeItem.heading === item.heading}
+                onClick={() => {
+                  setActiveItem(item);
+                  setExpansionOpen(true);
+                }}
+              >
+                <StyledSecondaryText
+                  heading={item.heading}
+                  paragraph={item.paragraph}
+                  theme="light"
+                />
+              </TabCard>
+            ))}
+          </TabsContainer>
+        )}
+        <Modal
+          isOpen={isExpansionOpen}
+          handleClose={() => setExpansionOpen(false)}
+        >
+          <Expansion activeItem={activeItem} images={images} />
+        </Modal>
+      </MobileContainer>
+    </>
   );
 };
 
-const Container = styled.section`
+const DesktopContainer = styled.section`
   width: 100%;
+  @media (${devices.xs}) {
+    display: none;
+  }
 `;
 const TabsContainer = styled.section`
   color: ${colors.dark};
   padding-top: 20px;
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
+  display: grid;
+  grid-template: none / repeat(${({ cardsCount }) => cardsCount}, 1fr);
+  grid-gap: var(--cards-margin);
   ${transitions.long};
+
+  @media (${devices.xs}) {
+    display: grid;
+    grid-template: repeat(${({ cardsCount }) => cardsCount}, 1fr) / none;
+  }
 `;
 
 const TabCard = styled.article`
@@ -131,9 +109,6 @@ const TabCard = styled.article`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  :not(:last-child) {
-    margin-right: var(--cards-margin);
-  }
   border-bottom: solid 16px transparent;
   ${({ selected }) => selected && `border-bottom-color: ${colors.dark};`};
   :hover {
@@ -145,6 +120,14 @@ const TabCard = styled.article`
     ${({ selected }) => !selected && `cursor: pointer;`};
   }
   ${transitions.medium};
+
+  @media (${devices.xs}) {
+    border: none;
+    border-radius: 1%;
+    padding: 16px;
+    background-color: ${colors.white};
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 `;
 
 const StyledSecondaryText = styled(SecondaryText)`
@@ -152,98 +135,11 @@ const StyledSecondaryText = styled(SecondaryText)`
   margin-bottom: 60px;
 `;
 
-const ExpansionContainer = styled.section`
-  border-top: solid 16px ${colors.dark};
-  // make container full width by compensating body margin
-  --side-margin: calc(-1 * var(--body-side-padding));
-  margin: 0 var(--side-margin);
-  color: ${colors.white};
-  background-color: ${colors.dark};
-`;
-const ExpansionBackground = styled(BackgroundImage)`
-  width: 100vw;
-  height: 800px;
-  max-height: 100vmin;
-`;
-
-const ExpansionCards = styled.section`
-  padding: 0 var(--body-side-padding);
-  padding-top: var(--cards-margin);
-  width: 100%;
-  display: grid;
-  grid-column-gap: var(--cards-margin);
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-`;
-const ExpansionCard = styled.article`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  ${transitions.long};
-`;
-
-const FloorPlanContainer = styled.article`
-  width: 100%;
-  padding: 0 var(--body-side-padding);
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-  align-items: center;
-`;
-const MapImage = styled(GatsbyImage)`
-  flex: 2 1 400px;
-`;
-const SideBar = styled.aside`
-  flex: 1 0 200px;
-  margin: 50px var(--cards-margin) 50px 0;
-  min-width: 205px;
-`;
-const SideBarHeading = styled.h3`
-  ${fontPresets.secondaryHeading};
-  margin-bottom: 20px;
-`;
-const InformationContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-`;
-const Item = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  :first-child {
-    margin: 30px 0 20px;
+const MobileContainer = styled.section`
+  display: none;
+  @media (${devices.xs}) {
+    display: grid;
   }
-  :not(:first-child) {
-    margin: 20px 0;
-  }
-`;
-const Title = styled.h4`
-  ${fontPresets.sidebarTitle};
-  margin-bottom: 7px;
-`;
-const Subtitle = styled.h5`
-  ${fontPresets.sidebarSubtitle};
-`;
-const Actions = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  > :first-child {
-    margin: 30px 0 20px;
-  }
-`;
-const DownloadLink = styled(Subtitle)`
-  :hover {
-    text-decoration: underline;
-  }
-`;
-
-const ModalImage = styled(GatsbyImage)`
-  height: 100%;
-  width: 100%;
-  max-width: 1024px;
 `;
 
 export default ExpansionGroup;

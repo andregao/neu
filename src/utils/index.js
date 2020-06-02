@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { logStyles } from '../styles/theme';
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -127,27 +126,31 @@ export const useHorizontalSwipe = ({ handleLeft, handleRight }) => {
   const handleTouchStart = (e) => {
     setInitialX(e.touches[0].pageX);
   };
-  const handleTouchEnd = () => {
-    // lifted finger
-
-    if (offsetX > tolerant) {
-      setDuration(transitionDelay);
-      setOffsetUnit('%');
-      setOffsetX(100);
-      setTimeout(goLeft, transitionDelay);
-    } else if (offsetX < -tolerant) {
-      setDuration(transitionDelay);
-      setOffsetUnit('%');
-      setOffsetX(-100);
-      setTimeout(goRight, transitionDelay);
-    } else {
-      setOffsetX(0);
-    }
-  };
   const handleTouchMove = (e) => {
     const pageX = e.touches[0].pageX;
     requestAnimationFrame(() => setOffsetX(pageX - initialX));
   };
+  const handleTouchEnd = () => {
+    if (offsetX > tolerant) {
+      // fly off screen to the right
+      setDuration(transitionDelay);
+      setOffsetUnit('%');
+      setOffsetX(100);
+      // show next image on delay
+      setTimeout(goLeft, transitionDelay);
+    } else if (offsetX < -tolerant) {
+      // fly off screen to the left
+      setDuration(transitionDelay);
+      setOffsetUnit('%');
+      setOffsetX(-100);
+      // show next image on delay
+      setTimeout(goRight, transitionDelay);
+    } else {
+      // swipe ignored
+      setOffsetX(0);
+    }
+  };
+
   const elementStyle = {
     transform: `translateX(${offsetX + offsetUnit})`,
     transition: `transform ${duration}ms`,

@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { colors, fontPresets } from '../styles/theme';
+import { colors, fontPresets, transitions } from '../styles/theme';
 import CheckIcon from './icons/check';
 import { Hr } from '../styles/common';
+import { getStyle, useObserver } from '../utils';
 
 const InfoSquare = ({ data: { title, subtitle, info, note }, className }) => {
+  // scroll reveal
+  const ref = useRef(null);
+  const [entry, setTarget] = useObserver();
+  useEffect(() => {
+    setTarget(ref.current);
+  }, []);
+
   return (
-    <Container className={className}>
+    <Container className={className} ref={ref} style={getStyle(entry)}>
       <Square>
         <InfoContainer>
           <SubtitleContainer>
@@ -28,6 +36,7 @@ const InfoSquare = ({ data: { title, subtitle, info, note }, className }) => {
 };
 const Container = styled.aside`
   width: 100%;
+  ${transitions.long};
 `;
 const Square = styled.div`
   border: 1px solid ${colors.dark};

@@ -30,7 +30,7 @@ const Container = styled.div`
 
 const Bar = styled.div`
   width: ${({ isCurrent }) => (isCurrent ? '8vw' : '3vw')};
-  min-width: ${({ isCurrent }) => (isCurrent ? '50px' : '20px')};
+  min-width: ${({ isCurrent }) => (isCurrent ? '70px' : '30px')};
   border-bottom: 10px solid
     ${({ isCurrent }) =>
       isCurrent ? colors.offWhite : colors.offWhiteTransparent};
