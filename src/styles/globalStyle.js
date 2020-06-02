@@ -8,6 +8,9 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     width: 100%;
   }
+  .scroll-lock{
+    overflow: hidden;
+  }
 
   *,
   *:before,

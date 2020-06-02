@@ -12,6 +12,11 @@ const Modal = ({ isOpen, handleClose, children }) => {
   useEffect(() => {
     portalRoot.appendChild(el);
   }, []);
+  if (isOpen) {
+    document && document.body.classList.add('scroll-lock');
+  } else {
+    document && document.body.classList.remove('scroll-lock');
+  }
   const content = isOpen && (
     <Overlay>
       <CloseIconContainer onClick={handleClose}>

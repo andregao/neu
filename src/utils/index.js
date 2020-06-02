@@ -147,7 +147,7 @@ export const useHorizontalSwipe = ({ handleLeft, handleRight }) => {
       setTimeout(goRight, transitionDelay);
     } else {
       // swipe ignored
-      setOffsetX(0);
+      requestAnimationFrame(() => setOffsetX(0));
     }
   };
 
