@@ -42,10 +42,10 @@ const IndexPage = ({ data: { hero } }) => {
             ]}
           >
             <HeroContent ref={heroTextRef} style={getStyle(heroTextEntry)}>
-              <h1>
+              <HeroHeading>
                 <LogoType>communities</LogoType>
                 {heroHeading}
-              </h1>
+              </HeroHeading>
               {/*<p>{heroParagraph.paragraph}</p>*/}
               <Button text={heroButtonText} variant="white" path="/living/" />
             </HeroContent>
@@ -67,6 +67,11 @@ const LogoType = styled.span`
   :after {
     content: ' ';
   }
+`;
+
+const HeroHeading = styled.h1`
+  ${fontPresets.heroHeading};
+  margin-bottom: 20px;
 `;
 
 export default IndexPage;

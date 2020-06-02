@@ -20,7 +20,7 @@ const Footer = () => {
       </Left>
       {/*</Links>*/}
       {/*<Newsletter/>*/}
-      <Button text="contact" variant="light" path="/contact/" />
+      {/*<Button text="contact" variant="light" path="/contact/" />*/}
     </Container>
   );
 };
@@ -34,7 +34,7 @@ const Container = styled.footer`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   @media (${devices.xs}) {
     flex-direction: column;
     align-items: center;

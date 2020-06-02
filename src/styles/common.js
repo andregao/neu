@@ -53,20 +53,11 @@ export const CardsWhiteBackground = styled(Cards)`
 `;
 
 export const HeroBackground = styled(Background)`
-  justify-content: stretch;
+  justify-content: flex-start;
   align-items: center;
 `;
 export const HeroContent = styled.section`
-  & > * {
-    margin-bottom: 20px;
-  }
-  h1 {
-    ${fontPresets.heroHeading};
-  }
-  p {
-    ${fontPresets.heroParagraph};
-  }
-
+  width: 66%;
   ${transitions.long};
   margin: 40px var(--body-side-padding) 0;
 `;
