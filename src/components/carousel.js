@@ -54,10 +54,12 @@ const Carousel = ({ imageTitles, images }) => {
   }, [imageTitles, isAuto]);
 
   // mobile swipe
-  const [elementStyle, touchHandlers] = useHorizontalSwipe({
+  let [elementStyle, touchHandlers] = useHorizontalSwipe({
     handleLeft,
     handleRight,
   });
+  // remove handlers when only one image
+  imageCount === 1 && (touchHandlers = undefined);
 
   return (
     <Container {...touchHandlers}>
