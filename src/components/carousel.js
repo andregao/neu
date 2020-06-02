@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import BackgroundImage from 'gatsby-background-image';
 import ArrowIcon from './icons/arrow';
-import { colors, logStyles, transitions } from '../styles/theme';
+import { colors, transitions } from '../styles/theme';
 import Indicators from './indicators';
 import { useHorizontalSwipe } from '../utils';
+import GatsbyImage from 'gatsby-image';
 
 const Carousel = ({ imageTitles, images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -14,7 +14,7 @@ const Carousel = ({ imageTitles, images }) => {
     (image) => image.title === currentImageTitle
   );
 
-  // controls
+  // slide controls
   const [isAuto, setAuto] = useState(imageCount > 1);
   const goToIndex = (index) => {
     setAuto(false);
@@ -63,7 +63,7 @@ const Carousel = ({ imageTitles, images }) => {
 
   return (
     <Container {...touchHandlers}>
-      <Slide fluid={currentImage.fluid} style={elementStyle} />
+      <Slide fluid={currentImage?.fluid} style={elementStyle} loading="eager" />
       {imageCount > 1 && (
         <FadeInOnHover opacity={opacity}>
           <NavOverlay />
@@ -91,7 +91,7 @@ const Container = styled.section`
   position: relative;
   overflow: hidden;
 `;
-const Slide = styled(BackgroundImage)`
+const Slide = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
   animation: fadein 0.4s ease-out;

@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { colors, devices, fontPresets, transitions } from '../styles/theme';
+import { colors, devices, transitions } from '../styles/theme';
 import SecondaryText from './secondaryText';
-import { Hr } from '../styles/common';
-import GatsbyImage from 'gatsby-image';
-import Button from './button';
-import BackgroundImage from 'gatsby-background-image';
 import Modal from './modal';
 import { getStyle, useObserver } from '../utils';
-import Carousel from './carousel';
 import Expansion from './expansion';
 
 const ExpansionGroup = ({ data, images, noTabCards }) => {

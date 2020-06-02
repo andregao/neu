@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { colors, devices, fontPresets } from '../styles/theme';
-import FooterLinks from './footerLinks';
 import Button from './button';
 import Logo from './icons/logo';
-import NewLogo from '../assets/logo.svg';
 
 const Footer = () => {
   return (
