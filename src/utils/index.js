@@ -17,7 +17,7 @@ function validateEmail(email, prevErrors) {
     return { ...prevErrors, email: 'email address not valid' };
   } else {
     // clear error state if present, else return unmodified errors object
-    if (prevErrors.email) {
+    if (prevErrors.email !== undefined) {
       const { email: noop, ...errors } = prevErrors;
       return errors;
     } else {
@@ -31,7 +31,7 @@ function validateRequired(name, value, prevErrors) {
     return { ...prevErrors, [name]: `Please fill in ${name}` };
   } else {
     // clear error state if present, else return unmodified errors object
-    if (prevErrors[name]) {
+    if (prevErrors[name] !== undefined) {
       const { [name]: noop, ...errors } = prevErrors;
       return errors;
     } else {

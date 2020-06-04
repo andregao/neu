@@ -9,7 +9,7 @@ import ContactFormErrors from './contactFormErrors';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({ companyType: 'none-selected' });
-  const [errors, setErrors] = useState({ email: '', company: '' });
+  const [errors, setErrors] = useState({ email: '', company: '', message: '' });
   const [formIsValid, setFormIsValid] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('standby');
   const [profile, setProfile] = useState({});
