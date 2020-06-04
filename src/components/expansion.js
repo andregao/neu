@@ -68,16 +68,18 @@ const Expansion = ({ activeItem, images }) => {
           </InformationContainer>
         </SideBar>
       </FloorPlanContainer>
-      <Modal isOpen={isDetailsOpen} handleClose={() => setDetailsOpen(false)}>
-        <ModalImage
-          imgStyle={{ objectFit: 'contain' }}
-          fluid={
-            images.find(
-              (image) => image.title === activeItem.floorPlan.detailImage
-            ).fluid
-          }
-        />
-      </Modal>
+      {isDetailsOpen && (
+        <Modal handleClose={() => setDetailsOpen(false)}>
+          <ModalImage
+            imgStyle={{ objectFit: 'contain' }}
+            fluid={
+              images.find(
+                (image) => image.title === activeItem.floorPlan.detailImage
+              ).fluid
+            }
+          />
+        </Modal>
+      )}
     </Container>
   );
 };

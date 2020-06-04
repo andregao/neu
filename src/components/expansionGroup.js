@@ -67,12 +67,11 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
             ))}
           </TabsContainer>
         )}
-        <Modal
-          isOpen={isExpansionOpen}
-          handleClose={() => setExpansionOpen(false)}
-        >
-          <Expansion activeItem={activeItem} images={images} />
-        </Modal>
+        {isExpansionOpen && (
+          <Modal handleClose={() => setExpansionOpen(false)}>
+            <Expansion activeItem={activeItem} images={images} />
+          </Modal>
+        )}
       </MobileContainer>
     </>
   );

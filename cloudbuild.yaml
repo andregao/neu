@@ -11,7 +11,7 @@ steps:
     env:
       - 'CONTENFUL_SPACE_ID=$_CTF_SPACE_ID'
       - 'CONTENTFUL_ACCESS_TOKEN=$_CTF_ACCESS_TOKEN'
-  - name: 'node:10.15.1'
+  - name: node:10.15.1
     entrypoint: './node_modules/.bin/firebase'
     args:
       [

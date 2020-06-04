@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { colors } from '../styles/theme';
 import { createPortal } from 'react-dom';
 import CloseIcon from './icons/close';
 
-const Modal = ({ isOpen, handleClose, children }) => {
+const Modal = ({ handleClose, children }) => {
+  // modal mechanic set up
   const portalRoot =
     typeof document !== `undefined` ? document.getElementById('portal') : null;
   const el =
@@ -12,13 +13,26 @@ const Modal = ({ isOpen, handleClose, children }) => {
   useEffect(() => {
     portalRoot.appendChild(el);
   }, []);
-  typeof document !== `undefined` &&
-    (isOpen
-      ? document.body.classList.add('scroll-lock')
-      : document.body.classList.remove('scroll-lock'));
 
-  const content = isOpen && (
-    <Overlay>
+  // scroll lock behind modal
+  useEffect(() => {
+    typeof document !== `undefined` &&
+      document.body.classList.add('scroll-lock');
+    return () =>
+      typeof document !== `undefined` &&
+      document.body.classList.remove('scroll-lock');
+  }, []);
+
+  // listen for ESC key to close modal by focusing on the background element
+  const handleKeyDown = (e) => {
+    e.stopPropagation(); // prevent event bubbling when modal opens on top of modals
+    e.keyCode === 27 && handleClose();
+  };
+  const overlayEl = useRef(null);
+  useEffect(() => overlayEl.current.focus(), []);
+
+  const content = (
+    <Overlay tabIndex={-1} onKeyDown={handleKeyDown} ref={overlayEl}>
       <CloseIconContainer onClick={handleClose}>
         <CloseIcon fill={colors.white} />
       </CloseIconContainer>
