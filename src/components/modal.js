@@ -32,7 +32,12 @@ const Modal = ({ handleClose, children }) => {
   useEffect(() => overlayEl.current.focus(), []);
 
   const content = (
-    <Overlay tabIndex={-1} onKeyDown={handleKeyDown} ref={overlayEl}>
+    <Overlay
+      tabIndex={-1}
+      onKeyDown={handleKeyDown}
+      ref={overlayEl}
+      onClick={handleClose}
+    >
       <CloseIconContainer onClick={handleClose}>
         <CloseIcon fill={colors.white} />
       </CloseIconContainer>

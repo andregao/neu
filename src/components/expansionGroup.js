@@ -69,7 +69,10 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
         )}
         {isExpansionOpen && (
           <Modal handleClose={() => setExpansionOpen(false)}>
-            <Expansion activeItem={activeItem} images={images} />
+            {/*Wrap the children to stop click events from bubbling up to modal overlay*/}
+            <div onClick={(e) => e.stopPropagation()}>
+              <Expansion activeItem={activeItem} images={images} />
+            </div>
           </Modal>
         )}
       </MobileContainer>

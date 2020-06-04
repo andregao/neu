@@ -59,25 +59,23 @@ const Expansion = ({ activeItem, images }) => {
                 variant="white"
                 handleClick={() => setDetailsOpen(true)}
               />
-              {/*<DownloadLink>*/}
-              {/*  <a href={floorPlan.downloadUrl} target="_blank" download>*/}
-              {/*    Download Property Map*/}
-              {/*  </a>*/}
-              {/*</DownloadLink>*/}
             </Actions>
           </InformationContainer>
         </SideBar>
       </FloorPlanContainer>
       {isDetailsOpen && (
         <Modal handleClose={() => setDetailsOpen(false)}>
-          <ModalImage
-            imgStyle={{ objectFit: 'contain' }}
-            fluid={
-              images.find(
-                (image) => image.title === activeItem.floorPlan.detailImage
-              ).fluid
-            }
-          />
+          {/*wrap the image to stop click event from bubbling up to modal overlay*/}
+          <ModalImageContainer onClick={(e) => e.stopPropagation()}>
+            <GatsbyImage
+              imgStyle={{ objectFit: 'contain' }}
+              fluid={
+                images.find(
+                  (image) => image.title === activeItem.floorPlan.detailImage
+                ).fluid
+              }
+            />
+          </ModalImageContainer>
         </Modal>
       )}
     </Container>
@@ -168,19 +166,15 @@ const Actions = styled.div`
     margin: 30px 0 20px;
   }
 `;
-// const DownloadLink = styled(Subtitle)`
-//   :hover {
-//     text-decoration: underline;
-//   }
-// `;
 const StyledSecondaryText = styled(SecondaryText)`
   padding: 0;
   margin-bottom: 60px;
 `;
-const ModalImage = styled(GatsbyImage)`
-  height: 100%;
+const ModalImageContainer = styled.div`
+  height: auto;
   width: 100%;
   max-width: 1024px;
+  align-self: center;
 `;
 
 export default Expansion;
