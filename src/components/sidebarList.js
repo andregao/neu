@@ -1,8 +1,9 @@
 import React from 'react';
+import GatsbyImage from 'gatsby-image';
 import styled from 'styled-components';
 import { fontPresets } from '../styles/theme';
 import { Hr } from '../styles/common';
-import GatsbyImage from 'gatsby-image';
+import { emailRegex } from '../utils';
 
 const SidebarList = ({ list, images }) => {
   return (
@@ -17,7 +18,13 @@ const SidebarList = ({ list, images }) => {
             )}
             <Titles>
               <Title>{title.toUpperCase()}</Title>
-              <Subtitle>{subtitle}</Subtitle>
+              <Subtitle>
+                {emailRegex.test(subtitle) ? (
+                  <a href={`mailto:${subtitle}`}>{subtitle}</a>
+                ) : (
+                  subtitle
+                )}
+              </Subtitle>
             </Titles>
           </Item>
           <Hr variant="thin" />
