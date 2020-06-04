@@ -6,7 +6,7 @@ import { getStyle, useObserver } from '../utils';
 const Video = ({ src, autoplay, poster }) => {
   const videoEl = useRef(null);
   const [paused, setPaused] = useState(!autoplay);
-  const handleClick = () => {
+  const handlePlaybackClick = () => {
     const video = videoEl.current;
     if (video.paused) {
       video.play();
@@ -17,6 +17,10 @@ const Video = ({ src, autoplay, poster }) => {
     }
   };
 
+  const handleVideoClick = () => {
+    videoEl.current.muted = false;
+  };
+
   // scroll reveal
   const ref = useRef(null);
   const [entry, setTarget] = useObserver(0.15);
@@ -25,7 +29,7 @@ const Video = ({ src, autoplay, poster }) => {
   }, []);
 
   return (
-    <Container ref={ref} style={getStyle(entry)}>
+    <Container ref={ref} style={getStyle(entry)} onClick={handleVideoClick}>
       <video
         width="100%"
         autoPlay={autoplay || false}
@@ -33,12 +37,13 @@ const Video = ({ src, autoplay, poster }) => {
         loop
         muted
         ref={videoEl}
+        controls
       >
         <source src={src} type="video/mp4" />
       </video>
-      <Control onClick={handleClick}>
-        {paused ? <PlayIcon /> : <StyledPauseIcon />}
-      </Control>
+      {/*<PlaybackControl onClick={handlePlaybackClick}>*/}
+      {/*  {paused ? <PlayIcon /> : <StyledPauseIcon />}*/}
+      {/*</PlaybackControl>*/}
     </Container>
   );
 };
@@ -48,7 +53,7 @@ const Container = styled.article`
   position: relative;
   ${transitions.long};
 `;
-const Control = styled.button`
+const PlaybackControl = styled.button`
   border: none;
   outline: none;
   position: absolute;

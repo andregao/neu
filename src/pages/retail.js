@@ -17,6 +17,8 @@ import BackgroundImage from 'gatsby-background-image';
 import ExpansionGroup from '../components/expansionGroup';
 import InfoSquare from '../components/infoSquare';
 import NavBox from '../components/navBox';
+import Video from '../components/video';
+import poster from '../assets/store-tour-poster.jpg';
 
 const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
   const { background: heroBackground } = hero;
@@ -54,7 +56,11 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
           <StyledInfoSquare data={primaryText[1].sidebar} />
         </SectionTwoOneSplit>
         <FullWidthSection>
-          <CaseStudyBackground fluid={primaryText[1].images[0].fluid} />
+          <Video
+            src="https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/store-tour-org.mp4?alt=media&token=0e48a96f-acd3-4da7-9b00-cf4f0eb457dd"
+            autoplay
+            poster={poster}
+          />
         </FullWidthSection>
         <Section>
           <NavBox
@@ -163,194 +169,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-const dummyData = [
-  {
-    heading: 'HOTEL',
-    paragraph:
-      'We’re always launching something new. Check back soon to see which great brands used this space.',
-    image: 'chicago-birds-eye',
-    cards: [
-      {
-        heading: 'FEATURE ONE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE TWO',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE THREE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FOUR',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FIVE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE SIX',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-    ],
-    floorPlan: {
-      city: 'Santa Monica',
-      state: 'California',
-      property: 'Santa Monica Place',
-      mapImage: 'smp-map',
-      detailImage: 'smp-detail',
-      downloadUrl:
-        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
-    },
-  },
-  {
-    heading: 'APARTMENT',
-    paragraph:
-      'We’re always launching something new. Check back soon to see which great brands used this space.',
-    image: 'chicago-birds-eye',
-    cards: [
-      {
-        heading: 'FEATURE ONE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE TWO',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE THREE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FOUR',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FIVE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE SIX',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-    ],
-    floorPlan: {
-      city: 'Santa Monica',
-      state: 'California',
-      property: 'Santa Monica Place',
-      mapImage: 'smp-map',
-      detailImage: 'smp-detail',
-      downloadUrl:
-        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
-    },
-  },
-  {
-    heading: 'SINGLE FAMILY',
-    paragraph:
-      'We’re always launching something new. Check back soon to see which great brands used this space.',
-    image: 'chicago-birds-eye',
-    cards: [
-      {
-        heading: 'FEATURE ONE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE TWO',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE THREE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FOUR',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FIVE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE SIX',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-    ],
-    floorPlan: {
-      city: 'Santa Monica',
-      state: 'California',
-      property: 'Santa Monica Place',
-      mapImage: 'smp-map',
-      detailImage: 'smp-detail',
-      downloadUrl:
-        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
-    },
-  },
-  {
-    heading: 'SINGLE FAMILY 2',
-    paragraph:
-      'We’re always launching something new. Check back soon to see which great brands used this space.',
-    image: 'chicago-birds-eye',
-    cards: [
-      {
-        heading: 'FEATURE ONE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE TWO',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE THREE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FOUR',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE FIVE',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-      {
-        heading: 'FEATURE SIX',
-        paragraph:
-          'We’re always launching something new. Check back soon to see which great brands used this space.',
-      },
-    ],
-    floorPlan: {
-      city: 'Santa Monica',
-      state: 'California',
-      property: 'Santa Monica Place',
-      mapImage: 'smp-map',
-      detailImage: 'smp-detail',
-      downloadUrl:
-        'https://firebasestorage.googleapis.com/v0/b/made4jonathan.appspot.com/o/smp-download.png?alt=media&token=c5e5a7fd-2f6f-40d4-80c1-39d0587f6b11',
-    },
-  },
-];
