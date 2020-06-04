@@ -9,7 +9,7 @@ import ContactFormErrors from './contactFormErrors';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({ companyType: 'none-selected' });
-  const [errors, setErrors] = useState({ email: '', company: '', message: '' });
+  const [errors, setErrors] = useState({ email: '', company: '' });
   const [formIsValid, setFormIsValid] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('standby');
   const [profile, setProfile] = useState({});
@@ -23,7 +23,6 @@ const ContactForm = () => {
     setSubmitStatus('pending');
     sendToDatabase(formData, profile)
       .then((status) => {
-        console.log('200?', status);
         if (status === 200) {
           setSubmitStatus('success');
         } else {
@@ -119,8 +118,6 @@ const ContactForm = () => {
         placeholder="how can we help you?"
         value={formData.message}
         onChange={handleChange}
-        onBlur={(e) => handleBlur(e, 'required')}
-        error={errors.message}
       />
       <ContactFormErrors errors={errors} />
       <Button
