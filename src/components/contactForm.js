@@ -119,6 +119,7 @@ const ContactForm = () => {
         placeholder="how can we help you?"
         value={formData.message}
         onChange={handleChange}
+        onBlur={(e) => handleBlur(e, 'required')}
         error={errors.message}
       />
       <ContactFormErrors errors={errors} />

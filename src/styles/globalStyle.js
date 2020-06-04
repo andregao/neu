@@ -72,13 +72,17 @@ export const GlobalStyles = createGlobalStyle`
   hr {
     margin: 0;
   }
-  pre{
+  pre {
     padding: 0;
     margin: 0;
+    font-family: ${fontFamily};
   }
   ::selection {
     color: ${colors.dark};
     background-color: ${colors.warmGreen};
+  }
+  textarea{  
+    font-family: ${fontFamily};
   }
   input:focus, textarea:focus{
     outline: none;
