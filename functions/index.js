@@ -6,12 +6,14 @@ admin.initializeApp();
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
+  service: 'Gmail',
   auth: {
+    type: 'OAuth2',
     user: functionsEnvVar.smtp.user,
-    pass: functionsEnvVar.smtp.pass,
+    clientId: functionsEnvVar.smtp.clientid,
+    clientSecret: functionsEnvVar.smtp.clientsecret,
+    refreshToken: functionsEnvVar.smtp.refreshtoken,
+    expires: 1484314697598,
   },
 });
 const recipients = functionsEnvVar.smtp.recipients;
@@ -32,24 +34,21 @@ exports.sendEmail = functions.firestore
       from: `NeuCommunities Website <soiamarobot@gmail.com>`,
       to: recipients,
       subject: `Contact Message from ${company}`,
-      html: `<h1>From ${company}</h1>
-          <h2>First Name: </h2>
-          ${firstName},
-          <h2>Last Name: </h2>
-          ${lastName}
-          <br>
-          <h2>Email: </h2>
-          ${email}
-          <h2>Phone Number: </h2>
-          ${phone}
-          <br>
-          <h2>Company: </h2>
-          ${company} 
-          <h2>Company Type: </h2>
-          ${companyType}
-          <br>
-          <h2>Message: </h2>
-          <p>${message}</p>
+      html: `<h3>From ${company}</h3>
+          <h4>First Name: </h4>
+          <h3>${firstName}</h3>
+          <h4>Last Name: </h4>
+          <h3>${lastName}</h3>
+          <h4>Email: </h4>
+          <h3>${email}</h3>
+          <h4>Phone Number: </h4>
+          <h3>${phone}</h3>
+          <h4>Company: </h4>
+          <h3>${company} </h3>
+          <h4>Company Type: </h4>
+          <h3>${companyType}</h3>
+          <h4>Message: </h4>
+          <h3>${message}</h3>
           <br>
           <h3>Reference No: </h3> 
           ${context.params.timestamp}`,
