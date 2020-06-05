@@ -55,3 +55,37 @@ exports.sendEmail = functions.firestore
     };
     return transporter.sendMail(mailOptions);
   });
+
+exports.cloudbuild = functions.https.onRequest(triggerCloudBuild);
+
+async function triggerCloudBuild(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(403).send('Forbidden');
+  }
+  if (
+    !req.headers.authorization ||
+    !req.headers.authorization.startsWith('Bearer ')
+  ) {
+    return res.status(403).send('Unauthorized');
+  }
+  const accessToken = req.headers.authorization.split('Bearer ')[1];
+  if (accessToken !== functionsEnvVar.cloudbuild.accesstoken) {
+    return res.status(403).send('Unauthorized');
+  } else {
+    // authorized to run Cloud Build
+    const projectId = 'made4jonathan',
+      triggerId = functionsEnvVar.cloudbuild.triggerid,
+      branchName = 'master';
+    const { CloudBuildClient } = require('@google-cloud/cloudbuild');
+    const cb = new CloudBuildClient();
+    await cb.runBuildTrigger({
+      projectId,
+      triggerId,
+      source: {
+        projectId,
+        branchName,
+      },
+    });
+    return res.status(200).send('success');
+  }
+}
