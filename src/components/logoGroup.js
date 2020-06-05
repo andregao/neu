@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
+import { devices } from '../styles/theme';
 
 const LogoGroup = ({ images }) => {
   return (
@@ -17,6 +18,9 @@ const Container = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-content: center;
   justify-items: center;
+  @media (${devices.xs}) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 `;
 const Image = styled(GatsbyImage)`
   width: 100%;
