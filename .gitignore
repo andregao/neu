@@ -73,3 +73,6 @@ yarn-error.log
 
 # Firebase
 .firebase/
+
+# IDE
+.idea/

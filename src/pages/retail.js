@@ -19,6 +19,7 @@ import InfoSquare from '../components/infoSquare';
 import NavBox from '../components/navBox';
 import Video from '../components/video';
 import poster from '../assets/store-tour-poster.jpg';
+import LogoGroup from '../components/logoGroup';
 
 const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
   const { background: heroBackground } = hero;
@@ -62,6 +63,13 @@ const RetailPage = ({ data: { hero, allPrimaryText, allCards } }) => {
             poster={poster}
           />
         </FullWidthSection>
+        <Section>
+          <PrimaryText
+            heading={primaryText[2].heading}
+            paragraph={primaryText[2].paragraph}
+          />
+          <LogoGroup images={primaryText[2].images} />
+        </Section>
         <Section>
           <NavBox
             left={{ path: '/living/', text: 'Living' }}
