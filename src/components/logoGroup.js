@@ -14,13 +14,13 @@ const LogoGroup = ({ images }) => {
 
 const Container = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(147px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   justify-content: center;
   justify-items: center;
 `;
 const Image = styled(GatsbyImage)`
   width: 100%;
-  max-width: 208px;
+  max-width: 600px;
   height: auto;
 `;
 
