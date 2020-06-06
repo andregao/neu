@@ -4,9 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `NOMAADLIFE`,
-    description: `NOMAADLIFE`,
-    author: `NOMAADLIFE`,
+    title: `NeuCommunity`,
+    description: `NeuCommunity is building the next generation of modular experiences for Living, Retail & Healthcare`,
+    author: `NeuCommunity`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

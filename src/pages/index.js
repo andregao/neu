@@ -32,7 +32,7 @@ const IndexPage = ({ data: { hero } }) => {
   return (
     <Layout>
       <DarkBackground />
-      <SEO title="open a store" />
+      <SEO title="Home" />
       <BodyContainer>
         <HeroSection>
           <HeroBackground
