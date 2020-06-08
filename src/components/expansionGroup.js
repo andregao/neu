@@ -114,7 +114,8 @@ const TabCard = styled.article`
       selected
         ? `border-bottom-color: ${colors.dark}`
         : `border-bottom-color: ${colors.darkTransparent}`};
-    ${({ selected }) => !selected && `cursor: pointer;`};
+    ${({ selected }) => !selected && `cursor: pointer`};
+    ${({ selected }) => !selected && `transform: scale(1.05)`};
   }
   ${transitions.medium};
 
@@ -124,6 +125,9 @@ const TabCard = styled.article`
     padding: 16px;
     background-color: ${colors.white};
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    :hover {
+      border-bottom: none;
+    }
   }
 `;
 
