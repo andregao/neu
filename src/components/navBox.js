@@ -38,7 +38,7 @@ const Container = styled.nav`
   padding: var(--cards-margin);
   @media (${devices.xs}) {
     border: ${colors.white} solid 8px;
-    padding: 10px;
+    padding: 10px 6%;
   }
 `;
 const List = styled.div`
@@ -75,18 +75,22 @@ const Left = styled(Link)`
   > :last-child {
     margin-left: 10px;
   }
-  // @media (${devices.xs}) {
-  //   flex-direction: row-reverse;
-  //   > :last-child {
-  //     margin-left: 0;
-  //     margin-right: 10px;
-  //   }
-  // }
+  @media (${devices.xs}) {
+    justify-self: flex-start;
+    //   flex-direction: row-reverse;
+    //   > :last-child {
+    //     margin-left: 0;
+    //     margin-right: 10px;
+    //   }
+  }
 `;
 const Right = styled(Link)`
   grid-area: right;
   > :first-child {
     margin-right: 10px;
+  }
+  @media (${devices.xs}) {
+    justify-self: flex-end;
   }
 `;
 const Mid = styled(Link)`

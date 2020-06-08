@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { colors, devices, transitions } from '../styles/theme';
+import { colors, devices, fontPresets, transitions } from '../styles/theme';
 import SecondaryText from './secondaryText';
 import Modal from './modal';
 import { getStyle, useObserver } from '../utils';
 import Expansion from './expansion';
+import Button from './button';
 
 const ExpansionGroup = ({ data, images, noTabCards }) => {
   const cardsCount = data.length;
@@ -63,6 +64,7 @@ const ExpansionGroup = ({ data, images, noTabCards }) => {
                   paragraph={item.paragraph}
                   theme="light"
                 />
+                <LearnMore>LEARN MORE</LearnMore>
               </TabCard>
             ))}
           </TabsContainer>
@@ -128,12 +130,30 @@ const TabCard = styled.article`
     :hover {
       border-bottom: none;
     }
+    justify-content: space-between;
   }
 `;
 
 const StyledSecondaryText = styled(SecondaryText)`
   padding: 0;
   margin-bottom: 60px;
+  @media (${devices.xs}) {
+    margin-bottom: 30px;
+  }
+`;
+const LearnMore = styled.button`
+  display: none;
+  @media (${devices.xs}) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ${fontPresets.nav};
+    color: ${colors.info};
+    padding: 8px 10px;
+    border: ${colors.darkTransparent} solid 2px;
+    border-radius: 2px;
+  }
 `;
 
 const MobileContainer = styled.section`
