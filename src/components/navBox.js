@@ -36,6 +36,10 @@ const Container = styled.nav`
   margin-bottom: 75px;
   border: ${colors.white} solid 16px;
   padding: var(--cards-margin);
+  @media (${devices.xs}) {
+    border: ${colors.white} solid 8px;
+    padding: 10px;
+  }
 `;
 const List = styled.div`
   display: grid;
@@ -46,15 +50,16 @@ const List = styled.div`
   grid-template-areas: 'left right';
   justify-items: center;
   @media (${devices.xs}) {
-    //grid-template: repeat(3, 1fr) / none;
-    //grid-template-areas:
-    //  'right'
-    //  'left'
-    //  'mid';
-    grid-template: repeat(2, 1fr) / none;
-    grid-template-areas:
-      'right'
-      'left';
+    //   //grid-template: repeat(3, 1fr) / none;
+    //   //grid-template-areas:
+    //   //  'right'
+    //   //  'left'
+    //   //  'mid';
+    //   grid-template: repeat(2, 1fr) / none;
+    //   grid-template-areas:
+    //     'right'
+    //     'left';
+    grid-gap: 10px;
   }
   ${fontPresets.infoSquareTitle};
   @media (${devices.s}) {
@@ -70,13 +75,13 @@ const Left = styled(Link)`
   > :last-child {
     margin-left: 10px;
   }
-  @media (${devices.xs}) {
-    flex-direction: row-reverse;
-    > :last-child {
-      margin-left: 0;
-      margin-right: 10px;
-    }
-  }
+  // @media (${devices.xs}) {
+  //   flex-direction: row-reverse;
+  //   > :last-child {
+  //     margin-left: 0;
+  //     margin-right: 10px;
+  //   }
+  // }
 `;
 const Right = styled(Link)`
   grid-area: right;
