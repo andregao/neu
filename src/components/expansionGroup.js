@@ -149,7 +149,7 @@ const LearnMore = styled.button`
     justify-content: center;
     align-items: center;
     ${fontPresets.nav};
-    color: ${colors.info};
+    color: ${colors.dark};
     padding: 8px 10px;
     border: ${colors.darkTransparent} solid 2px;
     border-radius: 2px;
